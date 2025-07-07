@@ -1,36 +1,189 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Metabolismo Pro - Landing Page
 
-## Getting Started
+Una landing page moderna sobre metabolismo y nutrición construida con Next.js, React, GSAP y Lenis.
 
-First, run the development server:
+## 🚀 Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Diseño Moderno**: Interfaz minimalista y profesional
+- **Animaciones Fluidas**: GSAP + Lenis para experiencias suaves a 60fps
+- **Responsive**: Optimizado para todos los dispositivos
+- **SEO Optimizado**: Meta tags y estructura semántica
+- **Sistema de Contacto**: EmailJS integrado
+- **Performance**: Optimización automática de Next.js
+
+## 🛠️ Stack Tecnológico
+
+- **Framework**: Next.js 14+ con App Router
+- **Frontend**: React 18+ con TypeScript
+- **Estilos**: Tailwind CSS + CSS personalizado
+- **Animaciones**: GSAP + Lenis smooth scrolling
+- **Formularios**: React Hook Form + EmailJS
+- **Deployment**: Optimizado para Netlify
+
+## 📦 Instalación
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone <repository-url>
+   cd metabolism-landing
+   ```
+
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
+
+3. **Ejecutar en desarrollo**
+   ```bash
+   npm run dev
+   ```
+
+4. **Abrir en el navegador**
+   ```
+   http://localhost:3000
+   ```
+
+## 🏗️ Estructura del Proyecto
+
+```
+src/
+├── app/                 # Pages (App Router)
+│   ├── layout.tsx      # Layout principal
+│   ├── page.tsx        # Página principal
+│   └── globals.css     # Estilos globales
+├── components/         # Componentes React
+│   ├── sections/       # Secciones de la landing
+│   │   ├── Navigation.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Reading.tsx
+│   │   ├── HealthyEating.tsx
+│   │   └── ...
+│   ├── ui/            # Componentes UI reutilizables
+│   └── SmoothScrolling.tsx
+├── hooks/             # Custom hooks
+│   ├── useLenis.ts    # Hook para smooth scrolling
+│   └── useGSAP.ts     # Hook para animaciones
+├── utils/             # Utilidades
+└── types/             # Tipos TypeScript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Secciones de la Landing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Hero** - Introducción principal con CTA
+2. **Reading** - Importancia de la lectura en el metabolismo
+3. **Healthy Eating** - Formas correctas de alimentación
+4. **Nutrition Info** - Información nutricional de productos
+5. **Blood Pressure** - Explicación sobre presión arterial
+6. **Habit Change** - Cambio de hábitos alimentarios
+7. **OMS Procedures** - Procedimientos de la OMS
+8. **Glucose Production** - Producción de glucosa corporal
+9. **Contact** - Formulario de contacto con EmailJS
+10. **Footer** - Información adicional y enlaces
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚡ Comandos Disponibles
 
-## Learn More
+```bash
+# Desarrollo
+npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+# Build para producción
+npm run build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Iniciar servidor de producción
+npm start
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Linting
+npm run lint
 
-## Deploy on Vercel
+# Export estático (para Netlify)
+npm run export
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Deployment en Netlify
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Build Command**: `npm run build`
+2. **Publish Directory**: `.next`
+3. **Auto-deploy**: Conectar con Git para deployment automático
+
+### Configuración para Static Export (Opcional)
+
+Si prefieres export estático, agrega en `next.config.ts`:
+
+```typescript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  }
+}
+
+module.exports = nextConfig
+```
+
+## 📧 Configuración EmailJS
+
+Para el sistema de contacto, necesitarás configurar EmailJS:
+
+1. Crear cuenta en [EmailJS](https://www.emailjs.com/)
+2. Configurar servicio de email
+3. Crear template de email
+4. Obtener credenciales (User ID, Service ID, Template ID)
+5. Agregar las variables de entorno
+
+## 🎨 Personalización
+
+### Colores
+Los colores principales están definidos en `globals.css`:
+- Azul primario: `#2563eb`
+- Verde esmeralda: `#10b981`
+- Grises: Escala de Tailwind
+
+### Animaciones
+Las animaciones se configuran con atributos `data-animate`:
+- `fade-up`: Aparición desde abajo
+- `fade-in`: Aparición simple
+- `slide-left/right`: Deslizamiento lateral
+- `scale-up`: Escala desde el centro
+
+### Tipografía
+Fuente principal: Inter (Google Fonts)
+Clases disponibles:
+- `heading-xl`, `heading-lg`, `heading-md`
+- `body-lg`, `body-md`
+
+## 🔧 Configuración Adicional
+
+### VS Code
+El proyecto incluye configuración para VS Code en `.github/copilot-instructions.md` con instrucciones específicas para Copilot.
+
+### Performance
+- Imágenes optimizadas con Next.js Image
+- Lazy loading automático
+- Bundle splitting
+- CSS crítico inline
+
+## 📱 Responsive Design
+
+Breakpoints de Tailwind:
+- `sm`: 640px+
+- `md`: 768px+
+- `lg`: 1024px+
+- `xl`: 1280px+
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-caracteristica`)
+3. Commit tus cambios (`git commit -m 'Agregar nueva característica'`)
+4. Push a la rama (`git push origin feature/nueva-caracteristica`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT.
+
+## 🆘 Soporte
+
+Para soporte o preguntas, contacta a través del formulario de la landing page o abre un issue en el repositorio.
