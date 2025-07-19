@@ -1,0 +1,11 @@
+
+  <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#1f2937"/>
+    <rect x="50" y="50" width="500" height="300" rx="15" fill="#374151"/>
+    <text x="300" y="150" font-family="Arial" font-size="40" fill="#e5e7eb" text-anchor="middle">Servicio de Nutrición</text>
+    <g transform="translate(280, 220) scale(5)">
+      <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1.06 13.54L7.4 12l1.42-1.41 2.12 2.12 4.24-4.24 1.41 1.41-5.65 5.66z" fill="#4CAF50"/>
+    </g>
+    <text x="300" y="350" font-family="Arial" font-size="20" fill="#9ca3af" text-anchor="middle">Imagen de prueba</text>
+  </svg>
+  

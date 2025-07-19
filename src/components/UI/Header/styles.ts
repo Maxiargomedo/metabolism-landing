@@ -25,35 +25,86 @@ export const Inner = styled.div`
   }
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<{ $isHidden?: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
   z-index: 50;
-`;
-
-export const Nav = styled.nav`
-  display: flex;
-  gap: 2rem;
   
   @media (max-width: 768px) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(20, 20, 20, 0.9);
-    backdrop-filter: blur(10px);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(-100%);
-    transition: all 0.5s ease;
+    opacity: ${props => props.$isHidden ? '0' : '1'};
+    visibility: ${props => props.$isHidden ? 'hidden' : 'visible'};
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+`;
+
+export const Nav = styled.nav<{ $isOpen: boolean }>`
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  
+  /* Estilos para desktop */
+  @media (min-width: 769px) {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 10;
     
-    &.active {
-      transform: translateX(0);
+    &.mobile-nav {
+      display: none !important;
     }
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
+    
+    &.mobile-nav {
+      display: flex !important;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: var(--background-color);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      padding: 2rem;
+      transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(100%)'};
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 45;
+      
+      /* Mejora visual para el contenido */
+      a {
+        font-size: 1.5rem;
+        font-weight: 500;
+        padding: 1rem 2rem;
+        width: auto;
+        text-align: center;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background: var(--glass-background);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+`;
+
+export const MobileMenuLogo = styled.div`
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 50;
+  }
+  
+  @media (min-width: 769px) {
+    display: none;
   }
 `;
 
@@ -61,6 +112,14 @@ export const CallToActions = styled.div`
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  
+  /* Asegurar visibilidad en desktop */
+  @media (min-width: 769px) {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 10;
+  }
   
   @media (max-width: 768px) {
     display: none;
@@ -76,23 +135,56 @@ export const CallToActions = styled.div`
   }
 `;
 
-export const BurgerMenu = styled.div`
+export const BurgerMenu = styled.div<{ $isOpen: boolean }>`
   display: none;
   position: relative;
   cursor: pointer;
+  z-index: 50;
+  width: 30px;
+  height: 30px;
   
   @media (max-width: 768px) {
-    display: block;
-    width: 24px;
-    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const BurgerLine = styled.div<{ $isOpen: boolean; $isScrolled?: boolean }>`
+  width: 25px;
+  height: 3px;
+  background-color: ${props => props.$isScrolled ? '#ffffff' : 'var(--text-color)'};
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  
+  &:nth-child(1) {
+    transform: ${props => props.$isOpen ? 'rotate(45deg)' : 'translateY(-8px)'};
   }
   
-  div {
-    position: absolute;
+  &:nth-child(2) {
+    opacity: ${props => props.$isOpen ? '0' : '1'};
+    transform: translateY(0);
+  }
+  
+  &:nth-child(3) {
+    transform: ${props => props.$isOpen ? 'rotate(-45deg)' : 'translateY(8px)'};
+  }
+`;
+
+export const PageOverlay = styled.div<{ $isOpen: boolean }>`
+  @media (max-width: 768px) {
+    position: fixed;
     top: 0;
-    right: 0;
-    width: 24px;
-    height: 24px;
-    z-index: 60;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 35;
+    opacity: ${props => props.$isOpen ? '1' : '0'};
+    visibility: ${props => props.$isOpen ? 'visible' : 'hidden'};
+    transition: all 0.3s ease;
+    pointer-events: ${props => props.$isOpen ? 'auto' : 'none'};
   }
 `;

@@ -21,6 +21,42 @@ export const Inner = styled.div`
   z-index: 1;
 `;
 
+export const SectionTitle = styled.h2`
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+`;
+
+export const SectionSubtitle = styled.p`
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+`;
+
 export const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -49,7 +85,7 @@ export const TextContainer = styled.div`
   }
   
   p {
-    color: #bdbdbd;
+    color: var(--text-secondary);
     font-size: 1.125rem;
     line-height: 1.6;
   }
@@ -86,11 +122,11 @@ export const FeatureCard = styled.div`
   h3 {
     font-size: 1.5rem;
     font-weight: 500;
-    color: #e0e0e0;
+    color: var(--text-color);
   }
   
   p {
-    color: #bdbdbd;
+    color: var(--text-secondary);
     font-size: 1rem;
     line-height: 1.5;
   }

@@ -4,13 +4,16 @@ import { motion } from 'framer-motion';
 import { 
   Wrapper, 
   Inner, 
+  SectionTitle,
+  SectionSubtitle,
   ContentGrid, 
   TextContainer, 
   FeatureGrid,
   FeatureCard,
   BackgroundGradient
 } from './styles';
-import { Pill, MaskText } from '@/src/components';
+import { Pill } from '../../Common/Pill';
+import { MaskText } from '../../Common/MaskText';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
@@ -50,18 +53,19 @@ const About = () => {
       <BackgroundGradient />
       
       <Inner>
+        {/* Título de la sección */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7 }}
         >
-          <Pill>
-            <span>Metabolismo y nutrición</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 12L10 8L6 4" stroke="#E0E0E0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Pill>
+          <SectionTitle>Metabolismo y nutrición</SectionTitle>
+          <SectionSubtitle>
+            Transformamos tu salud a través de un enfoque científico integral que combina 
+            nutrición personalizada, análisis metabólico y hábitos de vida saludables.
+          </SectionSubtitle>
         </motion.div>
+
         
         <ContentGrid>
           <TextContainer>
@@ -71,14 +75,14 @@ const About = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              En MetaboLife, combinamos la ciencia nutricional avanzada con un enfoque personalizado para optimizar tu metabolismo y mejorar tu salud general. Entendemos que cada cuerpo es único, y tu plan nutricional debe serlo también.
+              En tan solo una década se ha duplicado la cantidad de personas que tienen Diabetes. Según el Centro para el control de Enfermedades CDC de Estados Unidos, para el año 2050: 1 de cada 3 personas eran diabéticas, imagínese los gastos hospitalarios, los sufrimientos para la familia tanto emocionales como económicos, simplemente no va a alcanzar para sostenerlas.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Nuestro equipo de nutricionistas especializados utiliza las últimas investigaciones para crear estrategias que aceleran tu metabolismo, aumentan tus niveles de energía y promueven un bienestar duradero.
+              Actualmente en IUSA 1 de cada 3 personas tiene prediabetes y 1 de cada 10 personas no sabe que tiene diabetes. Es muy importante tomar las acciones correctas para no estar entre estas estadísticas.
             </motion.p>
           </TextContainer>
           

@@ -8,55 +8,131 @@ import {
   LogoContainer,
   Nav,
   CallToActions,
-  BurgerMenu
+  BurgerMenu,
+  BurgerLine,
+  PageOverlay,
+  MobileMenuLogo
 } from './styles';
-import { AnimatedLink, GetStartedButton } from '@/src/components';
+import { AnimatedLink } from '../../Common/AnimatedLink';
+import { GetStartedButton } from '../../Common/GetStartedButton';
+import MetaboLifeLogo from '../../MetaboLifeLogo';
+import { useMobileMenu } from '../../../contexts/MobileMenuContext';
 
 const links = [
   { linkTo: 'Inicio', target: 'hero' },
   { linkTo: 'Acerca', target: 'about' },
-  { linkTo: 'Servicios', target: 'services' },
+  { linkTo: 'Quiénes Somos', target: 'team' },
+  { linkTo: 'Qué hacemos', target: 'services' },
   { linkTo: 'Contacto', target: 'contact' }
 ];
 
-const menu = {
-  open: { rotate: 45, y: 0 },
-  closed: { rotate: 0, y: 0 }
-};
-
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [activeSection, setActiveSection] = useState('hero');
+  const { isMenuOpen, setIsMenuOpen } = useMobileMenu();
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-      
-      // Detectar sección activa
-      const sections = ['hero', 'about', 'services', 'contact'];
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrollPosition(window.scrollY);
+          
+          // Detectar sección activa basado en posición de scroll
+          const sections = ['hero', 'about', 'team', 'services', 'contact'];
+          let currentSection = 'hero';
+          
+          // Si estamos en la parte superior de la página, siempre mostrar hero
+          if (window.scrollY < 100) {
+            currentSection = 'hero';
+          } else {
+            // Obtener posiciones de todas las secciones
+            const sectionPositions = sections.map(section => {
+              const element = document.getElementById(section);
+              if (element) {
+                const rect = element.getBoundingClientRect();
+                const elementTop = window.scrollY + rect.top;
+                const elementBottom = elementTop + element.offsetHeight;
+                return {
+                  id: section,
+                  top: elementTop,
+                  bottom: elementBottom,
+                  height: element.offsetHeight
+                };
+              }
+              return null;
+            }).filter(Boolean);
+            
+            // Determinar qué sección está más visible
+            const viewportTop = window.scrollY;
+            const viewportBottom = viewportTop + window.innerHeight;
+            const viewportCenter = viewportTop + (window.innerHeight / 2);
+            
+            let maxVisibility = 0;
+            let mostVisibleSection = 'hero';
+            
+            sectionPositions.forEach(section => {
+              if (section) {
+                // Calcular qué porcentaje de la sección está visible
+                const visibleTop = Math.max(viewportTop, section.top);
+                const visibleBottom = Math.min(viewportBottom, section.bottom);
+                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                const visibility = visibleHeight / section.height;
+                
+                // Si esta sección tiene más visibilidad, o si el centro del viewport está dentro de ella
+                if (visibility > maxVisibility || 
+                    (viewportCenter >= section.top && viewportCenter <= section.bottom)) {
+                  maxVisibility = visibility;
+                  mostVisibleSection = section.id;
+                }
+              }
+            });
+            
+            currentSection = mostVisibleSection;
+          }
+          
+          if (currentSection !== activeSection) {
+            setActiveSection(currentSection);
+          }
+          
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    
+    // Ejecutar la detección inicial inmediatamente
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeSection]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
+      setIsMenuOpen(false); // Cerrar el menú al seleccionar una opción
     }
   };
+
+  // Efecto para manejar el overflow del body en móvil
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (isMenuOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'unset';
+      }
+      
+      // Cleanup
+      return () => {
+        document.body.style.overflow = 'unset';
+      };
+    }
+  }, [isMenuOpen]);
 
   return (
     <Wrapper 
@@ -67,56 +143,83 @@ const Header = () => {
       }}
     >
       <Inner>
-        <LogoContainer onClick={() => scrollToSection('hero')}>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="text-3xl">🌱</div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-lime-300 text-transparent bg-clip-text">
-              MetaboLife
-            </h1>
-            <p className="text-xs text-gray-300 tracking-widest">NUTRITION & WELLNESS</p>
-          </motion.div>
+        <LogoContainer onClick={() => scrollToSection('hero')} $isHidden={isMenuOpen}>
+          <MetaboLifeLogo 
+            size="medium" 
+            variant={scrollPosition > 50 ? "white" : "default"} 
+            showTagline={true} 
+          />
         </LogoContainer>
         
-        <BurgerMenu onClick={() => setIsOpen(!isOpen)}>
-          <motion.div
-            variants={menu}
-            animate={isOpen ? 'open' : 'closed'}
-            initial="closed"
-          ></motion.div>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 12H21" stroke="#E0E0E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M3 6H21" stroke="#E0E0E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M3 18H21" stroke="#E0E0E0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        <BurgerMenu $isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <BurgerLine $isOpen={isMenuOpen} $isScrolled={scrollPosition > 50} />
+          <BurgerLine $isOpen={isMenuOpen} $isScrolled={scrollPosition > 50} />
+          <BurgerLine $isOpen={isMenuOpen} $isScrolled={scrollPosition > 50} />
         </BurgerMenu>
         
-        <Nav className={isOpen ? 'active' : ''}>
+        {/* Navegación de Desktop */}
+        <Nav $isOpen={false}>
+          {links.map((link, i) => (
+            <AnimatedLink 
+              key={i}
+              title={link.linkTo} 
+              onClick={() => scrollToSection(link.target)}
+              isActive={activeSection === link.target}
+              isHeaderScrolled={scrollPosition > 50}
+            />
+          ))}
+        </Nav>
+        
+        {/* Navegación Móvil */}
+        <Nav $isOpen={isMenuOpen} style={{ display: 'none' }} className="mobile-nav">
+          {/* Logo en la esquina superior izquierda del menú móvil */}
+          {isMenuOpen && (
+            <MobileMenuLogo>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.2 }}
+              >
+                <MetaboLifeLogo 
+                  size="medium" 
+                  variant="default" 
+                  showTagline={false} 
+                />
+              </motion.div>
+            </MobileMenuLogo>
+          )}
+          
           {links.map((link, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isMenuOpen ? { 
+                opacity: 1, 
+                y: 0,
+                transition: { 
+                  duration: 0.4, 
+                  delay: i * 0.1 + 0.3,
+                  ease: "easeOut"
+                }
+              } : { 
+                opacity: 0, 
+                y: 30,
+                transition: { 
+                  duration: 0.2
+                }
+              }}
             >
               <AnimatedLink 
                 title={link.linkTo} 
-                onClick={() => scrollToSection(link.target)} 
+                onClick={() => scrollToSection(link.target)}
+                isActive={activeSection === link.target}
+                isHeaderScrolled={false} // En el menú móvil siempre usamos el estilo normal
               />
             </motion.div>
           ))}
         </Nav>
         
-        <CallToActions className={isOpen ? 'active' : ''}>
+        <CallToActions className={isMenuOpen ? 'active' : ''}>
           {/* El botón de "Comenzar ahora" se movió a la sección hero */}
         </CallToActions>
       </Inner>

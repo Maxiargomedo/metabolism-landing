@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "../src/contexts/ThemeContext";
 
 export const metadata: Metadata = {
   title: "MetaboLife | Metabolismo y Nutrición Consciente",
@@ -37,8 +38,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className="font-inter antialiased bg-forest-green">
-        {children}
+      <body className="font-inter antialiased">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

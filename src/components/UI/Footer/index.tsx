@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import MetaboLifeLogo from '../../MetaboLifeLogo';
 import { 
   Wrapper, 
   Inner, 
@@ -47,11 +48,11 @@ const Footer = () => {
         <TopSection>
           <CompanyInfo>
             <div className="logo">
-              <div className="text-3xl">🌱</div>
-              <div>
-                <h2>MetaboLife</h2>
-                <p>NUTRITION & WELLNESS</p>
-              </div>
+              <MetaboLifeLogo 
+                size="medium" 
+                variant="white" 
+                showTagline={true} 
+              />
             </div>
             
             <p>
