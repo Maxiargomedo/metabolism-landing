@@ -95,7 +95,7 @@ export const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1rem; /* Reducir el margen superior para alinear mejor */
   
   .info-item {
     display: flex;
@@ -236,6 +236,7 @@ export const SubmitButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 1.5rem; /* Añadir espacio adicional arriba del botón */
   
   &:hover {
     transform: translateY(-2px);

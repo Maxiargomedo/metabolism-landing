@@ -194,15 +194,6 @@ const Contact = () => {
             <MaskText phrases={contactTitle} tag="h2" />
             
             <ContactInfo>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                style={{ marginBottom: '2rem' }}
-              >
-                Estamos aquí para ayudarte a transformar tu salud a través de la nutrición personalizada. Contáctanos para comenzar tu viaje hacia un metabolismo óptimo y una vida más saludable.
-              </motion.p>
-              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -222,7 +213,7 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="info-item"
               >
-                <div className="icon">📞</div>
+                <div className="icon">�</div>
                 <div className="details">
                   <span className="label">Teléfono</span>
                   <span className="value">+34 123 456 789</span>
@@ -235,13 +226,22 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="info-item"
               >
-                <div className="icon">📧</div>
+                <div className="icon">�</div>
                 <div className="details">
                   <span className="label">Email</span>
                   <span className="value">saminon.maxi20@gmail.com</span>
                 </div>
               </motion.div>
             </ContactInfo>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              style={{ marginTop: '2rem' }}
+            >
+              Estamos aquí para ayudarte a transformar tu salud a través de la nutrición personalizada. Contáctanos para comenzar tu viaje hacia un metabolismo óptimo y una vida más saludable.
+            </motion.p>
           </TextContainer>
           
           <motion.div
