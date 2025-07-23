@@ -6,6 +6,7 @@ import Header from '../src/components/UI/Header';
 import HeroSection from '../src/components/UI/HeroSection';
 import About from '../src/components/UI/About';
 import TeamSection from '../src/components/sections/TeamSection';
+import HealthEducation from '../src/components/sections/HealthEducation';
 import Services from '../src/components/UI/Services';
 import Contact from '../src/components/UI/Contact';
 import Footer from '../src/components/UI/Footer';
@@ -132,6 +133,7 @@ const AppContent = () => {
         <HeroSection />
         <TeamSection />
         <About />
+        <HealthEducation />
         <Services />
         <Contact />
         <Footer />

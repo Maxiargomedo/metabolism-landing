@@ -22,6 +22,7 @@ const links = [
   { linkTo: 'Inicio', target: 'hero' },
   { linkTo: 'Quiénes Somos', target: 'team' },
   { linkTo: 'Acerca', target: 'about' },
+  { linkTo: 'Educación Nutricional', target: 'health-education' },
   { linkTo: 'Qué hacemos', target: 'services' },
   { linkTo: 'Contacto', target: 'contact' }
 ];
@@ -40,7 +41,7 @@ const Header = () => {
           setScrollPosition(window.scrollY);
           
           // Detectar sección activa basado en posición de scroll
-          const sections = ['hero', 'team', 'about', 'services', 'contact'];
+          const sections = ['hero', 'team', 'about', 'health-education', 'services', 'contact'];
           let currentSection = 'hero';
           
           // Si estamos en la parte superior de la página, siempre mostrar hero
