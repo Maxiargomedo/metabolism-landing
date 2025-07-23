@@ -20,8 +20,8 @@ import { useMobileMenu } from '../../../contexts/MobileMenuContext';
 
 const links = [
   { linkTo: 'Inicio', target: 'hero' },
-  { linkTo: 'Acerca', target: 'about' },
   { linkTo: 'Quiénes Somos', target: 'team' },
+  { linkTo: 'Acerca', target: 'about' },
   { linkTo: 'Qué hacemos', target: 'services' },
   { linkTo: 'Contacto', target: 'contact' }
 ];
@@ -40,7 +40,7 @@ const Header = () => {
           setScrollPosition(window.scrollY);
           
           // Detectar sección activa basado en posición de scroll
-          const sections = ['hero', 'about', 'team', 'services', 'contact'];
+          const sections = ['hero', 'team', 'about', 'services', 'contact'];
           let currentSection = 'hero';
           
           // Si estamos en la parte superior de la página, siempre mostrar hero
