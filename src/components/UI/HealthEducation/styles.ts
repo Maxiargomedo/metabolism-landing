@@ -10,20 +10,25 @@ export const Wrapper = styled.section`
   position: relative;
   overflow: hidden;
   padding: 5rem 0;
-  background: var(--background-color);
-  z-index: 10; /* Asegurar que esté por encima de otros elementos */
-  isolation: isolate; /* Crear nuevo contexto de apilamiento */
+  background: #f8fafc; /* Color sólido en lugar de variable */
+  z-index: 10;
+  isolation: isolate;
   
   @media (max-width: 768px) {
     padding: 3rem 0;
     min-height: auto;
-    overflow: visible; /* Permitir scroll en móviles */
+    overflow: visible;
+    background: #ffffff; /* Fondo blanco sólido para móviles */
   }
   
   @media (max-width: 480px) {
     padding: 2rem 0;
     position: relative;
     z-index: 10;
+    background: #ffffff !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 `;
 
@@ -68,7 +73,7 @@ export const Inner = styled.div`
 export const SectionTitle = styled.h2`
   font-size: 3rem;
   font-weight: 700;
-  color: var(--text-color);
+  color: #1a202c; /* Color sólido en lugar de variable */
   text-align: center;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, #4CAF50, #8BC34A);
@@ -83,21 +88,28 @@ export const SectionTitle = styled.h2`
     display: block;
     visibility: visible;
     opacity: 1;
+    color: #4CAF50 !important; /* Color sólido para móviles */
+    background: none !important;
+    -webkit-text-fill-color: #4CAF50 !important;
   }
   
   @media (max-width: 480px) {
     font-size: 2rem;
-    color: #4CAF50; /* Fallback color para móviles */
-    -webkit-text-fill-color: #4CAF50;
+    color: #4CAF50 !important;
+    -webkit-text-fill-color: #4CAF50 !important;
     text-shadow: none;
     position: relative;
     z-index: 30;
+    background: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 `;
 
 export const SectionSubtitle = styled.p`
   font-size: 1.2rem;
-  color: var(--text-secondary);
+  color: #4a5568; /* Color sólido en lugar de variable */
   text-align: center;
   margin-bottom: 3rem;
   max-width: 700px;
@@ -113,13 +125,17 @@ export const SectionSubtitle = styled.p`
     display: block;
     visibility: visible;
     opacity: 1;
+    color: #2d3748 !important;
   }
   
   @media (max-width: 480px) {
     font-size: 1rem;
-    color: var(--text-color);
+    color: #2d3748 !important;
     position: relative;
     z-index: 30;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 `;
 
@@ -163,9 +179,9 @@ export const TabButton = styled.button.withConfig({
   gap: 0.75rem;
   padding: 1rem 2rem;
   border-radius: 1rem;
-  border: 2px solid ${props => props.active ? '#4CAF50' : 'var(--border-color)'};
-  background: ${props => props.active ? 'rgba(76, 175, 80, 0.1)' : 'var(--card-background)'};
-  color: ${props => props.active ? '#4CAF50' : 'var(--text-color)'};
+  border: 2px solid ${props => props.active ? '#4CAF50' : '#e2e8f0'};
+  background: ${props => props.active ? 'rgba(76, 175, 80, 0.1)' : '#ffffff'};
+  color: ${props => props.active ? '#4CAF50' : '#2d3748'};
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -200,6 +216,9 @@ export const TabButton = styled.button.withConfig({
     display: flex;
     visibility: visible;
     opacity: 1;
+    background: #ffffff !important;
+    color: ${props => props.active ? '#4CAF50' : '#2d3748'} !important;
+    border: 2px solid ${props => props.active ? '#4CAF50' : '#cbd5e0'} !important;
   }
   
   @media (max-width: 480px) {
@@ -207,6 +226,10 @@ export const TabButton = styled.button.withConfig({
     font-size: 0.9rem;
     position: relative;
     z-index: 30;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #ffffff !important;
     
     .icon {
       font-size: 1.25rem;
@@ -232,9 +255,9 @@ export const TabContent = styled(motion.div)`
 `;
 
 export const ContentCard = styled.div`
-  background: var(--glass-background);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(15px);
-  border: 1px solid var(--border-color);
+  border: 1px solid #e2e8f0;
   border-radius: 1.5rem;
   padding: 2.5rem;
   margin: 0 auto;
@@ -253,7 +276,8 @@ export const ContentCard = styled.div`
     display: block;
     visibility: visible;
     opacity: 1;
-    background: rgba(255, 255, 255, 0.95); /* Fondo más sólido en móviles */
+    background: #ffffff !important;
+    border: 1px solid #cbd5e0 !important;
   }
   
   @media (max-width: 480px) {
@@ -261,14 +285,18 @@ export const ContentCard = styled.div`
     border-radius: 0.75rem;
     position: relative;
     z-index: 30;
-    background: rgba(255, 255, 255, 0.98);
+    background: #ffffff !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border: 1px solid #cbd5e0 !important;
   }
 `;
 
 export const ContentTitle = styled.h3`
   font-size: 2rem;
   font-weight: 600;
-  color: var(--text-color);
+  color: #1a202c;
   margin-bottom: 1.5rem;
   background: linear-gradient(135deg, #4CAF50, #8BC34A);
   -webkit-background-clip: text;
@@ -287,21 +315,28 @@ export const ContentTitle = styled.h3`
     display: block;
     visibility: visible;
     opacity: 1;
+    color: #4CAF50 !important;
+    background: none !important;
+    -webkit-text-fill-color: #4CAF50 !important;
   }
   
   @media (max-width: 480px) {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #4CAF50; /* Fallback color para móviles */
-    -webkit-text-fill-color: #4CAF50;
+    color: #4CAF50 !important;
+    -webkit-text-fill-color: #4CAF50 !important;
     position: relative;
     z-index: 30;
+    background: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 `;
 
 export const ContentText = styled.p`
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: #4a5568;
   line-height: 1.7;
   margin-bottom: 1rem;
   position: relative;
@@ -311,15 +346,18 @@ export const ContentText = styled.p`
     display: block;
     visibility: visible;
     opacity: 1;
-    color: var(--text-color);
+    color: #2d3748 !important;
   }
   
   @media (max-width: 480px) {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #333; /* Color sólido para móviles */
+    color: #2d3748 !important;
     position: relative;
     z-index: 30;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   &:last-child {
@@ -348,7 +386,7 @@ export const InfoList = styled.ul`
 
 export const InfoItem = styled.li`
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: #4a5568;
   line-height: 1.6;
   margin-bottom: 0.75rem;
   padding-left: 0.5rem;
@@ -359,16 +397,19 @@ export const InfoItem = styled.li`
     display: list-item;
     visibility: visible;
     opacity: 1;
-    color: var(--text-color);
+    color: #2d3748 !important;
   }
   
   @media (max-width: 480px) {
     font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 0.6rem;
-    color: #333; /* Color sólido para móviles */
+    color: #2d3748 !important;
     position: relative;
     z-index: 30;
+    display: list-item !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   &::before {
