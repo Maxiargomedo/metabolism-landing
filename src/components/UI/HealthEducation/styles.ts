@@ -11,14 +11,19 @@ export const Wrapper = styled.section`
   overflow: hidden;
   padding: 5rem 0;
   background: var(--background-color);
+  z-index: 10; /* Asegurar que esté por encima de otros elementos */
+  isolation: isolate; /* Crear nuevo contexto de apilamiento */
   
   @media (max-width: 768px) {
     padding: 3rem 0;
     min-height: auto;
+    overflow: visible; /* Permitir scroll en móviles */
   }
   
   @media (max-width: 480px) {
     padding: 2rem 0;
+    position: relative;
+    z-index: 10;
   }
 `;
 
@@ -34,7 +39,8 @@ export const BackgroundGradient = styled.div`
     rgba(76, 175, 80, 0.05) 40%,
     transparent 70%
   );
-  z-index: 0;
+  z-index: -1; /* Asegurar que esté detrás del contenido */
+  pointer-events: none; /* No interferir con interacciones */
 `;
 
 export const Inner = styled.div`
@@ -44,14 +50,18 @@ export const Inner = styled.div`
   margin: 0 auto;
   padding: 0 1.5rem;
   position: relative;
-  z-index: 1;
+  z-index: 20; /* Asegurar visibilidad por encima del background */
+  width: 100%;
   
   @media (max-width: 768px) {
     padding: 0 1rem;
+    z-index: 20;
   }
   
   @media (max-width: 480px) {
     padding: 0 0.75rem;
+    position: relative;
+    z-index: 20;
   }
 `;
 
@@ -65,13 +75,23 @@ export const SectionTitle = styled.h2`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
+  z-index: 30;
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    display: block;
+    visibility: visible;
+    opacity: 1;
   }
   
   @media (max-width: 480px) {
     font-size: 2rem;
+    color: #4CAF50; /* Fallback color para móviles */
+    -webkit-text-fill-color: #4CAF50;
+    text-shadow: none;
+    position: relative;
+    z-index: 30;
   }
 `;
 
@@ -84,10 +104,22 @@ export const SectionSubtitle = styled.p`
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+  position: relative;
+  z-index: 30;
   
   @media (max-width: 768px) {
     font-size: 1.1rem;
     margin-bottom: 2rem;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    color: var(--text-color);
+    position: relative;
+    z-index: 30;
   }
 `;
 
@@ -96,6 +128,8 @@ export const TabsContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 30;
   
   @media (max-width: 968px) {
     flex-direction: column;
@@ -108,11 +142,16 @@ export const TabsContainer = styled.div`
     flex-direction: column;
     max-width: 350px;
     margin: 0 auto 2rem auto;
+    display: flex;
+    visibility: visible;
+    opacity: 1;
   }
   
   @media (max-width: 480px) {
     max-width: 100%;
     gap: 0.5rem;
+    position: relative;
+    z-index: 30;
   }
 `;
 
@@ -132,6 +171,8 @@ export const TabButton = styled.button.withConfig({
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 30;
   
   .icon {
     font-size: 1.5rem;
@@ -156,11 +197,16 @@ export const TabButton = styled.button.withConfig({
   @media (max-width: 768px) {
     justify-content: center;
     padding: 1.25rem;
+    display: flex;
+    visibility: visible;
+    opacity: 1;
   }
   
   @media (max-width: 480px) {
     padding: 1rem;
     font-size: 0.9rem;
+    position: relative;
+    z-index: 30;
     
     .icon {
       font-size: 1.25rem;
@@ -170,6 +216,19 @@ export const TabButton = styled.button.withConfig({
 
 export const TabContent = styled(motion.div)`
   width: 100%;
+  position: relative;
+  z-index: 30;
+  
+  @media (max-width: 768px) {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  @media (max-width: 480px) {
+    position: relative;
+    z-index: 30;
+  }
 `;
 
 export const ContentCard = styled.div`
@@ -180,6 +239,8 @@ export const ContentCard = styled.div`
   padding: 2.5rem;
   margin: 0 auto;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 30;
   
   @media (max-width: 968px) {
     padding: 2rem;
@@ -189,11 +250,18 @@ export const ContentCard = styled.div`
     padding: 1.5rem;
     margin: 0;
     border-radius: 1rem;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.95); /* Fondo más sólido en móviles */
   }
   
   @media (max-width: 480px) {
     padding: 1.25rem;
     border-radius: 0.75rem;
+    position: relative;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.98);
   }
 `;
 
@@ -206,6 +274,8 @@ export const ContentTitle = styled.h3`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
+  z-index: 30;
   
   @media (max-width: 968px) {
     font-size: 1.75rem;
@@ -214,11 +284,18 @@ export const ContentTitle = styled.h3`
   @media (max-width: 768px) {
     font-size: 1.75rem;
     text-align: center;
+    display: block;
+    visibility: visible;
+    opacity: 1;
   }
   
   @media (max-width: 480px) {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: #4CAF50; /* Fallback color para móviles */
+    -webkit-text-fill-color: #4CAF50;
+    position: relative;
+    z-index: 30;
   }
 `;
 
@@ -227,10 +304,22 @@ export const ContentText = styled.p`
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 30;
+  
+  @media (max-width: 768px) {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    color: var(--text-color);
+  }
   
   @media (max-width: 480px) {
     font-size: 0.95rem;
     line-height: 1.6;
+    color: #333; /* Color sólido para móviles */
+    position: relative;
+    z-index: 30;
   }
   
   &:last-child {
@@ -242,6 +331,19 @@ export const InfoList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 1rem 0;
+  position: relative;
+  z-index: 30;
+  
+  @media (max-width: 768px) {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  @media (max-width: 480px) {
+    position: relative;
+    z-index: 30;
+  }
 `;
 
 export const InfoItem = styled.li`
@@ -250,11 +352,23 @@ export const InfoItem = styled.li`
   line-height: 1.6;
   margin-bottom: 0.75rem;
   padding-left: 0.5rem;
+  position: relative;
+  z-index: 30;
+  
+  @media (max-width: 768px) {
+    display: list-item;
+    visibility: visible;
+    opacity: 1;
+    color: var(--text-color);
+  }
   
   @media (max-width: 480px) {
     font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 0.6rem;
+    color: #333; /* Color sólido para móviles */
+    position: relative;
+    z-index: 30;
   }
   
   &::before {
