@@ -195,8 +195,8 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({ isActive }) => {
 
     const interval = setInterval(() => {
       setActiveImages(prev => {
-        // Mostrar máximo 18 imágenes al mismo tiempo para llenar completamente el espacio
-        if (prev.length >= 18) {
+        // Mostrar máximo 20 imágenes al mismo tiempo para llenar completamente el espacio
+        if (prev.length >= 20) {
           // Quitar 2 imágenes más antiguas y agregar 2 nuevas
           const newPrev = prev.slice(2);
           const availableImages = images
@@ -213,25 +213,33 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({ isActive }) => {
           }
           return newPrev;
         } else {
-          // Agregar 1-2 nuevas imágenes
+          // Agregar 2 nuevas imágenes para llenar más rápido
           const availableImages = images
             .map((_, index) => index)
             .filter(index => !prev.includes(index));
           
-          if (availableImages.length > 0) {
+          if (availableImages.length > 1) {
+            const randomIndex1 = availableImages[Math.floor(Math.random() * availableImages.length)];
+            const filteredAvailable = availableImages.filter(i => i !== randomIndex1);
+            const randomIndex2 = filteredAvailable.length > 0 
+              ? filteredAvailable[Math.floor(Math.random() * filteredAvailable.length)]
+              : randomIndex1;
+            return [...prev, randomIndex1, randomIndex2];
+          } else if (availableImages.length > 0) {
             const randomIndex = availableImages[Math.floor(Math.random() * availableImages.length)];
             return [...prev, randomIndex];
           }
           return prev;
         }
       });
-    }, 1800); // Más lento - cambiar cada 1.8 segundos para animaciones más suaves
+    }, 1500); // Más rápido - cambiar cada 1.5 segundos para mayor densidad
 
     return () => clearInterval(interval);
   }, [isActive]);
 
   const getRandomPosition = (imageIndex: number) => {
-    const positions = [
+    // Dividimos las posiciones en zonas para asegurar distribución equilibrada
+    const topPositions = [
       // Esquina superior izquierda - más posiciones
       { top: '1%', left: '1%' },
       { top: '5%', left: '3%' },
@@ -254,17 +262,17 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({ isActive }) => {
       { top: '9%', right: '8%' },
       { top: '13%', right: '6%' },
       { top: '17%', right: '12%' },
-      { top: '11%', right: '15%' },
-      
-      // Lado izquierdo completo
+      { top: '11%', right: '15%' }
+    ];
+
+    const middlePositions = [
+      // Lado izquierdo medio
       { top: '22%', left: '1%' },
       { top: '28%', left: '4%' },
       { top: '35%', left: '2%' },
       { top: '42%', left: '5%' },
       { top: '48%', left: '1%' },
       { top: '55%', left: '3%' },
-      { top: '62%', left: '6%' },
-      { top: '68%', left: '2%' },
       
       // Centro izquierda - más distribución
       { top: '20%', left: '15%' },
@@ -273,8 +281,6 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({ isActive }) => {
       { top: '38%', left: '22%' },
       { top: '45%', left: '16%' },
       { top: '52%', left: '24%' },
-      { top: '58%', left: '19%' },
-      { top: '65%', left: '21%' },
       
       // Centro - zona media
       { top: '23%', left: '38%' },
@@ -291,20 +297,22 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({ isActive }) => {
       { top: '41%', right: '24%' },
       { top: '47%', right: '20%' },
       { top: '54%', right: '18%' },
-      { top: '61%', right: '25%' },
-      { top: '67%', right: '19%' },
       
-      // Lado derecho completo
+      // Lado derecho medio
       { top: '24%', right: '1%' },
       { top: '31%', right: '4%' },
       { top: '37%', right: '2%' },
       { top: '44%', right: '5%' },
       { top: '51%', right: '1%' },
-      { top: '58%', right: '3%' },
-      { top: '64%', right: '6%' },
-      { top: '70%', right: '2%' },
-      
-      // Parte inferior izquierda
+      { top: '58%', right: '3%' }
+    ];
+
+    const bottomPositions = [
+      // Parte inferior izquierda - más posiciones
+      { top: '62%', left: '6%' },
+      { top: '68%', left: '2%' },
+      { top: '72%', left: '10%' },
+      { top: '76%', left: '25%' },
       { bottom: '18%', left: '2%' },
       { bottom: '14%', left: '6%' },
       { bottom: '10%', left: '4%' },
@@ -313,6 +321,12 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({ isActive }) => {
       { bottom: '12%', left: '12%' },
       
       // Parte inferior central - más densidad
+      { top: '58%', left: '19%' },
+      { top: '65%', left: '21%' },
+      { top: '61%', right: '25%' },
+      { top: '67%', right: '19%' },
+      { top: '64%', right: '6%' },
+      { top: '70%', right: '2%' },
       { bottom: '15%', left: '25%' },
       { bottom: '8%', left: '35%' },
       { bottom: '5%', left: '45%' },
@@ -321,28 +335,35 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({ isActive }) => {
       { bottom: '3%', left: '75%' },
       { bottom: '12%', left: '40%' },
       { bottom: '4%', left: '30%' },
+      { bottom: '22%', left: '30%' },
+      { bottom: '28%', right: '35%' },
+      { bottom: '35%', left: '60%' },
+      { bottom: '25%', right: '50%' },
       
-      // Esquina inferior derecha
+      // Esquina inferior derecha - más posiciones
+      { top: '78%', right: '30%' },
+      { top: '74%', right: '45%' },
       { bottom: '1%', right: '1%' },
       { bottom: '5%', right: '4%' },
       { bottom: '9%', right: '7%' },
       { bottom: '13%', right: '5%' },
       { bottom: '17%', right: '11%' },
-      { bottom: '11%', right: '14%' },
-      
-      // Posiciones adicionales para llenar huecos
-      { top: '72%', left: '10%' },
-      { top: '76%', left: '25%' },
-      { top: '78%', right: '30%' },
-      { top: '74%', right: '45%' },
-      { top: '18%', left: '72%' },
-      { top: '33%', left: '78%' },
-      { bottom: '22%', left: '30%' },
-      { bottom: '28%', right: '35%' },
-      { bottom: '35%', left: '60%' },
-      { bottom: '25%', right: '50%' }
+      { bottom: '11%', right: '14%' }
     ];
-    return positions[imageIndex % positions.length];
+
+    // Forzamos una distribución más equilibrada: 25% top, 40% middle, 35% bottom
+    const zone = imageIndex % 20; // Ciclo de 20 imágenes para distribución
+    
+    if (zone < 5) {
+      // 25% en la zona superior
+      return topPositions[imageIndex % topPositions.length];
+    } else if (zone < 13) {
+      // 40% en la zona media 
+      return middlePositions[imageIndex % middlePositions.length];
+    } else {
+      // 35% en la zona inferior
+      return bottomPositions[imageIndex % bottomPositions.length];
+    }
   };
 
   const getRandomAnimation = () => {

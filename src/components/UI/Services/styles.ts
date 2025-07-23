@@ -140,9 +140,13 @@ export const CarouselContainer = styled.div`
   }
   
   @media (max-width: 768px) {
-    margin: 1rem 0;
+    margin: 1rem 0 0 0; /* Sin margen inferior porque los controles van debajo */
     border-radius: 0.75rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  @media (max-width: 480px) {
+    margin: 1rem 0 0 0; /* Sin margen inferior porque los controles van debajo */
   }
 `;
 
@@ -330,17 +334,41 @@ export const CarouselControls = styled.div`
     padding: 0 1.5rem;
   }
   
-  @media (max-width: 768px) {
-    bottom: 1rem;
-    padding: 0 1rem;
-    flex-direction: column;
-    gap: 1rem;
+  /* Ventana pequeña del navegador - controles debajo del carrusel */
+  @media (max-width: 768px) and (min-width: 481px) {
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    padding: 1.5rem 1rem 0 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+    gap: 2rem;
+    background: transparent;
+    
+    /* Los botones se mantienen visibles y se posicionan al lado de los puntos */
+    .carousel-buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
   }
   
+  /* Teléfonos - solo puntos debajo del carrusel */
   @media (max-width: 480px) {
-    bottom: 0.75rem;
-    padding: 0 0.75rem;
-    gap: 0.75rem;
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    padding: 1rem 0.75rem 0 0.75rem;
+    margin-top: 0.75rem;
+    justify-content: center;
+    background: transparent;
+    
+    /* Ocultar los botones de flecha en dispositivos táctiles */
+    .carousel-buttons {
+      display: none;
+    }
   }
 `;
 
@@ -393,14 +421,15 @@ export const CarouselButton = styled.button`
     }
   }
   
-  @media (max-width: 768px) {
-    width: 40px;
-    height: 40px;
+  /* Ventana pequeña del navegador - botones más pequeños pero visibles */
+  @media (max-width: 768px) and (min-width: 481px) {
+    width: 36px;
+    height: 36px;
     position: static;
     
     svg {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
     }
     
     &.prev, &.next {
@@ -409,14 +438,9 @@ export const CarouselButton = styled.button`
     }
   }
   
+  /* Teléfonos - los botones están ocultos por el contenedor padre */
   @media (max-width: 480px) {
-    width: 36px;
-    height: 36px;
-    
-    svg {
-      width: 16px;
-      height: 16px;
-    }
+    display: none;
   }
 `;
 
