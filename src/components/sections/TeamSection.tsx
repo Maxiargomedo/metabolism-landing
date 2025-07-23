@@ -58,6 +58,34 @@ const TeamDescription = styled(motion.p)`
   }
 `;
 
+const TeamImageContainer = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+`;
+
+const TeamImage = styled(motion.img)`
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: 12px;
+    max-width: 95%;
+  }
+`;
+
 export default function TeamSection() {
   return (
     <TeamContainer id="team">
@@ -74,6 +102,23 @@ export default function TeamSection() {
           <TeamDescription>
             Somos un grupo de profesionales de la salud, que ofrecemos recursos y orientación sobre nutrición para personas con enfermedades cronicas y personas saludables que desean mantenerse de esa forma por largo tiempo. Trabajamos con la premisa que los alimentos pueden ser una medicina. Que un cambio en su estilo de vida y habitos puede evitar que usted tenga que tomar medicación.
           </TeamDescription>
+          
+          <TeamImageContainer
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <TeamImage
+              src="/img/quienesSomos.png"
+              alt="Quiénes Somos - Equipo de profesionales de la salud"
+              initial={{ scale: 0.9 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              whileHover={{ scale: 1.02 }}
+            />
+          </TeamImageContainer>
         </TeamHeader>
       </TeamInner>
     </TeamContainer>
