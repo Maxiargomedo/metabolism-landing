@@ -130,8 +130,8 @@ const AppContent = () => {
       <div className={`app-container ${isLoaded ? 'loaded' : ''} ${isMenuOpen ? 'menu-open' : ''}`} key={key}>
         <Header />
         <HeroSection />
-        <About />
         <TeamSection />
+        <About />
         <Services />
         <Contact />
         <Footer />
