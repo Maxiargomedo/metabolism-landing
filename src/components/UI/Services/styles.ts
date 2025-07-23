@@ -12,6 +12,19 @@ export const Wrapper = styled.section`
   padding: 5rem 0;
   background: var(--secondary-color);
   transition: background-color 0.3s ease;
+  
+  @media (max-width: 1024px) {
+    padding: 4rem 0;
+    min-height: auto;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+  }
 `;
 
 export const Inner = styled.div`
@@ -22,6 +35,20 @@ export const Inner = styled.div`
   padding: 0 1.5rem;
   position: relative;
   z-index: 1;
+  width: 100%;
+  
+  @media (max-width: 1024px) {
+    max-width: 1024px;
+    padding: 0 1.25rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+  }
 `;
 
 export const BackgroundGradient = styled.div`
@@ -47,12 +74,18 @@ export const SectionTitle = styled.h2`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   
+  @media (max-width: 1024px) {
+    font-size: 2.75rem;
+  }
+  
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    margin-bottom: 0.875rem;
   }
   
   @media (max-width: 480px) {
     font-size: 2rem;
+    margin-bottom: 0.75rem;
   }
 `;
 
@@ -66,9 +99,24 @@ export const SectionSubtitle = styled.p`
   margin-right: auto;
   line-height: 1.6;
   
+  @media (max-width: 1024px) {
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    max-width: 550px;
+  }
+  
   @media (max-width: 768px) {
     font-size: 1.1rem;
     margin-bottom: 2rem;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -84,6 +132,17 @@ export const CarouselContainer = styled.div`
   .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
+  }
+  
+  @media (max-width: 1024px) {
+    margin: 1.5rem 0;
+    border-radius: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    margin: 1rem 0;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   }
 `;
 
@@ -164,20 +223,88 @@ export const CarouselCard = styled.div`
     }
   }
   
+  @media (max-width: 1024px) {
+    height: 450px;
+    
+    .content {
+      padding: 2.5rem;
+      
+      h3 {
+        font-size: 1.75rem;
+        margin-bottom: 1.25rem;
+      }
+      
+      p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .service-button {
+        padding: 0.625rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto;
+    min-height: 400px;
     
     .image-container {
-      height: 250px;
+      height: 200px;
+      flex: none;
       
       .image-overlay {
-        background: linear-gradient(to top, rgba(31, 41, 55, 0.7), transparent);
+        background: linear-gradient(to top, rgba(31, 41, 55, 0.8), transparent);
       }
     }
     
     .content {
-      padding: 2rem;
+      padding: 1.5rem;
+      flex: 1;
+      
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      
+      p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      
+      .service-button {
+        align-self: center;
+        padding: 0.625rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .image-container {
+      height: 180px;
+    }
+    
+    .content {
+      padding: 1.25rem;
+      
+      h3 {
+        font-size: 1.25rem;
+      }
+      
+      p {
+        font-size: 0.9rem;
+      }
+      
+      .service-button {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.85rem;
+      }
     }
   }
 `;
@@ -196,6 +323,24 @@ export const CarouselControls = styled.div`
   
   * {
     pointer-events: auto;
+  }
+  
+  @media (max-width: 1024px) {
+    bottom: 1.25rem;
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    bottom: 1rem;
+    padding: 0 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    bottom: 0.75rem;
+    padding: 0 0.75rem;
+    gap: 0.75rem;
   }
 `;
 
@@ -237,6 +382,42 @@ export const CarouselButton = styled.button`
   svg {
     pointer-events: none;
   }
+  
+  @media (max-width: 1024px) {
+    width: 44px;
+    height: 44px;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    position: static;
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    &.prev, &.next {
+      left: auto;
+      right: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    width: 36px;
+    height: 36px;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
 `;
 
 export const CarouselProgress = styled.div`
@@ -274,6 +455,34 @@ export const CarouselProgress = styled.div`
     &.active span {
       background: var(--primary-color);
       transform: scale(1.3);
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    gap: 0.375rem;
+    
+    .progress-dot {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    justify-content: center;
+    gap: 0.5rem;
+    
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.375rem;
+    
+    .progress-dot {
+      width: 10px;
+      height: 10px;
     }
   }
 `;
@@ -337,6 +546,21 @@ export const PopupModal = styled(motion.div)`
   overflow-y: auto;
   isolation: isolate;
   transform: translateZ(0);
+  
+  @media (max-width: 1024px) {
+    padding: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.75rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+    padding-top: 1.5rem;
+  }
 `;
 
 export const PopupContent = styled(motion.div)`
@@ -390,6 +614,48 @@ export const PopupContent = styled(motion.div)`
       }
     }
   }
+  
+  @media (max-width: 1024px) {
+    max-width: 800px;
+    border-radius: 1.25rem;
+    
+    .popup-header-image {
+      height: 180px;
+      
+      .overlay h2 {
+        font-size: 2.25rem;
+        padding: 0 1.5rem;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
+    max-height: 95vh;
+    border-radius: 1rem;
+    
+    .popup-header-image {
+      height: 150px;
+      
+      .overlay h2 {
+        font-size: 1.75rem;
+        padding: 0 1rem;
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 0.75rem;
+    
+    .popup-header-image {
+      height: 120px;
+      
+      .overlay h2 {
+        font-size: 1.5rem;
+        padding: 0 0.75rem;
+      }
+    }
+  }
 `;
 
 export const PopupCloseButton = styled.button`
@@ -412,6 +678,40 @@ export const PopupCloseButton = styled.button`
   &:hover {
     background: rgba(var(--primary-color-rgb, 76, 175, 80), 0.3);
     transform: scale(1.1);
+  }
+  
+  @media (max-width: 1024px) {
+    width: 44px;
+    height: 44px;
+    top: 0.75rem;
+    right: 0.75rem;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    top: 0.5rem;
+    right: 0.5rem;
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    width: 36px;
+    height: 36px;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -459,6 +759,36 @@ export const PopupCarouselContainer = styled.div`
       }
     }
   }
+  
+  @media (max-width: 1024px) {
+    height: calc(90vh - 180px);
+    max-height: 500px;
+  }
+  
+  @media (max-width: 768px) {
+    height: calc(95vh - 150px);
+    max-height: 400px;
+    
+    .popup-progress {
+      gap: 0.375rem;
+      justify-content: center;
+      
+      .progress-dot {
+        width: 10px;
+        height: 10px;
+        
+        span {
+          width: 6px;
+          height: 6px;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    height: calc(95vh - 120px);
+    max-height: 350px;
+  }
 `;
 
 export const PopupCarouselSlide = styled.div`
@@ -500,11 +830,45 @@ export const PopupCarouselSlide = styled.div`
     to { opacity: 1; }
   }
   
+  @media (max-width: 1024px) {
+    padding: 2rem 2.5rem;
+    
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .content-container p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+  }
+  
   @media (max-width: 768px) {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 2rem;
     
     h3 {
       font-size: 1.35rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content-container p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem 1.5rem;
+    
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content-container p {
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
   }
 `;
@@ -519,4 +883,22 @@ export const PopupCarouselControls = styled.div`
   right: 0;
   padding: 0 2rem;
   z-index: 10;
+  
+  @media (max-width: 1024px) {
+    bottom: 1.25rem;
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    bottom: 1rem;
+    padding: 0 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    bottom: 0.75rem;
+    padding: 0 0.75rem;
+    gap: 0.75rem;
+  }
 `;
