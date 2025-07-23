@@ -237,7 +237,7 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({ isActive }) => {
           return prev;
         }
       });
-    }, 1500); // Más rápido - cambiar cada 1.5 segundos para mayor densidad
+    }, 3000); // Más lento - cambiar cada 3 segundos para mejor visualización
 
     return () => clearInterval(interval);
   }, [isActive]);
@@ -427,7 +427,7 @@ export const ImageCollage: React.FC<ImageCollageProps> = ({ isActive }) => {
               animate={animation.animate}
               exit={animation.exit}
               transition={{
-                duration: 1.2,
+                duration: 2.5,
                 ease: [0.25, 0.46, 0.45, 0.94] // ease-out más suave
               }}
             />
