@@ -191,7 +191,14 @@ const Contact = () => {
         
         <ContentGrid>
           <TextContainer>
-            <MaskText phrases={contactTitle} tag="h2" />
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{ marginBottom: '2rem', fontSize: '1.125rem', lineHeight: '1.6' }}
+            >
+              Estamos aquí para ayudarte a transformar tu salud a través de la nutrición personalizada. Contáctanos para comenzar tu viaje hacia un metabolismo óptimo y una vida más saludable.
+            </motion.p>
             
             <ContactInfo>
               <motion.div
@@ -233,15 +240,6 @@ const Contact = () => {
                 </div>
               </motion.div>
             </ContactInfo>
-            
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              style={{ marginTop: '2rem' }}
-            >
-              Estamos aquí para ayudarte a transformar tu salud a través de la nutrición personalizada. Contáctanos para comenzar tu viaje hacia un metabolismo óptimo y una vida más saludable.
-            </motion.p>
           </TextContainer>
           
           <motion.div
