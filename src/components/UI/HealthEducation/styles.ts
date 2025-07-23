@@ -87,7 +87,9 @@ export const TabsContainer = styled.div`
   }
 `;
 
-export const TabButton = styled.button<{ active: boolean }>`
+export const TabButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => prop !== 'active',
+})<{ active: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.75rem;
