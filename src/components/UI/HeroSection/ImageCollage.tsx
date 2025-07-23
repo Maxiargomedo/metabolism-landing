@@ -30,158 +30,161 @@ const FloatingImage = styled(motion.img)`
   border: 2px solid rgba(255, 255, 255, 0.8);
 `;
 
-// TODAS las imágenes seleccionadas para NUTRICIÓN CIENTÍFICA BASADA EN EVIDENCIAS
-// Solo alimentos naturales, científicos y saludables - URLs verificadas
+// IMÁGENES LOCALES para NUTRICIÓN CIENTÍFICA BASADA EN EVIDENCIAS
+// Todas las imágenes están almacenadas localmente en /public/img/
 const images = [
   {
-    src: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=300&fit=crop&crop=center',
+    src: '/img/IMG1.jpg',
     alt: 'Alimentos saludables variados',
     size: { width: 250, height: 190 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&h=200&fit=crop&crop=center',
+    src: '/img/IMG2.webp',
     alt: 'Vegetales frescos orgánicos',
     size: { width: 220, height: 150 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=250&h=250&fit=crop&crop=center',
+    src: '/img/ALIMENTO1.jpg',
     alt: 'Frutas frescas nutritivas',
     size: { width: 200, height: 200 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=center',
-    alt: 'Investigación científica nutricional',
-    size: { width: 230, height: 230 }
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=250&h=350&fit=crop&crop=center',
-    alt: 'Smoothies verdes saludables',
-    size: { width: 180, height: 250 }
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=350&h=300&fit=crop&crop=center',
-    alt: 'Ensaladas nutritivas',
-    size: { width: 270, height: 220 }
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=300&h=300&fit=crop&crop=center',
-    alt: 'Nutrientes esenciales naturales',
-    size: { width: 220, height: 220 }
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1505935428862-770b6f24f629?w=300&h=250&fit=crop&crop=center',
+    src: '/img/ALIMENTO2.webp',
     alt: 'Superalimentos antioxidantes',
     size: { width: 240, height: 200 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1587562835371-e3ec9d3befea?w=300&h=300&fit=crop&crop=center',
+    src: '/img/ALIMENTO3.jpeg',
     alt: 'Frutos secos y semillas',
     size: { width: 220, height: 220 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=400&h=300&fit=crop&crop=center',
+    src: '/img/ALIMENTO4.jpg',
     alt: 'Bowl de frutas saludable',
     size: { width: 300, height: 220 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=250&h=200&fit=crop&crop=center',
+    src: '/img/ALIMENTO5.jpeg',
     alt: 'Granos integrales saludables',
     size: { width: 210, height: 170 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=350&h=200&fit=crop&crop=center',
+    src: '/img/ALIMENTO6.avif',
     alt: 'Hierbas medicinales naturales',
     size: { width: 280, height: 160 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1619566636858-adf3ef46400b?w=300&h=400&fit=crop&crop=center',
+    src: '/img/ALIMENTOSMART.jpg',
+    alt: 'Alimentación científica inteligente',
+    size: { width: 260, height: 190 }
+  },
+  // Repetimos las imágenes para tener más variedad en la rotación
+  {
+    src: '/img/IMG1.jpg',
+    alt: 'Variedad de alimentos nutritivos',
+    size: { width: 230, height: 180 }
+  },
+  {
+    src: '/img/IMG2.webp',
     alt: 'Verduras de hoja verde',
     size: { width: 200, height: 280 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1564844536308-2fa49d068d1e?w=350&h=250&fit=crop&crop=center',
-    alt: 'Análisis de micronutrientes',
-    size: { width: 260, height: 190 }
+    src: '/img/ALIMENTO1.jpg',
+    alt: 'Nutrientes esenciales naturales',
+    size: { width: 270, height: 220 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1559561853-08451507cbe7?w=250&h=350&fit=crop&crop=center',
-    alt: 'Aguacates ricos en omega',
+    src: '/img/ALIMENTO2.webp',
+    alt: 'Ensaladas nutritivas',
     size: { width: 180, height: 250 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?w=400&h=200&fit=crop&crop=center',
-    alt: 'Ingredientes naturales orgánicos',
+    src: '/img/ALIMENTO3.jpeg',
+    alt: 'Aguacates ricos en omega',
     size: { width: 310, height: 160 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=250&h=350&fit=crop&crop=center',
+    src: '/img/ALIMENTO4.jpg',
     alt: 'Platos vegetales nutritivos',
     size: { width: 190, height: 260 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=250&fit=crop&crop=center',
+    src: '/img/ALIMENTO5.jpeg',
     alt: 'Salmón rico en omega-3',
     size: { width: 310, height: 190 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1515543904379-3d0e229d8ed4?w=300&h=300&fit=crop&crop=center',
+    src: '/img/ALIMENTO6.avif',
     alt: 'Bayas antioxidantes naturales',
     size: { width: 230, height: 230 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=400&h=250&fit=crop&crop=center',
+    src: '/img/ALIMENTOSMART.jpg',
     alt: 'Mesa de alimentos saludables',
     size: { width: 300, height: 200 }
   },
+  // Tercera rotación con tamaños diferentes
   {
-    src: 'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=350&h=250&fit=crop&crop=center',
+    src: '/img/IMG1.jpg',
     alt: 'Quinoa y granos nutritivos',
-    size: { width: 260, height: 190 }
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1567306301408-9b74561cf14f?w=300&h=300&fit=crop&crop=center',
-    alt: 'Tomates frescos ricos en licopeno',
-    size: { width: 220, height: 220 }
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1599629954497-dfd84098cd58?w=250&h=400&fit=crop&crop=center',
-    alt: 'Brócoli rico en vitaminas',
     size: { width: 180, height: 270 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=400&h=300&fit=crop&crop=center',
-    alt: 'Batido verde detox',
-    size: { width: 300, height: 220 }
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1575377222312-dd1a63a51638?w=300&h=250&fit=crop&crop=center',
-    alt: 'Meal prep saludable',
+    src: '/img/IMG2.webp',
+    alt: 'Tomates frescos ricos en licopeno',
     size: { width: 240, height: 190 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=350&h=200&fit=crop&crop=center',
-    alt: 'Especias medicinales',
+    src: '/img/ALIMENTO1.jpg',
+    alt: 'Brócoli rico en vitaminas',
     size: { width: 280, height: 160 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=200&h=300&fit=crop&crop=center',
-    alt: 'Estilo de vida saludable',
+    src: '/img/ALIMENTO2.webp',
+    alt: 'Batido verde detox',
     size: { width: 170, height: 250 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=400&h=250&fit=crop&crop=center',
-    alt: 'Lentejas ricas en proteína',
+    src: '/img/ALIMENTO3.jpeg',
+    alt: 'Meal prep saludable',
     size: { width: 310, height: 190 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1566385101042-1a0aa0c1268c?w=300&h=300&fit=crop&crop=center',
-    alt: 'Arándanos antioxidantes',
+    src: '/img/ALIMENTO4.jpg',
+    alt: 'Especias medicinales',
     size: { width: 230, height: 230 }
   },
   {
-    src: 'https://images.unsplash.com/photo-1589818562646-99a1c10b22d4?w=350&h=300&fit=crop&crop=center',
-    alt: 'Kale superfood nutritivo',
+    src: '/img/ALIMENTO5.jpeg',
+    alt: 'Estilo de vida saludable',
     size: { width: 270, height: 230 }
+  },
+  {
+    src: '/img/ALIMENTO6.avif',
+    alt: 'Lentejas ricas en proteína',
+    size: { width: 200, height: 200 }
+  },
+  {
+    src: '/img/ALIMENTOSMART.jpg',
+    alt: 'Arándanos antioxidantes',
+    size: { width: 250, height: 190 }
+  },
+  // Cuarta rotación para máxima variedad
+  {
+    src: '/img/IMG1.jpg',
+    alt: 'Kale superfood nutritivo',
+    size: { width: 220, height: 150 }
+  },
+  {
+    src: '/img/IMG2.webp',
+    alt: 'Smoothies verdes saludables',
+    size: { width: 300, height: 220 }
+  },
+  {
+    src: '/img/ALIMENTO1.jpg',
+    alt: 'Investigación científica nutricional',
+    size: { width: 260, height: 190 }
   }
 ];
 
