@@ -9,6 +9,15 @@ export const Wrapper = styled.section`
   position: relative;
   overflow: hidden;
   padding: 5rem 0;
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+    min-height: auto;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+  }
 `;
 
 export const Inner = styled.div`
@@ -19,6 +28,14 @@ export const Inner = styled.div`
   padding: 0 1.5rem;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+  }
 `;
 
 export const SectionTitle = styled.h2`
@@ -63,9 +80,23 @@ export const ContentGrid = styled.div`
   gap: 4rem;
   margin-top: 3rem;
   
+  @media (max-width: 1024px) {
+    gap: 3rem;
+  }
+  
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-top: 1.5rem;
   }
 `;
 
@@ -97,10 +128,19 @@ export const ContactInfo = styled.div`
   gap: 1.5rem;
   margin-top: 0; /* Sin margen superior para que esté pegado al texto descriptivo */
   
+  @media (max-width: 768px) {
+    gap: 1rem;
+    margin-bottom: 1rem; /* Espacio antes del formulario en móviles */
+  }
+  
   .info-item {
     display: flex;
     align-items: center;
     gap: 1rem;
+    
+    @media (max-width: 480px) {
+      gap: 0.75rem;
+    }
     
     .icon {
       width: 48px;
@@ -112,6 +152,12 @@ export const ContactInfo = styled.div`
       background: rgba(76, 175, 80, 0.1);
       color: #4CAF50;
       font-size: 1.5rem;
+      
+      @media (max-width: 480px) {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+      }
     }
     
     .details {
@@ -122,11 +168,19 @@ export const ContactInfo = styled.div`
         color: var(--text-color);
         font-size: 1rem;
         font-weight: 500;
+        
+        @media (max-width: 480px) {
+          font-size: 0.9rem;
+        }
       }
       
       .value {
         color: var(--text-secondary);
         font-size: 1rem;
+        
+        @media (max-width: 480px) {
+          font-size: 0.9rem;
+        }
       }
     }
   }
@@ -142,11 +196,30 @@ export const FormContainer = styled.div`
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-color);
   
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  
   h3 {
     font-size: 1.75rem;
     font-weight: 500;
     color: var(--text-color);
     margin-bottom: 1rem;
+    
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 1.25rem;
+    }
   }
 `;
 
@@ -171,6 +244,13 @@ export const FormGroup = styled.div`
     font-size: 1rem;
     font-family: inherit;
     transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    
+    @media (max-width: 480px) {
+      padding: 0.875rem;
+      font-size: 16px; /* Evita zoom en iOS */
+    }
     
     &:focus {
       outline: none;
@@ -217,6 +297,11 @@ export const FormRow = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
   }
@@ -236,7 +321,15 @@ export const SubmitButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1.5rem; /* Añadir espacio adicional arriba del botón */
+  margin-top: 1.5rem;
+  width: 100%;
+  min-height: 48px; /* Tamaño mínimo para móviles */
+  
+  @media (max-width: 480px) {
+    padding: 1rem 1.5rem;
+    font-size: 16px; /* Evita zoom en iOS */
+    min-height: 52px;
+  }
   
   &:hover {
     transform: translateY(-2px);
@@ -323,6 +416,10 @@ export const ButtonGroup = styled.div`
   @media (min-width: 640px) {
     flex-direction: row;
   }
+  
+  @media (max-width: 480px) {
+    gap: 0.5rem;
+  }
 `;
 
 export const WhatsAppButton = styled.button`
@@ -339,6 +436,13 @@ export const WhatsAppButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 44px; /* Tamaño mínimo para móviles */
+  
+  @media (max-width: 480px) {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.85rem;
+    min-height: 48px;
+  }
   
   &:hover {
     transform: translateY(-2px);
@@ -361,6 +465,13 @@ export const EmailButton = styled.button`
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 44px; /* Tamaño mínimo para móviles */
+  
+  @media (max-width: 480px) {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.85rem;
+    min-height: 48px;
+  }
   
   &:hover {
     background: var(--card-background);

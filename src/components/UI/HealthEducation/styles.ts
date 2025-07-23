@@ -11,6 +11,15 @@ export const Wrapper = styled.section`
   overflow: hidden;
   padding: 5rem 0;
   background: var(--background-color);
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+    min-height: auto;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+  }
 `;
 
 export const BackgroundGradient = styled.div`
@@ -36,6 +45,14 @@ export const Inner = styled.div`
   padding: 0 1.5rem;
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+  }
 `;
 
 export const SectionTitle = styled.h2`
@@ -80,10 +97,22 @@ export const TabsContainer = styled.div`
   gap: 1rem;
   margin-bottom: 3rem;
   
-  @media (max-width: 768px) {
+  @media (max-width: 968px) {
     flex-direction: column;
     max-width: 400px;
     margin: 0 auto 2rem auto;
+    gap: 0.75rem;
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    max-width: 350px;
+    margin: 0 auto 2rem auto;
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 100%;
+    gap: 0.5rem;
   }
 `;
 
@@ -118,9 +147,24 @@ export const TabButton = styled.button.withConfig({
     border-color: #4CAF50;
   }
   
+  @media (max-width: 968px) {
+    justify-content: center;
+    padding: 1.25rem;
+    font-size: 0.95rem;
+  }
+  
   @media (max-width: 768px) {
     justify-content: center;
     padding: 1.25rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    font-size: 0.9rem;
+    
+    .icon {
+      font-size: 1.25rem;
+    }
   }
 `;
 
@@ -137,9 +181,19 @@ export const ContentCard = styled.div`
   margin: 0 auto;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   
+  @media (max-width: 968px) {
+    padding: 2rem;
+  }
+  
   @media (max-width: 768px) {
     padding: 1.5rem;
     margin: 0;
+    border-radius: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.25rem;
+    border-radius: 0.75rem;
   }
 `;
 
@@ -153,8 +207,18 @@ export const ContentTitle = styled.h3`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   
+  @media (max-width: 968px) {
+    font-size: 1.75rem;
+  }
+  
   @media (max-width: 768px) {
     font-size: 1.75rem;
+    text-align: center;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -163,6 +227,11 @@ export const ContentText = styled.p`
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 1rem;
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
   
   &:last-child {
     margin-bottom: 0;
@@ -182,6 +251,12 @@ export const InfoItem = styled.li`
   margin-bottom: 0.75rem;
   padding-left: 0.5rem;
   
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+  }
+  
   &::before {
     content: '✓';
     color: #4CAF50;
@@ -195,6 +270,16 @@ export const StatisticsGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-top: 1rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
 `;
 
 export const StatCard = styled.div`
@@ -204,17 +289,34 @@ export const StatCard = styled.div`
   border: 1px solid rgba(76, 175, 80, 0.2);
   text-align: center;
   
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+  
   h4 {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-color);
     margin-bottom: 0.75rem;
+    
+    @media (max-width: 480px) {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
   }
   
   p {
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin: 0.25rem 0;
+    
+    @media (max-width: 480px) {
+      font-size: 0.85rem;
+    }
     
     strong {
       color: #4CAF50;
