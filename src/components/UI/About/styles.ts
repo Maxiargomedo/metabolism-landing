@@ -45,7 +45,7 @@ export const SectionSubtitle = styled.p`
   font-size: 1.2rem;
   color: var(--text-secondary);
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem; /* Reducido de 3rem a 1.5rem */
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -53,7 +53,7 @@ export const SectionSubtitle = styled.p`
   
   @media (max-width: 768px) {
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem; /* Reducido de 2rem a 1rem */
   }
 `;
 
@@ -61,7 +61,7 @@ export const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  margin-top: 3rem;
+  margin-top: -1rem; /* Reducido para que aparezca más arriba */
   
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
