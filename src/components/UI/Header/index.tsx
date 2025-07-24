@@ -23,7 +23,7 @@ const links = [
   { linkTo: 'Quiénes Somos', target: 'team' },
   { linkTo: 'Acerca', target: 'about' },
   { linkTo: 'Educación Nutricional', target: 'health-education' },
-  { linkTo: 'Qué hacemos', target: 'services' },
+  { linkTo: 'Programas', target: 'services' },
   { linkTo: 'Contacto', target: 'contact' }
 ];
 

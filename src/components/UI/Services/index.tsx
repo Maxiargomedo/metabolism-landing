@@ -230,9 +230,9 @@ const Services = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7 }}
         >
-          <SectionTitle>Qué hacemos</SectionTitle>
+          <SectionTitle>Programas</SectionTitle>
           <SectionSubtitle>
-            Descubre nuestros servicios especializados en nutrición y bienestar, 
+            Descubre nuestros programas especializados en nutrición y bienestar, 
             diseñados para transformar tu salud y mejorar tu calidad de vida.
           </SectionSubtitle>
         </motion.div>

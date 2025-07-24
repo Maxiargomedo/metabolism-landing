@@ -100,7 +100,9 @@ export default function TeamSection() {
             Quiénes Somos
           </TeamTitle>
           <TeamDescription>
-            Somos un grupo de profesionales de la salud, que ofrecemos recursos y orientación sobre nutrición para personas con enfermedades cronicas y personas saludables que desean mantenerse de esa forma por largo tiempo. Trabajamos con la premisa que los alimentos pueden ser una medicina. Que un cambio en su estilo de vida y habitos puede evitar que usted tenga que tomar medicación.
+            Somos un centro especializado en nutrición que ofrece servicios destinados a mejorar la salud y el bienestar a través de cambios sostenibles en los hábitos de vida. Nuestro objetivo es acompañar a cada persona en su proceso, brindando atención personalizada, orientación clara y un acompañamiento constante, según sus propias metas y necesidades: ya sea adelgazar, reducir triglicéridos, eliminar el hígado graso, revertir o poner en remisión enfermedades, o simplemente incorporar hábitos más saludables.
+
+            Nuestro equipo está conformado por un grupo de profesionales de la salud comprometidos con una visión integradora de la nutrición. Creemos que los alimentos pueden ser una poderosa forma de medicina, y que una transformación en el estilo de vida puede marcar la diferencia entre depender de medicamentos o prevenir su uso. Por eso, entregamos recursos, educación y asesoría tanto a personas con enfermedades crónicas como a quienes desean cuidar su salud y mantenerla en el tiempo.
           </TeamDescription>
           
           <TeamImageContainer
