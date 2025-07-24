@@ -197,6 +197,12 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               style={{ marginBottom: '2rem', fontSize: '1.125rem', lineHeight: '1.6' }}
             >
+              <span style={{ display: 'block', marginBottom: '1rem', fontWeight: 'normal', color: '#333', fontSize: '1.125rem', lineHeight: '1.6' }}>
+                Primera consulta presencial a terreno o a distancia<br /><br />
+                Incluye charla personalizada, evaluación nutricional (mediciones antropométricas, análisis de composición corporal y evaluación de hábitos alimenticios) y entrega de material de apoyo.<br /><br />
+                Valor $30.000  |  Tiempo estimado 1 hora<br /><br />
+                Si toma alguno de los programas que ofrecemos, se descuenta el valor de la primera consulta.
+              </span>
               Estamos aquí para ayudarte a transformar tu salud a través de la nutrición personalizada. Contáctanos para comenzar tu viaje hacia un metabolismo óptimo y una vida más saludable.
             </motion.p>
             
