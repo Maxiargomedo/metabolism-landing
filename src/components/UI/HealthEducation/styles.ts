@@ -455,22 +455,24 @@ export const StatCard = styled.div`
   h4 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--text-color);
+    color: #2d3748;
     margin-bottom: 0.75rem;
     
     @media (max-width: 480px) {
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
+      color: #2d3748 !important;
     }
   }
   
   p {
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: #4a5568;
     margin: 0.25rem 0;
     
     @media (max-width: 480px) {
       font-size: 0.85rem;
+      color: #4a5568 !important;
     }
     
     strong {
