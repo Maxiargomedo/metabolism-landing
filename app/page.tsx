@@ -74,11 +74,16 @@ const GlobalStyle = createGlobalStyle`
   /* Estilo para el contenedor principal cuando el menú móvil está abierto */
   .app-container {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    @media (max-width: 768px) {
-      &.menu-open {
-        /* El menú ocultará completamente la página, no necesitamos transformaciones */
-      }
+  }
+  /* DEBUG: Forzar visibilidad de app-container en móvil aunque el menú esté abierto */
+  @media (max-width: 768px) {
+    .app-container.menu-open {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      position: relative !important;
+      z-index: 100 !important;
     }
   }
 
