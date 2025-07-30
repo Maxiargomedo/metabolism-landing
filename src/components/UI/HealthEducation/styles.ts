@@ -10,7 +10,7 @@ export const Wrapper = styled.section`
   position: relative;
   overflow: hidden;
   padding: 5rem 0;
-  background: #f8fafc; /* Color sólido en lugar de variable */
+  background: var(--section-bg-gray);
   z-index: 10;
   isolation: isolate;
   
@@ -18,14 +18,14 @@ export const Wrapper = styled.section`
     padding: 3rem 0;
     min-height: auto;
     overflow: visible;
-    background: #ffffff; /* Fondo blanco sólido para móviles */
+    background: var(--section-bg-gray);
   }
   
   @media (max-width: 480px) {
     padding: 2rem 0;
     position: relative;
     z-index: 10;
-    background: #ffffff !important;
+    background: var(--section-bg-gray) !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;

@@ -10,7 +10,7 @@ export const Wrapper = styled.section`
   position: relative;
   overflow: hidden;
   padding: 5rem 0;
-  background: var(--secondary-color);
+  background: var(--section-bg-white);
   transition: background-color 0.3s ease;
   
   @media (max-width: 1024px) {

@@ -1,3 +1,14 @@
+/* Color para la X del menú móvil según el modo */
+:root {
+  --burger-x-color: #111;
+  /* ...otras variables... */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --burger-x-color: #fff;
+  }
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

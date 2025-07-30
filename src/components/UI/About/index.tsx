@@ -40,6 +40,19 @@ const features = [
   }
 ];
 
+const additionalFeatures = [
+  {
+    icon: '🎯',
+    title: 'Programas de Transformación',
+    description: 'Programas especializados diseñados para revertir el síndrome metabólico y optimizar la insulina.'
+  },
+  {
+    icon: '🩸',
+    title: 'Control de Glucosa',
+    description: 'Monitoreo y optimización de niveles de glucosa mediante alimentación estratégica y análisis metabólico.'
+  }
+];
+
 const aboutTitle = [
   "La", "ciencia", "detrás", "de", "un", "metabolismo", "saludable"
 ];
@@ -66,44 +79,58 @@ const About = () => {
           </SectionSubtitle>
         </motion.div>
 
-        
-        <ContentGrid>
-          <TextContainer>
-            <MaskText phrases={aboutTitle} tag="h2" />
-            {/* Texto sobre estadísticas de diabetes - al lado del grid */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
+        {/* Texto sobre estadísticas de diabetes - ahora arriba de todas las cartas */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          style={{ 
+            marginTop: '1rem', // Reducido para estar más cerca del subtítulo
+            marginBottom: '2rem', // Reducido para estar más cerca de las cartas
+            textAlign: 'center',
+            maxWidth: '800px',
+            margin: '1rem auto 2rem auto' // Márgenes más pequeños
+          }}
+        >
+          <MaskText phrases={aboutTitle} tag="h2" />
+          <div style={{ marginTop: '1rem' }}> {/* Reducido de 2rem a 1rem */}
+            <p style={{ marginBottom: '1rem', fontSize: '1.1rem', lineHeight: '1.6' }}> {/* Reducido de 1.5rem a 1rem */}
               En tan solo una década se ha duplicado la cantidad de personas que tienen Diabetes. Según el Centro para el control de Enfermedades CDC de Estados Unidos, para el año 2050: 1 de cada 3 personas eran diabéticas, imagínese los gastos hospitalarios, los sufrimientos para la familia tanto emocionales como económicos, simplemente no va a alcanzar para sostenerlas.
-            </motion.p>
-            <motion.p
+            </p>
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
+              Actualmente en IUSA 1 de cada 3 personas tiene prediabetes y 1 de cada 10 personas no sabe que tiene diabetes. Es muy importante tomar las acciones correctas para no estar entre estas estadísticas.
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Todas las cartas alineadas horizontalmente, 2 por fila */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)', // 3 columnas para hacer filas horizontales
+            gridTemplateRows: 'repeat(2, 1fr)', // 2 filas
+            gap: '1.5rem',
+            marginTop: '1rem'
+          }}
+        >
+          {[...features, ...additionalFeatures].map((feature, index) => (
+            <motion.div
+              key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.7 + (index * 0.1) }}
             >
-              Actualmente en IUSA 1 de cada 3 personas tiene prediabetes y 1 de cada 10 personas no sabe que tiene diabetes. Es muy importante tomar las acciones correctas para no estar entre estas estadísticas.
-            </motion.p>
-          </TextContainer>
-          
-          <FeatureGrid>
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
-              >
-                <FeatureCard>
-                  <div className="icon">{feature.icon}</div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                </FeatureCard>
-              </motion.div>
-            ))}
-          </FeatureGrid>
-        </ContentGrid>
+              <FeatureCard>
+                <div className="icon">{feature.icon}</div>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+              </FeatureCard>
+            </motion.div>
+          ))}
+        </motion.div>
       </Inner>
     </Wrapper>
   );

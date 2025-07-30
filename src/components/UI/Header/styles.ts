@@ -17,7 +17,7 @@ export const Inner = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  max-width: 1280px;
+  max-width: 1800px;
   margin: 0 auto;
 
   @media (max-width: 768px) {
@@ -68,23 +68,26 @@ export const Nav = styled.nav<{ $isOpen: boolean }>`
       height: 100vh;
       background: var(--background-color);
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      gap: 3rem;
-      padding: 2rem;
+      gap: 2.2rem;
+      padding: 10rem 1rem 2rem 1rem;
       transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(100%)'};
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 45;
       
       /* Mejora visual para el contenido */
       a {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         font-weight: 500;
-        padding: 1rem 2rem;
-        width: auto;
+        padding: 0.8rem 1.2rem;
+        width: 100%;
         text-align: center;
         border-radius: 12px;
         transition: all 0.3s ease;
+        white-space: nowrap;
+        margin: 0 auto;
+        display: block;
         
         &:hover {
           background: var(--glass-background);
@@ -153,8 +156,16 @@ export const BurgerMenu = styled.div<{ $isOpen: boolean }>`
 
 export const BurgerLine = styled.div<{ $isOpen: boolean; $isScrolled?: boolean }>`
   width: 25px;
-  height: 3px;
-  background-color: ${props => props.$isScrolled ? '#ffffff' : 'var(--text-color)'};
+  height: 6px;
+  background-color: ${props => props.$isOpen ? '#111 !important' : 'var(--text-color)'};
+
+  
+  border: ${props => props.$isOpen ? '1.5px solid #000' : 'none'};
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: ${props => props.$isOpen ? '#fff !important' : 'var(--text-color)'};
+    border: ${props => props.$isOpen ? '1.5px solid #000' : 'none'};
+  }
   border-radius: 2px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: absolute;
@@ -179,12 +190,12 @@ export const PageOverlay = styled.div<{ $isOpen: boolean }>`
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 35;
-    opacity: ${props => props.$isOpen ? '1' : '0'};
-    visibility: ${props => props.$isOpen ? 'visible' : 'hidden'};
-    transition: all 0.3s ease;
+  background-color: ${props => {
+    if (props.$isOpen) {
+      return 'var(--burger-x-color)';
+    }
+    return props.$isScrolled ? '#ffffff' : 'var(--text-color)';
+  }};
     pointer-events: ${props => props.$isOpen ? 'auto' : 'none'};
   }
 `;

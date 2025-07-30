@@ -17,11 +17,11 @@ export default function Footer() {
         <div className="text-center">
           <h3 className="text-2xl font-bold mb-4">
             <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
-              Metabolismo Pro
+              MetabolLife
             </span>
           </h3>
           <p className="text-gray-400 mb-8">
-            Transformamos vidas a través de la ciencia de la nutrición y el metabolismo.
+            Activa tu metabolismo. Transformamos vidas a través de la ciencia de la nutrición y el metabolismo.
           </p>
           
           <button
@@ -33,7 +33,7 @@ export default function Footer() {
           
           <div className="mt-8 pt-8 border-t border-gray-800">
             <p className="text-gray-400 text-sm">
-              © 2025 Metabolismo Pro. Todos los derechos reservados.
+              © 2025 MetabolLife. Todos los derechos reservados.
             </p>
           </div>
         </div>

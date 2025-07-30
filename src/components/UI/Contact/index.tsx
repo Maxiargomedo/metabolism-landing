@@ -174,9 +174,7 @@ const Contact = () => {
   return (
     <Wrapper id="contact" ref={ref}>
       <BackgroundGradient />
-      
       <Inner>
-        {/* Título de la sección */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -184,28 +182,12 @@ const Contact = () => {
         >
           <SectionTitle>Contacto</SectionTitle>
           <SectionSubtitle>
-            Estamos aquí para ayudarte a transformar tu salud. Contáctanos para 
-            comenzar tu viaje hacia un metabolismo óptimo y una vida más saludable.
+            Estamos aquí para ayudarte a transformar tu salud a través de la nutrición personalizada. Contáctanos para comenzar tu viaje hacia un metabolismo óptimo y una vida más saludable.
           </SectionSubtitle>
         </motion.div>
-        
         <ContentGrid>
           <TextContainer>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              style={{ marginBottom: '2rem', fontSize: '1.125rem', lineHeight: '1.6' }}
-            >
-              <span style={{ display: 'block', marginBottom: '1rem', fontWeight: 'normal', color: '#333', fontSize: '1.125rem', lineHeight: '1.6' }}>
-                Primera consulta presencial a terreno o a distancia<br /><br />
-                Incluye charla personalizada, evaluación nutricional (mediciones antropométricas, análisis de composición corporal y evaluación de hábitos alimenticios) y entrega de material de apoyo.<br /><br />
-                Valor $30.000  |  Tiempo estimado 1 hora<br /><br />
-                Si toma alguno de los programas que ofrecemos, se descuenta el valor de la primera consulta.
-              </span>
-              Estamos aquí para ayudarte a transformar tu salud a través de la nutrición personalizada. Contáctanos para comenzar tu viaje hacia un metabolismo óptimo y una vida más saludable.
-            </motion.p>
-            
+            {/* Información de contacto y formulario se mantiene igual */}
             <ContactInfo>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -216,23 +198,27 @@ const Contact = () => {
                 <div className="icon">📍</div>
                 <div className="details">
                   <span className="label">Dirección</span>
-                  <span className="value">Padre Hurtado 187, Estación Central, Santiago</span>
+                  <span 
+                    className="value clickable-address" 
+                    onClick={() => window.open('https://maps.google.com/?q=Camino+Tabolguen+km+1.5+sector+embalse+Tutuven+Cauquenes', '_blank')}
+                    style={{ cursor: 'pointer', textDecoration: 'underline', color: '#4A90E2' }}
+                  >
+                    Camino Tabolguen, km 1,5 sector embalse Tutuven, Cauquenes
+                  </span>
                 </div>
               </motion.div>
-              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="info-item"
               >
-                <div className="icon">�</div>
+                <div className="icon">📞</div>
                 <div className="details">
                   <span className="label">Teléfono</span>
-                  <span className="value">+34 123 456 789</span>
+                  <span className="value">+56945435007</span>
                 </div>
               </motion.div>
-              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}

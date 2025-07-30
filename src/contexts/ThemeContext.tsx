@@ -18,25 +18,33 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   // Cargar el tema desde localStorage al montar el componente
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
-      setThemeState(savedTheme);
-    }
     setMounted(true);
+    try {
+      const savedTheme = localStorage.getItem('theme') as Theme;
+      if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+        setThemeState(savedTheme);
+      }
+    } catch (error) {
+      console.warn('No se pudo cargar el tema desde localStorage:', error);
+    }
   }, []);
 
   // Guardar el tema en localStorage cuando cambie
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem('theme', theme);
-      
-      // Aplicar clases CSS al documento
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-      } else {
-        document.documentElement.classList.add('light');
-        document.documentElement.classList.remove('dark');
+      try {
+        localStorage.setItem('theme', theme);
+        
+        // Aplicar clases CSS al documento
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        } else {
+          document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (error) {
+        console.warn('No se pudo guardar el tema en localStorage:', error);
       }
     }
   }, [theme, mounted]);
@@ -49,9 +57,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setThemeState(newTheme);
   };
 
-  // Evitar hidratación antes del montaje
+  // No renderizar hasta que el componente esté montado
   if (!mounted) {
-    return null;
+    return <div className="light">{children}</div>;
   }
 
   return (

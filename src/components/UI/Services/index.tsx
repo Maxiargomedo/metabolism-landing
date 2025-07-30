@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import Image from 'next/image';
 import { 
   Wrapper, 
   Inner, 
@@ -222,208 +223,90 @@ const Services = () => {
   return (
     <Wrapper id="services" ref={ref}>
       <BackgroundGradient />
-      
       <Inner>
-        {/* Título de la sección */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7 }}
         >
           <SectionTitle>Programas</SectionTitle>
-          <SectionSubtitle>
-            Descubre nuestros programas especializados en nutrición y bienestar, 
-            diseñados para transformar tu salud y mejorar tu calidad de vida.
-          </SectionSubtitle>
         </motion.div>
-
-        {/* Carrusel de Servicios */}
-        <CarouselContainer>
-          <div
-            className="carousel-track"
-            style={{ 
-              transform: `translateX(-${currentSlide * 100}%)`,
-              transition: 'transform 0.5s ease-in-out'
+        
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '3rem',
+          alignItems: 'center',
+          marginTop: '2rem'
+        }}>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            <SectionSubtitle>
+              <strong>Consulta</strong><br />
+              • Evaluación personalizada<br />
+              • Orientación e introducción al programa de nutrición y hábitos sanos<br />
+              • Entrega de material<br /><br />
+              
+              <strong>Valor:</strong><br />
+              $25.000 (presencial o vía zoom)<br />
+              $35.000 (en terreno dentro de región Metropolitana)<br /><br />
+              
+              <strong>Primer Programa Nutricional Personalizado de Hábitos Sanos 101</strong><br />
+              Duración: 8 semanas (1 hora semanal)<br />
+              Incluye: glucómetro, lancetas, cintas reactivas, tiras reactivas de pH<br /><br />
+              
+              <strong>Valores:</strong><br />
+              • 1 persona: $280.000<br />
+              • 2 personas (grupo familiar): $200.000<br />
+              • 3 personas (grupo familiar): $150.000<br /><br />
+              
+              <strong>Segundo Programa Nutricional Personalizado de Hábitos Sanos 102</strong><br />
+              Duración: 16 semanas (1 hora semanal)<br />
+              Incluye: glucómetro, lancetas, cintas reactivas, tiras reactivas de pH<br /><br />
+              
+              <strong>Valores:</strong><br />
+              • 1 persona: $500.000<br />
+              • 2 personas (grupo familiar): $400.000<br />
+              • 3 personas (grupo familiar): $350.000<br /><br />
+              
+              <em>Mi propósito es educar a la gente para que puedan mejorar su metabolismo y por ende su salud.</em>
+            </SectionSubtitle>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100%',
+              position: 'relative'
             }}
           >
-            {servicesData.map((service, index) => (
-              <CarouselCard key={service.id} className={currentSlide === index ? 'active' : ''}>
-                <div className="image-container">
-                  <motion.img 
-                    src={service.image} 
-                    alt={service.title}
-                    animate={currentSlide === index ? { 
-                      scale: [1, 1.05, 1],
-                      filter: ["brightness(1)", "brightness(1.1)", "brightness(1)"]
-                    } : {}}
-                    transition={{ duration: 5, repeat: currentSlide === index ? Infinity : 0, repeatType: "reverse" }}
-                  />
-                  <div className="image-overlay"></div>
-                </div>
-                <div className="content">
-                  <motion.h3
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={currentSlide === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {service.title}
-                  </motion.h3>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={currentSlide === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    {service.description}
-                  </motion.p>
-                  <motion.button
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={currentSlide === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="service-button"
-                    onClick={() => service.hasPopup ? openPopup(index) : null}
-                  >
-                    {service.hasPopup ? 'Ver Detalles' : 'Saber más'}
-                  </motion.button>
-                </div>
-              </CarouselCard>
-            ))}
-          </div>
-          
-          <CarouselControls style={{ pointerEvents: 'none' }}>
-            <CarouselButton 
-              type="button"
-              style={{ pointerEvents: 'auto' }}
-              onClick={(e) => { 
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Previous button clicked!');
-                prevSlide(); 
-                handleInteraction(); 
-              }} 
-              className="prev"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </CarouselButton>
-            
-            <CarouselProgress style={{ pointerEvents: 'auto' }}>
-              {servicesData.map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  style={{ pointerEvents: 'auto' }}
-                  className={`progress-dot ${currentSlide === index ? 'active' : ''}`}
-                  onClick={(e) => { 
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Dot clicked, index:', index);
-                    setCurrentSlide(index); 
-                    handleInteraction(); 
-                  }}
-                >
-                  <span></span>
-                </button>
-              ))}
-            </CarouselProgress>
-            
-            <CarouselButton 
-              type="button"
-              style={{ pointerEvents: 'auto' }}
-              onClick={(e) => { 
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Next button clicked!');
-                nextSlide(); 
-                handleInteraction(); 
-              }} 
-              className="next"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </CarouselButton>
-          </CarouselControls>
-        </CarouselContainer>
-        
-        {/* Popup Modal con Carrusel usando Portal */}
-        {showPopup && activeService !== null && servicesData[activeService].popupContent && typeof window !== 'undefined' && createPortal(
-          <PopupModal
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            onClick={closePopup}
-          >
-            <PopupContent 
-              onClick={(e: React.MouseEvent) => e.stopPropagation()}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <PopupCloseButton onClick={closePopup}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </PopupCloseButton>
-              
-              {activeService === 0 && (
-                <div className="popup-header-image">
-                  <img src="/img/medicion-medica-glucosa.avif" alt="Glucómetro" />
-                  <div className="overlay">
-                    <h2>Tu Guía Completa del Glucómetro</h2>
-                  </div>
-                </div>
-              )}
-              
-              <PopupCarouselContainer>
-                <div 
-                  className="popup-carousel-track"
-                  style={{ transform: `translateX(-${popupSlide * 100}%)` }}
-                >
-                  {servicesData[activeService].popupContent.map((slide, idx) => (
-                    <PopupCarouselSlide key={idx} className={popupSlide === idx ? 'active' : ''}>
-                      <h3>{slide.title}</h3>
-                      <div className="content-container">
-                        {slide.content.split('\n').map((line, lineIdx) => (
-                          <p key={lineIdx}>{line}</p>
-                        ))}
-                      </div>
-                    </PopupCarouselSlide>
-                  ))}
-                </div>
-                
-                <PopupCarouselControls>
-                  <CarouselButton onClick={prevPopupSlide} className="prev">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </CarouselButton>
-                  
-                  <div className="popup-progress">
-                    {servicesData[activeService].popupContent.map((_, idx) => (
-                      <button
-                        key={idx}
-                        className={`progress-dot ${popupSlide === idx ? 'active' : ''}`}
-                        onClick={() => setPopupSlide(idx)}
-                      >
-                        <span></span>
-                      </button>
-                    ))}
-                  </div>
-                  
-                  <CarouselButton onClick={nextPopupSlide} className="next">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </CarouselButton>
-                </PopupCarouselControls>
-              </PopupCarouselContainer>
-            </PopupContent>
-          </PopupModal>,
-          document.body
-        )}
+            <Image 
+              src="/img/imgProgramas.png" 
+              alt="Programas nutricionales personalizados"
+              width={600}
+              height={400}
+              priority
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+              style={{
+                width: '100%',
+                height: 'auto',
+                minHeight: '400px',
+                objectFit: 'cover',
+                borderRadius: '12px',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+              }}
+            />
+          </motion.div>
+        </div>
       </Inner>
     </Wrapper>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { 
   Wrapper, 
   Inner, 
@@ -32,6 +32,7 @@ const heroParagraph = [
 const HeroSection = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
   
   useEffect(() => {
     setIsMounted(true);
@@ -44,6 +45,11 @@ const HeroSection = () => {
       setIsMounted(false);
     };
   }, []);
+  
+  // Configuración de animaciones optimizada
+  const animationConfig = shouldReduceMotion 
+    ? { duration: 0 }
+    : { duration: 0.5, ease: "easeOut" };
   
   return (
     <Wrapper id="hero">

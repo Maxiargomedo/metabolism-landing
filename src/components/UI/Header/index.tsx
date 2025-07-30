@@ -20,6 +20,7 @@ import { useMobileMenu } from '../../../contexts/MobileMenuContext';
 
 const links = [
   { linkTo: 'Inicio', target: 'hero' },
+  { linkTo: 'Invitacion', target: 'video-section' },
   { linkTo: 'Quiénes Somos', target: 'team' },
   { linkTo: 'Acerca', target: 'about' },
   { linkTo: 'Educación Nutricional', target: 'health-education' },
@@ -127,7 +128,6 @@ const Header = () => {
       } else {
         document.body.style.overflow = 'unset';
       }
-      
       // Cleanup
       return () => {
         document.body.style.overflow = 'unset';

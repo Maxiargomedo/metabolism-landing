@@ -2,18 +2,24 @@
 
 import { useState, useEffect } from 'react';
 import { createGlobalStyle } from 'styled-components';
+import dynamic from 'next/dynamic';
 import Header from '../src/components/UI/Header';
 import HeroSection from '../src/components/UI/HeroSection';
-import About from '../src/components/UI/About';
-import TeamSection from '../src/components/sections/TeamSection';
-import HealthEducation from '../src/components/sections/HealthEducation';
-import Services from '../src/components/UI/Services';
-import Contact from '../src/components/UI/Contact';
-import Footer from '../src/components/UI/Footer';
-import ScrollToTop from '../src/components/ScrollToTop';
 import LoadingScreen from '../src/components/LoadingScreen';
 import ThemeToggle from '../src/components/ThemeToggle';
+import LazySection from '../src/components/LazySection';
+import ClientOnly from '../src/components/ClientOnly';
 import { MobileMenuProvider, useMobileMenu } from '../src/contexts/MobileMenuContext';
+
+// Importaciones dinámicas simplificadas para evitar hidratación
+const VideoSection = dynamic(() => import('../src/components/UI/VideoSection'));
+const About = dynamic(() => import('../src/components/UI/About'));
+const TeamSection = dynamic(() => import('../src/components/sections/TeamSection'));
+const HealthEducation = dynamic(() => import('../src/components/sections/HealthEducation'));
+const Services = dynamic(() => import('../src/components/UI/Services'));
+const Contact = dynamic(() => import('../src/components/UI/Contact'));
+const Footer = dynamic(() => import('../src/components/UI/Footer'));
+const ScrollToTop = dynamic(() => import('../src/components/ScrollToTop'), { ssr: false });
 
 // Define global styles
 const GlobalStyle = createGlobalStyle`
@@ -38,6 +44,10 @@ const GlobalStyle = createGlobalStyle`
     --shadow-color: rgba(0, 0, 0, 0.1);
     --gradient-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     --hero-bg: linear-gradient(135deg, rgba(62, 207, 142, 0.1) 0%, rgba(139, 195, 74, 0.1) 100%);
+    
+    /* Alternating section backgrounds */
+    --section-bg-white: #FFFFFF;
+    --section-bg-gray: #F1F5F9;
   }
 
   /* Modo Oscuro */
@@ -54,6 +64,10 @@ const GlobalStyle = createGlobalStyle`
     --shadow-color: rgba(0, 0, 0, 0.2);
     --gradient-bg: linear-gradient(135deg, #1f2937 0%, #111827 100%);
     --hero-bg: linear-gradient(135deg, rgba(62, 207, 142, 0.1) 0%, rgba(139, 195, 74, 0.1) 100%);
+    
+    /* Alternating section backgrounds for dark mode */
+    --section-bg-white: #111827;
+    --section-bg-gray: #1F2937;
   }
 
   * {
@@ -131,17 +145,41 @@ const AppContent = () => {
   return (
     <>
       <LoadingScreen minimumLoadingTime={2000} />
-      <ThemeToggle />
-      <ScrollToTop />
+      <ClientOnly>
+        <ThemeToggle />
+        <ScrollToTop />
+      </ClientOnly>
       <div className={`app-container ${isLoaded ? 'loaded' : ''} ${isMenuOpen ? 'menu-open' : ''}`} key={key}>
         <Header />
         <HeroSection />
-        <TeamSection />
-        <About />
-        <HealthEducation />
-        <Services />
-        <Contact />
-        <Footer />
+        
+        <ClientOnly>
+          <VideoSection />
+        </ClientOnly>
+        
+        <ClientOnly>
+          <TeamSection />
+        </ClientOnly>
+        
+        <ClientOnly>
+          <About />
+        </ClientOnly>
+        
+        <ClientOnly>
+          <HealthEducation />
+        </ClientOnly>
+        
+        <ClientOnly>
+          <Services />
+        </ClientOnly>
+        
+        <ClientOnly>
+          <Contact />
+        </ClientOnly>
+        
+        <ClientOnly>
+          <Footer />
+        </ClientOnly>
       </div>
     </>
   );

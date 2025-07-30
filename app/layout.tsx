@@ -3,24 +3,41 @@ import "./globals.css";
 import { ThemeProvider } from "../src/contexts/ThemeContext";
 
 export const metadata: Metadata = {
-  title: "MetaboLife | Metabolismo y Nutrición Consciente",
-  description: "Transforma tu vida con alimentación consciente y natural. Descubre el poder de una nutrición que respeta tu cuerpo y el planeta.",
+  title: "MetabolLife | Activa tu metabolismo",
+  description: "Activa tu metabolismo. Expertos en nutrición personalizada y metabolismo saludable.",
   keywords: "metabolismo, nutrición, alimentación consciente, salud natural, bienestar",
-  authors: [{ name: "MetaboLife Team" }],
+  authors: [{ name: "MetabolLife Team" }],
+  metadataBase: new URL('https://metabolife.com'),
   openGraph: {
-    title: "MetaboLife | Metabolismo y Nutrición Consciente",
-    description: "Transforma tu vida con alimentación consciente y natural",
+    title: "MetabolLife | Activa tu metabolismo",
+    description: "Activa tu metabolismo",
     type: "website",
     locale: "es_ES",
+    url: "https://metabolife.com",
+    siteName: "MetabolLife",
+    images: [{
+      url: '/img/doctora-nutricionista-da-notas_701961-575.png',
+      width: 1200,
+      height: 630,
+      alt: 'MetabolLife - Consulta Nutricional',
+    }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MetaboLife | Metabolismo y Nutrición Consciente",
-    description: "Transforma tu vida con alimentación consciente y natural",
+    title: "MetabolLife | Activa tu metabolismo",
+    description: "Activa tu metabolismo",
+    images: ['/img/doctora-nutricionista-da-notas_701961-575.png'],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

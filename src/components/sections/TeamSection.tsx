@@ -6,7 +6,7 @@ import { styled } from 'styled-components';
 const TeamContainer = styled.section`
   min-height: 100vh;
   padding: 8rem 2rem 4rem;
-  background: var(--background-color);
+  background: var(--section-bg-gray);
   transition: background-color 0.3s ease;
   
   @media (max-width: 768px) {
@@ -58,34 +58,6 @@ const TeamDescription = styled(motion.p)`
   }
 `;
 
-const TeamImageContainer = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-  
-  @media (max-width: 768px) {
-    margin-top: 2rem;
-  }
-`;
-
-const TeamImage = styled(motion.img)`
-  max-width: 100%;
-  height: auto;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-  }
-  
-  @media (max-width: 768px) {
-    border-radius: 12px;
-    max-width: 95%;
-  }
-`;
-
 export default function TeamSection() {
   return (
     <TeamContainer id="team">
@@ -102,25 +74,8 @@ export default function TeamSection() {
           <TeamDescription>
             Somos un centro especializado en nutrición que ofrece servicios destinados a mejorar la salud y el bienestar a través de cambios sostenibles en los hábitos de vida. Nuestro objetivo es acompañar a cada persona en su proceso, brindando atención personalizada, orientación clara y un acompañamiento constante, según sus propias metas y necesidades: ya sea adelgazar, reducir triglicéridos, eliminar el hígado graso, revertir o poner en remisión enfermedades, o simplemente incorporar hábitos más saludables.
 
-            Nuestro equipo está conformado por un grupo de profesionales de la salud comprometidos con una visión integradora de la nutrición. Creemos que los alimentos pueden ser una poderosa forma de medicina, y que una transformación en el estilo de vida puede marcar la diferencia entre depender de medicamentos o prevenir su uso. Por eso, entregamos recursos, educación y asesoría tanto a personas con enfermedades crónicas como a quienes desean cuidar su salud y mantenerla en el tiempo.
+            Nuestro equipo está conformado por un grupo de profesionales de la salud comprometidos con una visión integradora de la nutrición. Creemos que los alimentos y los habitos correctos pueden ser una poderosa forma de medicina, y que una transformación en el estilo de vida puede marcar la diferencia entre depender de medicamentos o prevenir su uso. Por eso, entregamos recursos, educación y asesoría tanto a personas con enfermedades crónicas como a quienes desean cuidar su salud y mantenerla en el tiempo.
           </TeamDescription>
-          
-          <TeamImageContainer
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <TeamImage
-              src="/img/quienesSomos.png"
-              alt="Quiénes Somos - Equipo de profesionales de la salud"
-              initial={{ scale: 0.9 }}
-              whileInView={{ scale: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              whileHover={{ scale: 1.02 }}
-            />
-          </TeamImageContainer>
         </TeamHeader>
       </TeamInner>
     </TeamContainer>

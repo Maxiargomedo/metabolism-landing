@@ -9,6 +9,7 @@ export const Wrapper = styled.section`
   position: relative;
   overflow: hidden;
   padding: 5rem 0;
+  background: var(--section-bg-gray);
   
   @media (max-width: 768px) {
     padding: 3rem 0;

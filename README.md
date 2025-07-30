@@ -1,6 +1,6 @@
-# Metabolismo Pro - Landing Page
+# MetabolLife - Landing Page
 
-Una landing page moderna sobre metabolismo y nutrición construida con Next.js, React, GSAP y Lenis.
+Activa tu metabolismo. Una landing page moderna sobre metabolismo y nutrición construida con Next.js, React, GSAP y Lenis.
 
 ## 🚀 Características
 
