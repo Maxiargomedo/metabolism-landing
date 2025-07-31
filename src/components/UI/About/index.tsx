@@ -44,7 +44,7 @@ const additionalFeatures = [
   {
     icon: '🎯',
     title: 'Programas de Transformación',
-    description: 'Programas especializados diseñados para revertir el síndrome metabólico y optimizar la insulina.'
+    description: 'Programa especializados diseñados para cada persona, entendiendo que todos somos metabólicamente diferentes.'
   },
   {
     icon: '🩸',
