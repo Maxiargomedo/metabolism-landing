@@ -3,15 +3,16 @@
 import { useState, useEffect } from 'react';
 import { createGlobalStyle } from 'styled-components';
 import dynamic from 'next/dynamic';
-import Header from '../src/components/UI/Header';
 import HeroSection from '../src/components/UI/HeroSection';
 import LoadingScreen from '../src/components/LoadingScreen';
-import ThemeToggle from '../src/components/ThemeToggle';
 import LazySection from '../src/components/LazySection';
 import ClientOnly from '../src/components/ClientOnly';
 import { MobileMenuProvider, useMobileMenu } from '../src/contexts/MobileMenuContext';
+import { ThemeProvider } from '../src/contexts/ThemeContext';
 
 // Importaciones dinámicas simplificadas para evitar hidratación
+const Header = dynamic(() => import('../src/components/UI/Header'), { ssr: false });
+const ThemeToggle = dynamic(() => import('../src/components/ThemeToggle'), { ssr: false });
 const VideoSection = dynamic(() => import('../src/components/UI/VideoSection'));
 const About = dynamic(() => import('../src/components/UI/About'));
 const TeamSection = dynamic(() => import('../src/components/sections/TeamSection'));
@@ -145,11 +146,11 @@ const AppContent = () => {
   return (
     <>
       <LoadingScreen minimumLoadingTime={2000} />
-      <ClientOnly>
-        <ThemeToggle />
-        <ScrollToTop />
-      </ClientOnly>
       <div className={`app-container ${isLoaded ? 'loaded' : ''} ${isMenuOpen ? 'menu-open' : ''}`} key={key}>
+        <ClientOnly>
+          <ThemeToggle />
+          <ScrollToTop />
+        </ClientOnly>
         <Header />
         <HeroSection />
         
@@ -189,9 +190,11 @@ export default function Home() {
   return (
     <>
       <GlobalStyle />
-      <MobileMenuProvider>
-        <AppContent />
-      </MobileMenuProvider>
+      <ThemeProvider>
+        <MobileMenuProvider>
+          <AppContent />
+        </MobileMenuProvider>
+      </ThemeProvider>
     </>
   );
 }

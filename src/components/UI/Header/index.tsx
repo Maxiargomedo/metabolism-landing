@@ -17,12 +17,13 @@ import { AnimatedLink } from '../../Common/AnimatedLink';
 import { GetStartedButton } from '../../Common/GetStartedButton';
 import MetaboLifeLogo from '../../MetaboLifeLogo';
 import { useMobileMenu } from '../../../contexts/MobileMenuContext';
+import ThemeToggle from '../../ThemeToggle';
 
 const links = [
   { linkTo: 'Inicio', target: 'hero' },
   { linkTo: 'Invitacion', target: 'video-section' },
   { linkTo: 'Quiénes Somos', target: 'team' },
-  { linkTo: 'Acerca', target: 'about' },
+  { linkTo: 'Metabolismo y nutrición', target: 'about' },
   { linkTo: 'Educación Nutricional', target: 'health-education' },
   { linkTo: 'Programas', target: 'services' },
   { linkTo: 'Contacto', target: 'contact' }
@@ -42,7 +43,7 @@ const Header = () => {
           setScrollPosition(window.scrollY);
           
           // Detectar sección activa basado en posición de scroll
-          const sections = ['hero', 'team', 'about', 'health-education', 'services', 'contact'];
+          const sections = ['hero', 'video-section', 'team', 'about', 'health-education', 'services', 'contact'];
           let currentSection = 'hero';
           
           // Si estamos en la parte superior de la página, siempre mostrar hero
@@ -115,7 +116,14 @@ const Header = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerHeight = 80; // Altura aproximada del header
+      const elementPosition = element.offsetTop - headerHeight;
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+      
       setIsMenuOpen(false); // Cerrar el menú al seleccionar una opción
     }
   };
@@ -171,6 +179,15 @@ const Header = () => {
           ))}
         </Nav>
         
+        {/* Theme Toggle para Desktop */}
+        <div className="desktop-theme-toggle" style={{ 
+          display: 'flex', 
+          alignItems: 'center',
+          marginLeft: '1rem'
+        }}>
+          <ThemeToggle />
+        </div>
+        
         {/* Navegación Móvil */}
         <Nav $isOpen={isMenuOpen} style={{ display: 'none' }} className="mobile-nav">
           {/* Logo en la esquina superior izquierda del menú móvil */}
@@ -218,6 +235,29 @@ const Header = () => {
               />
             </motion.div>
           ))}
+          
+          {/* Theme Toggle en el menú móvil */}
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0,
+                transition: { 
+                  duration: 0.4, 
+                  delay: links.length * 0.1 + 0.3,
+                  ease: "easeOut"
+                }
+              }}
+              style={{ 
+                marginTop: '2rem',
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            >
+              <ThemeToggle />
+            </motion.div>
+          )}
         </Nav>
         
         <CallToActions className={isMenuOpen ? 'active' : ''}>

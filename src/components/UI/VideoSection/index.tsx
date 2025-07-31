@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.section`
   width: 100%;
-  padding: 4rem 0 2rem 0;
+  padding: 6rem 0 2rem 0;
   background: var(--section-bg-white);
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ const Wrapper = styled.section`
   min-height: 350px;
 
   @media (max-width: 768px) {
-    padding: 2rem 0 1rem 0;
+    padding: 4rem 0 1rem 0;
   }
 `;
 
@@ -74,7 +74,7 @@ const VideoSection = () => (
   <Wrapper id="video-section">
     <SectionTitle>Invitacion</SectionTitle>
     <SectionSubtitle>
-      Programa Nutricional personalizado de habito sano.
+      Programa Nutricional Integral Personalizado de Hábitos Sanos
     </SectionSubtitle>
     <VideoContainer>
       <Suspense fallback={<LoadingSpinner>Cargando video...</LoadingSpinner>}>

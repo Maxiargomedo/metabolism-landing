@@ -14,14 +14,39 @@ export const Wrapper = styled.header`
 
 export const Inner = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 1rem 2rem;
   max-width: 1800px;
   margin: 0 auto;
+  gap: 4rem; /* Aumentado para más separación */
 
-  @media (max-width: 768px) {
+  /* Theme toggle para desktop */
+  .desktop-theme-toggle {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Empujar hacia la derecha */
+    
+    @media (max-width: 1504px) {
+      display: none; /* Ocultar en móvil */
+    }
+  }
+
+  @media (max-width: 1504px) {
     padding: 1rem;
+    justify-content: space-between;
+    gap: 0;
+  }
+  
+  /* Ajustes para resoluciones 1080p y menores */
+  @media (max-width: 1920px) and (max-height: 1080px) {
+    padding: 0.8rem 1.5rem;
+    gap: 3rem; /* Mantener buena separación */
+  }
+  
+  @media (max-width: 1366px) {
+    padding: 0.8rem 1rem;
+    gap: 2.5rem; /* Separación moderada */
   }
 `;
 
@@ -32,7 +57,7 @@ export const LogoContainer = styled.div<{ $isHidden?: boolean }>`
   cursor: pointer;
   z-index: 50;
   
-  @media (max-width: 768px) {
+  @media (max-width: 1504px) {
     opacity: ${props => props.$isHidden ? '0' : '1'};
     visibility: ${props => props.$isHidden ? 'hidden' : 'visible'};
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -41,11 +66,11 @@ export const LogoContainer = styled.div<{ $isHidden?: boolean }>`
 
 export const Nav = styled.nav<{ $isOpen: boolean }>`
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
   
   /* Estilos para desktop */
-  @media (min-width: 769px) {
+  @media (min-width: 1505px) {
     opacity: 1;
     visibility: visible;
     position: relative;
@@ -56,7 +81,26 @@ export const Nav = styled.nav<{ $isOpen: boolean }>`
     }
   }
   
-  @media (max-width: 768px) {
+  /* Ajustes para resoluciones menores */
+  @media (max-width: 1920px) and (max-height: 1080px) {
+    gap: 0.8rem;
+    
+    a {
+      font-size: 0.9rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+  
+  @media (max-width: 1366px) {
+    gap: 0.6rem;
+    
+    a {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.6rem;
+    }
+  }
+  
+  @media (max-width: 1504px) {
     display: none;
     
     &.mobile-nav {
@@ -71,7 +115,7 @@ export const Nav = styled.nav<{ $isOpen: boolean }>`
       justify-content: flex-start;
       align-items: center;
       gap: 2.2rem;
-      padding: 10rem 1rem 2rem 1rem;
+      padding: 10rem 1rem 4rem 1rem;
       transform: ${props => props.$isOpen ? 'translateX(0)' : 'translateX(100%)'};
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 45;
@@ -94,19 +138,40 @@ export const Nav = styled.nav<{ $isOpen: boolean }>`
           transform: translateY(-2px);
         }
       }
+      
+      /* Ajustes para resoluciones 1080p y menores */
+      @media (max-width: 1920px) and (max-height: 1080px) {
+        gap: 1.8rem;
+        padding: 8rem 1rem 3rem 1rem;
+        
+        a {
+          font-size: 1.2rem;
+          padding: 0.7rem 1rem;
+        }
+      }
+      
+      @media (max-width: 1366px) {
+        gap: 1.5rem;
+        padding: 7rem 1rem 2rem 1rem;
+        
+        a {
+          font-size: 1.1rem;
+          padding: 0.6rem 0.8rem;
+        }
+      }
     }
   }
 `;
 
 export const MobileMenuLogo = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 1504px) {
     position: absolute;
     top: 2rem;
     left: 2rem;
     z-index: 50;
   }
   
-  @media (min-width: 769px) {
+  @media (min-width: 1505px) {
     display: none;
   }
 `;
@@ -115,16 +180,17 @@ export const CallToActions = styled.div`
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  margin-left: auto;
   
   /* Asegurar visibilidad en desktop */
-  @media (min-width: 769px) {
+  @media (min-width: 1505px) {
     opacity: 1;
     visibility: visible;
     position: relative;
     z-index: 10;
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 1504px) {
     display: none;
     
     &.active {
@@ -140,17 +206,26 @@ export const CallToActions = styled.div`
 
 export const BurgerMenu = styled.div<{ $isOpen: boolean }>`
   display: none;
-  position: relative;
+  position: absolute;
+  right: 2rem; /* Posicionar hacia la derecha como en la imagen */
   cursor: pointer;
   z-index: 50;
   width: 30px;
   height: 30px;
   
-  @media (max-width: 768px) {
+  @media (max-width: 1504px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    right: 1.5rem; /* Ajustar para pantallas más pequeñas */
+  }
+  
+  @media (max-width: 480px) {
+    right: 1rem; /* Menos margen en móviles muy pequeños */
   }
 `;
 
@@ -185,7 +260,7 @@ export const BurgerLine = styled.div<{ $isOpen: boolean; $isScrolled?: boolean }
 `;
 
 export const PageOverlay = styled.div<{ $isOpen: boolean }>`
-  @media (max-width: 768px) {
+  @media (max-width: 1504px) {
     position: fixed;
     top: 0;
     left: 0;

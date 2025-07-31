@@ -133,6 +133,29 @@ const Services = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [activeService, setActiveService] = useState<number | null>(null);
   const [popupSlide, setPopupSlide] = useState(0);
+  const [showProgramPopup, setShowProgramPopup] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // Auto-focus del modal cuando se abre para permitir scroll inmediato
+  useEffect(() => {
+    if (showProgramPopup) {
+      // Prevenir scroll del body cuando el modal está abierto
+      document.body.style.overflow = 'hidden';
+      
+      // Enfocar el modal para permitir scroll inmediato
+      if (modalRef.current) {
+        modalRef.current.focus();
+      }
+    } else {
+      // Restaurar scroll del body cuando el modal se cierra
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup al desmontar el componente
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showProgramPopup]);
   
   // Función para avanzar al siguiente slide
   const nextSlide = () => {
@@ -233,59 +256,262 @@ const Services = () => {
         </motion.div>
         
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          display: 'flex',
+          flexDirection: 'column',
           gap: '3rem',
-          alignItems: 'center',
           marginTop: '2rem'
         }}>
+          {/* Grid de programas - 2x2 */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '2rem',
+            width: '100%'
+          }}>
+            
+            {/* Consulta Inicial */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              style={{
+                background: 'rgba(255, 255, 255, 0.8)',
+                borderRadius: '16px',
+                padding: '2rem',
+                border: '1px solid rgba(76, 175, 80, 0.15)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.06)'
+              }}
+            >
+              <div style={{
+                fontSize: '1.3rem',
+                fontWeight: '600',
+                color: 'var(--primary-color)',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                <span>✨</span>
+                Consulta Inicial
+              </div>
+              <div style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                • Evaluación personalizada<br />
+                • Orientación e introducción al programa<br />
+                • Entrega de material
+              </div>
+              <div style={{ 
+                background: 'linear-gradient(135deg, var(--primary-color), var(--primary-light))',
+                color: 'white',
+                padding: '0.7rem 1rem',
+                borderRadius: '10px',
+                fontWeight: '600',
+                textAlign: 'center'
+              }}>
+                💰 $25.000 (zoom) | $35.000 (terreno)
+              </div>
+            </motion.div>
+
+            {/* Programa 101 */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              style={{
+                background: 'rgba(255, 255, 255, 0.9)',
+                borderRadius: '16px',
+                padding: '2rem',
+                border: '2px solid rgba(76, 175, 80, 0.2)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
+              }}
+            >
+              <div style={{
+                fontSize: '1.3rem',
+                fontWeight: '600',
+                color: 'var(--primary-color)',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                <span>🥇</span>
+                Programa Nutricional Integral Personalizado de Hábitos Sanos 101
+              </div>
+              <div style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+                Duración: 8 semanas (1 hora semanal)<br />
+                <span style={{ color: '#e91e63', fontWeight: '600' }}>🎁 Incluye de regalo:</span> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
+              </div>
+              <div style={{ 
+                background: 'linear-gradient(135deg, #4caf50, #66bb6a)',
+                color: 'white',
+                padding: '0.8rem 1.2rem',
+                borderRadius: '10px',
+                fontWeight: '700',
+                fontSize: '1.15rem',
+                textAlign: 'center',
+                marginBottom: '1rem'
+              }}>
+                💎 $ 350.000
+              </div>
+              <div style={{ 
+                padding: '0.8rem',
+                background: 'rgba(76, 175, 80, 0.1)',
+                borderRadius: '8px',
+                borderLeft: '4px solid var(--primary-color)',
+                fontSize: '0.9rem'
+              }}>
+                📞 Seguimiento telefónico diario (L-V)
+              </div>
+            </motion.div>
+
+            {/* Programa 102 */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              style={{
+                background: 'rgba(255, 255, 255, 0.9)',
+                borderRadius: '16px',
+                padding: '2rem',
+                border: '2px solid rgba(139, 195, 74, 0.3)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
+              }}
+            >
+              <div style={{
+                fontSize: '1.3rem',
+                fontWeight: '600',
+                color: 'var(--primary-color)',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                <span>🥈</span>
+                Programa Nutricional Integral Personalizado de Hábitos Sanos 102
+              </div>
+              <div style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+                Duración: 16 semanas (1 hora semanal)<br />
+                <span style={{ color: '#e91e63', fontWeight: '600' }}>🎁 Incluye de regalo:</span> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
+              </div>
+              <div style={{ 
+                background: 'linear-gradient(135deg, #8bc34a, #9ccc65)',
+                color: 'white',
+                padding: '0.8rem 1.2rem',
+                borderRadius: '10px',
+                fontWeight: '700',
+                fontSize: '1.15rem',
+                textAlign: 'center',
+                marginBottom: '1rem'
+              }}>
+                💎 $ 650.000
+              </div>
+              <div style={{ 
+                padding: '0.8rem',
+                background: 'rgba(139, 195, 74, 0.1)',
+                borderRadius: '8px',
+                borderLeft: '4px solid #8bc34a',
+                fontSize: '0.9rem'
+              }}>
+                📞 Seguimiento telefónico diario (L-V)
+              </div>
+            </motion.div>
+
+            {/* Programa 103 */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              style={{
+                background: 'rgba(255, 255, 255, 0.9)',
+                borderRadius: '16px',
+                padding: '2rem',
+                border: '2px solid rgba(255, 193, 7, 0.4)',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
+              }}
+            >
+              <div style={{
+                fontSize: '1.3rem',
+                fontWeight: '600',
+                color: 'var(--primary-color)',
+                marginBottom: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                <span>🥉</span>
+                Programa Nutricional Integral Personalizado de Hábitos Sanos 103
+              </div>
+              <div style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+                Duración: 24 semanas (1 hora semanal)<br />
+                <span style={{ color: '#e91e63', fontWeight: '600' }}>🎁 Incluye de regalo:</span> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
+              </div>
+              <div style={{ 
+                background: 'linear-gradient(135deg, #ff9800, #ffa726)',
+                color: 'white',
+                padding: '0.8rem 1.2rem',
+                borderRadius: '10px',
+                fontWeight: '700',
+                fontSize: '1.15rem',
+                textAlign: 'center',
+                marginBottom: '1rem'
+              }}>
+                💎 $ 950.000
+              </div>
+              <div style={{ 
+                padding: '0.8rem',
+                background: 'rgba(255, 152, 0, 0.1)',
+                borderRadius: '8px',
+                borderLeft: '4px solid #ff9800',
+                fontSize: '0.9rem'
+              }}>
+                📞 Seguimiento telefónico diario (L-V)
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Botón centrado */}
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+            <button 
+              style={{
+                padding: '1rem 2.5rem',
+                fontSize: '1.1rem',
+                background: 'linear-gradient(135deg, var(--primary-color), var(--primary-light))',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                boxShadow: '0 6px 20px rgba(76, 175, 80, 0.3)',
+                fontWeight: '600',
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+              onClick={() => setShowProgramPopup(true)}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(76, 175, 80, 0.4)';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(76, 175, 80, 0.3)';
+              }}
+            >
+              <span>📋</span>
+              Ver contenido detallado del programa
+            </button>
+          </div>
+
+          {/* Imagen comentada temporalmente */}
+          {/*
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            <SectionSubtitle>
-              <strong>Consulta</strong><br />
-              • Evaluación personalizada<br />
-              • Orientación e introducción al programa de nutrición y hábitos sanos<br />
-              • Entrega de material<br /><br />
-              
-              <strong>Valor:</strong><br />
-              $25.000 (presencial o vía zoom)<br />
-              $35.000 (en terreno dentro de región Metropolitana)<br /><br />
-              
-              <strong>Primer Programa Nutricional Personalizado de Hábitos Sanos 101</strong><br />
-              Duración: 8 semanas (1 hora semanal)<br />
-              Incluye: glucómetro, lancetas, cintas reactivas, tiras reactivas de pH<br /><br />
-              
-              <strong>Valores:</strong><br />
-              • 1 persona: $280.000<br />
-              • 2 personas (grupo familiar): $200.000<br />
-              • 3 personas (grupo familiar): $150.000<br /><br />
-              
-              <strong>Segundo Programa Nutricional Personalizado de Hábitos Sanos 102</strong><br />
-              Duración: 16 semanas (1 hora semanal)<br />
-              Incluye: glucómetro, lancetas, cintas reactivas, tiras reactivas de pH<br /><br />
-              
-              <strong>Valores:</strong><br />
-              • 1 persona: $500.000<br />
-              • 2 personas (grupo familiar): $400.000<br />
-              • 3 personas (grupo familiar): $350.000<br /><br />
-              
-              <em>Mi propósito es educar a la gente para que puedan mejorar su metabolismo y por ende su salud.</em>
-            </SectionSubtitle>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
             style={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              height: '100%',
-              position: 'relative'
+              marginTop: '2rem'
             }}
           >
             <Image 
@@ -298,15 +524,131 @@ const Services = () => {
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               style={{
                 width: '100%',
+                maxWidth: '500px',
                 height: 'auto',
-                minHeight: '400px',
-                objectFit: 'cover',
-                borderRadius: '12px',
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+                borderRadius: '16px',
+                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.1)'
               }}
             />
           </motion.div>
+          */}
         </div>
+        
+        {/* Pop-up para contenido adicional del programa */}
+        {showProgramPopup && typeof document !== 'undefined' && createPortal(
+          <div style={{
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0,0,0,0.8)',
+            zIndex: '999999',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+            onClick={() => setShowProgramPopup(false)}
+          >
+            <div 
+              ref={modalRef}
+              tabIndex={-1}
+              style={{
+                background: '#fff',
+                borderRadius: '16px',
+                maxWidth: '600px',
+                width: '90%',
+                padding: '2rem',
+                boxShadow: '0 25px 80px rgba(0,0,0,0.4)',
+                position: 'relative',
+                overflowY: 'auto',
+                maxHeight: '80vh',
+                zIndex: '9999999',
+                outline: 'none'
+              }}
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Botón X en esquina superior derecha - siempre visible */}
+              <button
+                style={{
+                  position: 'sticky',
+                  top: '15px',
+                  right: '15px',
+                  float: 'right',
+                  background: 'white',
+                  border: '1px solid #ddd',
+                  fontSize: '20px',
+                  cursor: 'pointer',
+                  color: '#666',
+                  width: '32px',
+                  height: '32px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '50%',
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                  zIndex: '10000000'
+                }}
+                onClick={() => setShowProgramPopup(false)}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.background = '#f0f0f0';
+                  e.currentTarget.style.color = '#333';
+                  e.currentTarget.style.borderColor = '#bbb';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.background = 'white';
+                  e.currentTarget.style.color = '#666';
+                  e.currentTarget.style.borderColor = '#ddd';
+                }}
+              >
+                ×
+              </button>
+              
+              <h2 style={{ fontSize: '2rem', marginBottom: '1.2rem', color: 'var(--primary-color)', paddingRight: '50px', clear: 'both' }}>
+                Contenido detallado del programa
+              </h2>
+              <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: '#666' }}>
+                El programa a desarrollar dependerá de la condición de salud de cada persona, el contenido de los programas es el siguiente:
+              </p>
+              <ul style={{ fontSize: '1.1rem', lineHeight: '1.7', paddingLeft: '1.2rem' }}>
+                <li>Completar ficha clínica</li>
+                <li>Análisis de composición corporal (IMC)</li>
+                <li>Medición antropométrica</li>
+                <li>Solicitud de exámenes de laboratorio más importantes</li>
+                <li>Determinar tipo de metabolismo, Individualidad Bioquímica</li>
+                <li>Diseño del plan nutricional de acuerdo al metabolismo</li>
+                <li>Entrega material de apoyo en cada sesión</li>
+                <li>Aprender a usar el glucometro, como una valiosa herramienta de prevención de enfermedades</li>
+                <li>Detección de alimentos agresores</li>
+                <li>Correcto uso medidor de presión arterial</li>
+                <li>Uso de tiras reactivas de pH</li>
+                <li>Sobrepeso y obesidad</li>
+                <li>Cáncer</li>
+                <li>Masa muscular</li>
+                <li>Artritis</li>
+                <li>Artrosis</li>
+                <li>Triglicéridos altos</li>
+                <li>Desintoxicación Hígado graso</li>
+                <li>Hipertensión</li>
+                <li>Pre-diabetes</li>
+                <li>Diabetes</li>
+                <li>Vitaminas y suplementos</li>
+                <li>Hidratación</li>
+                <li>Tiroide</li>
+                <li>Estrés</li>
+                <li>Desintoxicación electromagnética</li>
+                <li>Calidad de sueño</li>
+                <li>Respiración</li>
+                <li>Como mejorar la calidad de sueño</li>
+                <li>Mala digestión</li>
+                <li>Hormona femenina y masculina</li>
+                <li>Etc</li>
+              </ul>
+            </div>
+          </div>,
+          document.body
+        )}
       </Inner>
     </Wrapper>
   );

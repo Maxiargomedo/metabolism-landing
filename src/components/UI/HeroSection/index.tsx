@@ -70,14 +70,16 @@ const HeroSection = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
-              Nutrición científica basada en evidencias
+              Nutricion y habitos Sanos
+              Basado en Evidencia Científica
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Transforma tu vida con alimentación consciente y natural
+              Transforma tu vida con una alimentación
+              y habidos adecuados para recuperar tu saluda
             </motion.p>
           </HeroImageContent>
         </HeroImageSection>

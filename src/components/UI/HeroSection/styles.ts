@@ -130,11 +130,12 @@ export const HeroImageContent = styled.div`
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 700;
     margin-bottom: 1.5rem;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     background: linear-gradient(135deg, #7DD3AE 0%, #A8E6CF 50%, #C8F7C5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke: 0.5px #000000;
     line-height: 1.2;
   }
   

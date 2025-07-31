@@ -34,14 +34,14 @@ const HealthEducation = () => {
 
   const glucometerContent = {
     title: "Glucómetro - Tu Herramienta de Control",
-    description: "También conocido como medidor de glucosa en sangre, es un dispositivo médico que se utiliza para medir la cantidad de glucosa (azúcar) en la sangre. Es una herramienta esencial para personas con diabetes, ya que les permite monitorear sus niveles de glucosa y ajustar su tratamiento según sea necesario. Hay glucómetros que no requieren pinchazo que utilizan tecnología avanzada, como la espectroscopia. La glucosa se mide en mg/dL (miligramos por decilitro).",
+    description: "También conocido como medidor de glucosa en sangre, es un dispositivo médico que se utiliza para medir la cantidad de glucosa (azúcar) en la sangre. Es una herramienta esencial para personas con diabetes y personas que quieran prevenir llegar a serlo,    ya que les permite monitorear sus niveles de glucosa y ajustar su tratamiento según sea necesario. Hay glucómetros que no requieren pinchazo que utilizan tecnología avanzada, como la espectroscopia. La glucosa se mide en mg/dL (miligramos por decilitro).",
     
     whyUse: [
-      "La mejor forma de monitorear tu salud es medir la glucosa",
+      "Es una de las mejores formas de monitorear tu salud es medir la glucosa",
       "Te evitarás muchos problemas de salud y malestares extraños",
       "Puede ayudarte a no convertirte algún día en diabético",
       "Si quieres evitar la obesidad y el sobrepeso, tienes que saber qué está pasando con tu glucosa",
-      "Saber qué está ocasionando la subida de presión",
+      "Saber qué está ocasionando la subida de glucosa en sangre",
       "Tomar el control de tu salud",
       "Dejas de comer a ciegas",
       "Te ayuda a detectar los alimentos agresores",
@@ -71,15 +71,14 @@ const HealthEducation = () => {
     description: "La presión arterial es la fuerza que la sangre ejerce contra las paredes de las arterias a medida que el corazón bombea sangre por todo el cuerpo. Sirve para asegurar que la sangre, con su valioso contenido de oxígeno y nutrientes, llegue a todos los rincones del organismo.",
     
     explanation: "En términos de presión arterial, sistólica y diastólica se refieren a las dos mediciones que indican la fuerza de la sangre contra las paredes de las arterias. La presión arterial se expresa con dos números, separados por una barra, por ejemplo, 120/80 mmHg. El primer número (120 en el ejemplo) representa la presión sistólica, que es la presión en las arterias cuando el corazón se contrae. El segundo número (80 en el ejemplo) representa la presión diastólica, que es la presión en las arterias cuando el corazón se relaja entre latidos.",
-
+    
     keyFacts: [
-      "Lo que eleva la presión arterial no es la sal, sino los carbohidratos refinados",
+      "Lo que eleva la presión arterial no es solamente la sal, sino en la gran mayoría de los casos los carbohidratos refinados",
       "Harinas, pan, pastas, arroz y refrescos disparan la presión al convertirse en azúcares simples",
       "Estos alimentos provocan aumento de insulina, que eleva la retención de sodio y agua",
       "Una alimentación desbalanceada sumada a la falta de magnesio y potasio son la combinación perfecta para la hipertensión",
       "Más del 70% de personas con diabetes tiene problemas de hipertensión",
-      "El cuerpo utiliza la sangre como vehículo para llevar oxígeno y nutrientes a 37 billones de células",
-      "Una presión normal debe estar en rangos de 110/70, 120/80, 130/90 mmHg"
+      "El cuerpo utiliza la sangre como vehículo para llevar oxígeno y nutrientes a 37 billones de células"
     ],
 
     solutions: {
