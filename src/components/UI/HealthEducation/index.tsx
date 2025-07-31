@@ -34,10 +34,10 @@ const HealthEducation = () => {
 
   const glucometerContent = {
     title: "Glucómetro - Tu Herramienta de Control",
-    description: "También conocido como medidor de glucosa en sangre, es un dispositivo médico que se utiliza para medir la cantidad de glucosa (azúcar) en la sangre. Es una herramienta esencial para personas con diabetes y personas que quieran prevenir llegar a serlo,    ya que les permite monitorear sus niveles de glucosa y ajustar su tratamiento según sea necesario. Hay glucómetros que no requieren pinchazo que utilizan tecnología avanzada, como la espectroscopia. La glucosa se mide en mg/dL (miligramos por decilitro).",
+    description: "También conocido como medidor de glucosa en sangre, es un dispositivo médico que se utiliza para medir la cantidad de glucosa (azúcar) en la sangre. Es una herramienta esencial para personas con diabetes y personas que quieran prevenir llegar a serlo, ya que les permite monitorear sus niveles de glucosa y ajustar su tratamiento según sea necesario. Hay glucómetros que no requieren pinchazo que utilizan tecnología avanzada, como la espectroscopia. La glucosa se mide en mg/dL (miligramos por decilitro).",
     
     whyUse: [
-      "Es una de las mejores formas de monitorear tu salud es medir la glucosa",
+      "Es una de las mejores maneras de monitorear tu salud midiendo la glucosa",
       "Te evitarás muchos problemas de salud y malestares extraños",
       "Puede ayudarte a no convertirte algún día en diabético",
       "Si quieres evitar la obesidad y el sobrepeso, tienes que saber qué está pasando con tu glucosa",

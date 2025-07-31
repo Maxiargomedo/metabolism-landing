@@ -268,16 +268,29 @@ export const FormGroup = styled.div`
   select {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234CAF50' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
     background-position: right 0.75rem center;
     background-repeat: no-repeat;
     background-size: 1.5em 1.5em;
     padding-right: 2.5rem;
     
+    &:hover {
+      border-color: rgba(76, 175, 80, 0.4);
+    }
+    
     option {
       background: var(--background-color);
       color: var(--text-color);
-      padding: 0.5rem;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      
+      &:hover, &:checked, &:focus {
+        background: rgba(76, 175, 80, 0.1);
+        color: var(--text-color);
+      }
+    }
+  }
     }
   }
   

@@ -72,7 +72,7 @@ const LazyVideoFrame = ({ src, title }: { src: string; title: string }) => (
 
 const VideoSection = () => (
   <Wrapper id="video-section">
-    <SectionTitle>Invitacion</SectionTitle>
+    <SectionTitle>Invitación</SectionTitle>
     <SectionSubtitle>
       Programa Nutricional Integral Personalizado de Hábitos Sanos
     </SectionSubtitle>

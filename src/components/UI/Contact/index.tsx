@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { 
   Wrapper, 
   Inner, 
@@ -18,24 +17,8 @@ import {
   BackgroundGradient,
   SuccessContainer,
   SuccessTitle,
-  SuccessMessage,
-  WhatsAppOptionContainer,
-  WhatsAppTitle,
-  WhatsAppDescription,
-  ButtonGroup,
-  WhatsAppButton,
-  EmailButton,
-  SocialSection,
-  SocialTitle,
-  SocialIcons,
-  SocialIcon
+  SuccessMessage
 } from './styles';
-import { Pill } from '../../Common/Pill';
-import { MaskText } from '../../Common/MaskText';
-
-const contactTitle = [
-  "Comienza", "tu", "viaje", "hacia", "un", "metabolismo", "óptimo"
-];
 
 interface FormData {
   name: string;
@@ -75,6 +58,14 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
+    
+    // Limpiar errores al escribir
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
+    }
   };
   
   const validateForm = () => {
@@ -91,7 +82,7 @@ const Contact = () => {
     }
     
     if (!formData.service) {
-      newErrors.service = 'Por favor selecciona un servicio';
+      newErrors.service = 'Por favor selecciona un programa';
     }
     
     setErrors(newErrors);
@@ -129,8 +120,8 @@ const Contact = () => {
           
           // Ocultar el mensaje después de 30 segundos
           setTimeout(() => {
-            setIsSubmitted(false);
             setShowWhatsAppOption(false);
+            setIsSubmitted(false);
           }, 30000);
         } else {
           setSubmitMessage('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
@@ -161,7 +152,7 @@ const Contact = () => {
       
       // Redirigir a WhatsApp
       const whatsappMessage = encodeURIComponent(`Hola MetaboLife, soy ${formData.name || 'un cliente'} y prefiero comunicarme por WhatsApp. Me interesa conocer más sobre sus servicios de nutrición.`);
-      const whatsappUrl = `https://wa.me/34123456789?text=${whatsappMessage}`;
+      const whatsappUrl = `https://wa.me/+56941234567?text=${whatsappMessage}`;
       window.open(whatsappUrl, '_blank');
       
       setShowWhatsAppOption(false);
@@ -185,9 +176,21 @@ const Contact = () => {
             Estamos aquí para ayudarte a transformar tu salud a través de la nutrición personalizada. Contáctanos para comenzar tu viaje hacia un metabolismo óptimo y una vida más saludable.
           </SectionSubtitle>
         </motion.div>
+        
         <ContentGrid>
           <TextContainer>
-            {/* Información de contacto y formulario se mantiene igual */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <h3>Comienza tu Transformación</h3>
+              <p>
+                Tu bienestar es nuestra prioridad. Ofrecemos un programa integral personalizado 
+                que se adapta a tus necesidades específicas y estilo de vida.
+              </p>
+            </motion.div>
+            
             <ContactInfo>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -195,209 +198,183 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="info-item"
               >
-                <div className="icon">📍</div>
+                <div className="icon">📧</div>
                 <div className="details">
-                  <span className="label">Dirección</span>
-                  <span 
-                    className="value clickable-address" 
-                    onClick={() => window.open('https://maps.google.com/?q=Camino+Tabolguen+km+1.5+sector+embalse+Tutuven+Cauquenes', '_blank')}
-                    style={{ cursor: 'pointer', textDecoration: 'underline', color: '#4A90E2' }}
-                  >
-                    Camino Tabolguen, km 1,5 sector embalse Tutuven, Cauquenes
-                  </span>
+                  <span className="label">Email</span>
+                  <span className="value">informacion@metabolife.cl</span>
                 </div>
               </motion.div>
+              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="info-item"
               >
-                <div className="icon">📞</div>
+                <div className="icon">📱</div>
                 <div className="details">
-                  <span className="label">Teléfono</span>
-                  <span className="value">+56945435007</span>
+                  <span className="label">WhatsApp</span>
+                  <span className="value">+56 9 1234 5678</span>
                 </div>
               </motion.div>
+              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="info-item"
               >
-                <div className="icon">�</div>
+                <div className="icon">📍</div>
                 <div className="details">
-                  <span className="label">Email</span>
-                  <span className="value">saminon.maxi20@gmail.com</span>
+                  <span className="label">Dirección</span>
+                  <span 
+                    className="value" 
+                    style={{ 
+                      color: '#4CAF50', 
+                      cursor: 'pointer',
+                      textDecoration: 'underline' 
+                    }}
+                    onClick={() => window.open('https://maps.google.com/?q=M-816+Cauquenes+Maule+Chile', '_blank')}
+                  >
+                    M-816 Cauquenes, Maule
+                  </span>
                 </div>
               </motion.div>
             </ContactInfo>
           </TextContainer>
           
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <FormContainer>
+          <FormContainer>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <h3>Envíanos un mensaje</h3>
-              
-              {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <SuccessContainer>
-                    <SuccessTitle>¡Gracias por contactarnos!</SuccessTitle>
-                    <SuccessMessage>Te hemos enviado un email de confirmación.</SuccessMessage>
-                  </SuccessContainer>
-                  
-                  {showWhatsAppOption && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      style={{ marginTop: '1rem' }}
-                    >
-                      <WhatsAppOptionContainer>
-                        <WhatsAppTitle>
-                          💬 ¿Prefieres una respuesta más rápida?
-                        </WhatsAppTitle>
-                        <WhatsAppDescription>
-                          Puedes contactarnos directamente por WhatsApp para una atención inmediata. 
-                          Si eliges esta opción, toda la comunicación será por WhatsApp.
-                        </WhatsAppDescription>
-                        <ButtonGroup>
-                          <WhatsAppButton onClick={handleWhatsAppChoice}>
-                            📱 Continuar por WhatsApp
-                          </WhatsAppButton>
-                          <EmailButton onClick={() => setShowWhatsAppOption(false)}>
-                            📧 Mantener comunicación por Email
-                          </EmailButton>
-                        </ButtonGroup>
-                        
-                        <SocialSection>
-                          <SocialTitle>📱 También puedes seguirnos en:</SocialTitle>
-                          <SocialIcons>
-                            <SocialIcon 
-                              href="https://instagram.com/metabolife" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="instagram"
-                            >
-                              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                              </svg>
-                            </SocialIcon>
-                            <SocialIcon 
-                              href="https://twitter.com/metabolife" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="twitter"
-                            >
-                              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                              </svg>
-                            </SocialIcon>
-                            <SocialIcon 
-                              href="https://facebook.com/metabolife" 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="facebook"
-                            >
-                              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                              </svg>
-                            </SocialIcon>
-                          </SocialIcons>
-                        </SocialSection>
-                      </WhatsAppOptionContainer>
-                    </motion.div>
-                  )}
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  <FormRow>
-                    <FormGroup>
-                      <label htmlFor="name">Nombre</label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Tu nombre"
-                      />
-                      {errors.name && <div className="error">{errors.name}</div>}
-                    </FormGroup>
-                    
-                    <FormGroup>
-                      <label htmlFor="email">Email</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="tu@email.com"
-                      />
-                      {errors.email && <div className="error">{errors.email}</div>}
-                    </FormGroup>
-                  </FormRow>
-                  
-                  <FormRow>
-                    <FormGroup>
-                      <label htmlFor="phone">Teléfono (opcional)</label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+34 123 456 789"
-                      />
-                    </FormGroup>
-                    
-                    <FormGroup>
-                      <label htmlFor="service">Servicio</label>
-                      <select
-                        id="service"
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                      >
-                        <option value="">Selecciona un servicio</option>
-                        <option value="glucometro">🩺 Información sobre Glucómetro</option>
-                        <option value="planes-nutricionales">Planes Nutricionales Personalizados</option>
-                        <option value="coaching-nutricional">Coaching Nutricional Continuo</option>
-                        <option value="analisis-corporal">Análisis de Composición Corporal</option>
-                        <option value="condiciones-especificas">Nutrición para Condiciones Específicas</option>
-                        <option value="consulta-general">Consulta General</option>
-                        <option value="otro">Otro</option>
-                      </select>
-                      {errors.service && <div className="error">{errors.service}</div>}
-                    </FormGroup>
-                  </FormRow>
-                  
+              <form onSubmit={handleSubmit}>
+                <FormRow>
                   <FormGroup>
-                    <label htmlFor="message">Mensaje (opcional)</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
+                    <label>Nombre *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
-                      placeholder="Cuéntanos sobre tus objetivos o necesidades específicas..."
+                      placeholder="Tu nombre completo"
+                      style={{ borderColor: errors.name ? '#f44336' : undefined }}
+                    />
+                    {errors.name && <span className="error">{errors.name}</span>}
+                  </FormGroup>
+                  <FormGroup>
+                    <label>Email *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="tu@email.com"
+                      style={{ borderColor: errors.email ? '#f44336' : undefined }}
+                    />
+                    {errors.email && <span className="error">{errors.email}</span>}
+                  </FormGroup>
+                </FormRow>
+                
+                <FormRow>
+                  <FormGroup>
+                    <label>Teléfono</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+56 9 1234 5678"
                     />
                   </FormGroup>
                   
-                  <SubmitButton type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
-                  </SubmitButton>
-                </form>
-              )}
-            </FormContainer>
-          </motion.div>
+                  <FormGroup>
+                    <label>Programas *</label>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      style={{ 
+                        borderColor: errors.service ? '#f44336' : undefined,
+                        background: 'var(--card-background)',
+                        backdropFilter: 'blur(10px)',
+                        border: '1px solid var(--border-color)',
+                        color: 'var(--text-color)',
+                        fontSize: '1rem',
+                        fontFamily: 'inherit',
+                        transition: 'all 0.3s ease',
+                        cursor: 'pointer',
+                        appearance: 'none',
+                        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%234CAF50' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                        backgroundPosition: 'right 0.75rem center',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: '1.5em 1.5em',
+                        paddingRight: '2.5rem'
+                      }}
+                    >
+                      <option value="">Selecciona un programa</option>
+                      <option value="consulta-inicial">Consulta Inicial</option>
+                      <option value="programa-101">Programa 101 (8 semanas)</option>
+                      <option value="programa-102">Programa 102 (16 semanas)</option>
+                      <option value="programa-103">Programa 103 (24 semanas)</option>
+                    </select>
+                    {errors.service && <span className="error">{errors.service}</span>}
+                  </FormGroup>
+                </FormRow>
+                
+                <FormRow style={{ gridTemplateColumns: '1fr' }}>
+                  <FormGroup>
+                    <label>Mensaje</label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Cuéntanos más sobre tus objetivos y necesidades..."
+                      rows={4}
+                    />
+                  </FormGroup>
+                </FormRow>
+                
+                <SubmitButton type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                </SubmitButton>
+                
+                {submitMessage && (
+                  <div style={{ 
+                    marginTop: '1rem',
+                    padding: '1rem',
+                    borderRadius: '8px',
+                    backgroundColor: isSubmitted ? 'rgba(76, 175, 80, 0.1)' : 'rgba(244, 67, 54, 0.1)',
+                    color: isSubmitted ? '#4CAF50' : '#f44336',
+                    textAlign: 'center'
+                  }}>
+                    {submitMessage}
+                    {showWhatsAppOption && (
+                      <div style={{ marginTop: '1rem' }}>
+                        <button 
+                          type="button"
+                          onClick={handleWhatsAppChoice}
+                          style={{
+                            background: '#25D366',
+                            color: 'white',
+                            border: 'none',
+                            padding: '0.5rem 1rem',
+                            borderRadius: '8px',
+                            cursor: 'pointer',
+                            fontSize: '0.9rem'
+                          }}
+                        >
+                          Continuar en WhatsApp
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </form>
+            </motion.div>
+          </FormContainer>
         </ContentGrid>
       </Inner>
     </Wrapper>

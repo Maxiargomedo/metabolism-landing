@@ -8,22 +8,39 @@ export const Wrapper = styled.section`
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 5rem 0;
+  padding: var(--section-padding-y-mobile) 0;
   background: var(--section-bg-white);
+  
+  @media (min-width: 768px) {
+    padding: var(--section-padding-y) 0;
+  }
+  
+  @media (min-width: 1441px) {
+    padding: 6rem 0;
+  }
 `;
 
 export const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1280px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--container-padding);
   position: relative;
   z-index: 1;
+  
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
+  
+  @media (min-width: 1441px) {
+    max-width: 1440px;
+    padding: 0 2rem;
+  }
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #fff;
   text-align: center;
@@ -33,28 +50,49 @@ export const SectionTitle = styled.h2`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   
-  @media (max-width: 768px) {
+  @media (min-width: 481px) {
+    font-size: 2.25rem;
+  }
+  
+  @media (min-width: 768px) {
     font-size: 2.5rem;
   }
   
-  @media (max-width: 480px) {
-    font-size: 2rem;
+  @media (min-width: 1024px) {
+    font-size: 2.75rem;
+  }
+  
+  @media (min-width: 1441px) {
+    font-size: 3rem;
   }
 `;
 
 export const SectionSubtitle = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   text-align: center;
-  margin-bottom: 1.5rem; /* Reducido de 3rem a 1.5rem */
+  margin-bottom: 1.5rem;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
   
-  @media (max-width: 768px) {
+  @media (min-width: 481px) {
+    font-size: 1.05rem;
+  }
+  
+  @media (min-width: 768px) {
     font-size: 1.1rem;
-    margin-bottom: 1rem; /* Reducido de 2rem a 1rem */
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 1.15rem;
+    max-width: 700px;
+  }
+  
+  @media (min-width: 1441px) {
+    font-size: 1.2rem;
+    max-width: 800px;
   }
 `;
 

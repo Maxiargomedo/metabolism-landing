@@ -16,37 +16,48 @@ export const Inner = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 1rem 2rem;
-  max-width: 1800px;
+  padding: 1rem var(--container-padding);
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  gap: 4rem; /* Aumentado para más separación */
+  gap: 2rem;
 
   /* Theme toggle para desktop */
   .desktop-theme-toggle {
     display: flex;
     align-items: center;
-    margin-left: auto; /* Empujar hacia la derecha */
+    margin-left: auto;
     
-    @media (max-width: 1504px) {
-      display: none; /* Ocultar en móvil */
+    @media (max-width: 1360px) {
+      display: none;
     }
   }
 
-  @media (max-width: 1504px) {
-    padding: 1rem;
-    justify-content: space-between;
-    gap: 0;
-  }
-  
-  /* Ajustes para resoluciones 1080p y menores */
-  @media (max-width: 1920px) and (max-height: 1080px) {
-    padding: 0.8rem 1.5rem;
-    gap: 3rem; /* Mantener buena separación */
-  }
-  
-  @media (max-width: 1366px) {
+  @media (max-width: 480px) {
     padding: 0.8rem 1rem;
-    gap: 2.5rem; /* Separación moderada */
+    gap: 1rem;
+    justify-content: space-between;
+  }
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    padding: 0.9rem 1.25rem;
+    gap: 1.5rem;
+    justify-content: space-between;
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    padding: 1rem 1.5rem;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  
+  @media (min-width: 1025px) and (max-width: 1440px) {
+    gap: 3rem;
+  }
+  
+  @media (min-width: 1441px) {
+    max-width: 1440px;
+    padding: 1.2rem 2rem;
+    gap: 4rem;
   }
 `;
 
@@ -57,7 +68,7 @@ export const LogoContainer = styled.div<{ $isHidden?: boolean }>`
   cursor: pointer;
   z-index: 50;
   
-  @media (max-width: 1504px) {
+  @media (max-width: 1024px) {
     opacity: ${props => props.$isHidden ? '0' : '1'};
     visibility: ${props => props.$isHidden ? 'hidden' : 'visible'};
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -69,8 +80,8 @@ export const Nav = styled.nav<{ $isOpen: boolean }>`
   gap: 1rem;
   align-items: center;
   
-  /* Estilos para desktop */
-  @media (min-width: 1505px) {
+  /* Estilos para desktop - ahora incluye 1360x768 */
+  @media (min-width: 1361px) {
     opacity: 1;
     visibility: visible;
     position: relative;
@@ -78,6 +89,24 @@ export const Nav = styled.nav<{ $isOpen: boolean }>`
     
     &.mobile-nav {
       display: none !important;
+    }
+  }
+  
+  /* Navegación para resolución 1360x768 */
+  @media (min-width: 1025px) and (max-width: 1360px) {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 10;
+    gap: 0.7rem;
+    
+    &.mobile-nav {
+      display: none !important;
+    }
+    
+    a {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.6rem;
     }
   }
   
@@ -100,7 +129,7 @@ export const Nav = styled.nav<{ $isOpen: boolean }>`
     }
   }
   
-  @media (max-width: 1504px) {
+  @media (max-width: 1024px) {
     display: none;
     
     &.mobile-nav {
@@ -164,14 +193,14 @@ export const Nav = styled.nav<{ $isOpen: boolean }>`
 `;
 
 export const MobileMenuLogo = styled.div`
-  @media (max-width: 1504px) {
+  @media (max-width: 1024px) {
     position: absolute;
     top: 2rem;
     left: 2rem;
     z-index: 50;
   }
   
-  @media (min-width: 1505px) {
+  @media (min-width: 1025px) {
     display: none;
   }
 `;
@@ -182,15 +211,15 @@ export const CallToActions = styled.div`
   gap: 1.5rem;
   margin-left: auto;
   
-  /* Asegurar visibilidad en desktop */
-  @media (min-width: 1505px) {
+  /* Asegurar visibilidad en desktop - incluye 1360x768 */
+  @media (min-width: 1025px) {
     opacity: 1;
     visibility: visible;
     position: relative;
     z-index: 10;
   }
   
-  @media (max-width: 1504px) {
+  @media (max-width: 1024px) {
     display: none;
     
     &.active {
@@ -213,7 +242,7 @@ export const BurgerMenu = styled.div<{ $isOpen: boolean }>`
   width: 30px;
   height: 30px;
   
-  @media (max-width: 1504px) {
+  @media (max-width: 1024px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -260,7 +289,7 @@ export const BurgerLine = styled.div<{ $isOpen: boolean; $isScrolled?: boolean }
 `;
 
 export const PageOverlay = styled.div<{ $isOpen: boolean }>`
-  @media (max-width: 1504px) {
+  @media (max-width: 1024px) {
     position: fixed;
     top: 0;
     left: 0;

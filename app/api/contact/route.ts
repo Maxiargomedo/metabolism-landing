@@ -14,8 +14,8 @@ interface ContactFormData {
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'saminon.maxi20@gmail.com',
-    pass: 'aodf rbsj mhig kdul'
+    user: 'metabolife.informa@gmail.com',
+    pass: 'asiw ghco llza vpiw'
   }
 });
 
@@ -33,8 +33,8 @@ export async function POST(request: NextRequest) {
 
     // Email de notificación para nosotros
     const adminEmailOptions = {
-      from: 'saminon.maxi20@gmail.com',
-      to: 'saminon.maxi20@gmail.com',
+      from: 'informacion@metabolife.cl',
+      to: 'metabolife.informa@gmail.com',
       subject: `Nueva consulta de ${formData.name} - MetaboLife`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
 
     // Email de confirmación para el usuario
     const userEmailOptions = {
-      from: 'saminon.maxi20@gmail.com',
+      from: 'informacion@metabolife.cl',
       to: formData.email,
       subject: '✅ Confirmación de Consulta - MetaboLife',
       html: `

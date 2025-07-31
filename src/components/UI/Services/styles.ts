@@ -30,24 +30,25 @@ export const Wrapper = styled.section`
 export const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1280px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--container-padding);
   position: relative;
   z-index: 1;
   width: 100%;
   
-  @media (max-width: 1024px) {
-    max-width: 1024px;
-    padding: 0 1.25rem;
-  }
-  
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     padding: 0 1rem;
   }
   
-  @media (max-width: 480px) {
-    padding: 0 0.75rem;
+  @media (min-width: 481px) and (max-width: 768px) {
+    padding: 0 1.25rem;
+  }
+  
+  @media (min-width: 1441px) {
+    max-width: 1440px;
+    padding: 0 2rem;
+  }
   }
 `;
 
@@ -931,8 +932,8 @@ export const PopupCarouselControls = styled.div`
 export const ProgramCard = styled(motion.div)`
   background: var(--card-background);
   backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: var(--border-radius);
+  padding: var(--card-padding-mobile);
   border: 1px solid var(--border-color);
   box-shadow: 0 8px 32px var(--shadow-color);
   transition: all 0.3s ease;
@@ -942,68 +943,110 @@ export const ProgramCard = styled(motion.div)`
     box-shadow: 0 12px 40px var(--shadow-color);
   }
   
-  @media (max-width: 768px) {
+  @media (min-width: 481px) {
     padding: 1.5rem;
   }
   
-  @media (max-width: 480px) {
-    padding: 1.25rem;
+  @media (min-width: 768px) {
+    padding: var(--card-padding);
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 2.25rem;
+  }
+  
+  @media (min-width: 1441px) {
+    padding: 2.5rem;
+    border-radius: 1.25rem;
   }
 `;
 
 export const ProgramTitle = styled.div`
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-color);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
   gap: 8px;
+  line-height: 1.4;
   
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
+  @media (min-width: 481px) {
+    font-size: 1.15rem;
   }
   
-  @media (max-width: 480px) {
-    font-size: 1.1rem;
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 1441px) {
+    font-size: 1.4rem;
+    gap: 10px;
   }
 `;
 
 export const ProgramDescription = styled.div`
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--text-color);
   
-  @media (max-width: 768px) {
+  @media (min-width: 481px) {
     font-size: 0.95rem;
+    margin-bottom: 1.1rem;
+  }
+  
+  @media (min-width: 768px) {
+    font-size: 1rem;
     margin-bottom: 1.25rem;
   }
   
-  @media (max-width: 480px) {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+  @media (min-width: 1024px) {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+  
+  @media (min-width: 1441px) {
+    font-size: 1.1rem;
   }
 `;
 
 export const ProgramPrice = styled.div`
   background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
   color: white;
-  padding: 0.8rem 1.2rem;
-  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--border-radius-small);
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1rem;
   text-align: center;
   margin-bottom: 1rem;
   
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
+  @media (min-width: 481px) {
     padding: 0.7rem 1rem;
+    font-size: 1.05rem;
   }
   
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    padding: 0.6rem 0.8rem;
+  @media (min-width: 768px) {
+    padding: 0.8rem 1.2rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 1.15rem;
+    padding: 0.9rem 1.3rem;
+  }
+  
+  @media (min-width: 1441px) {
+    font-size: 1.2rem;
+    padding: 1rem 1.4rem;
   }
 `;
 
@@ -1028,17 +1071,21 @@ export const ProgramFeature = styled.div`
 
 export const ProgramGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   width: 100%;
   
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
   
-  @media (max-width: 480px) {
-    gap: 1rem;
+  @media (min-width: 1024px) {
+    gap: 2.5rem;
+  }
+  
+  @media (min-width: 1441px) {
+    gap: 3rem;
   }
 `;
 
@@ -1048,18 +1095,19 @@ export const GiftText = styled.span`
 `;
 
 export const ProgramButton = styled.button`
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 0.95rem;
   background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
   color: #fff;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
   font-weight: 600;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   
   &:hover {
@@ -1067,13 +1115,25 @@ export const ProgramButton = styled.button`
     box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
   }
   
-  @media (max-width: 768px) {
-    padding: 0.9rem 2rem;
+  @media (min-width: 481px) {
+    padding: 0.9rem 1.75rem;
     font-size: 1rem;
   }
   
-  @media (max-width: 480px) {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.95rem;
+  @media (min-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1.05rem;
+    border-radius: 12px;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 1.1rem 2.25rem;
+    font-size: 1.1rem;
+  }
+  
+  @media (min-width: 1441px) {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.15rem;
+    gap: 10px;
   }
 `;

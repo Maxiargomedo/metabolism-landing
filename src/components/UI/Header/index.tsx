@@ -21,7 +21,7 @@ import ThemeToggle from '../../ThemeToggle';
 
 const links = [
   { linkTo: 'Inicio', target: 'hero' },
-  { linkTo: 'Invitacion', target: 'video-section' },
+  { linkTo: 'Invitación', target: 'video-section' },
   { linkTo: 'Quiénes Somos', target: 'team' },
   { linkTo: 'Metabolismo y nutrición', target: 'about' },
   { linkTo: 'Educación Nutricional', target: 'health-education' },

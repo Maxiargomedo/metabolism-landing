@@ -66,7 +66,7 @@ const servicesData: ServiceData[] = [
       },
       {
         title: '✅ Beneficios Inmediatos:',
-        content: '• Monitoreo preventivo: La mejor forma de saber si eres diabetico o prediabetico o estás en vías de serlo.\n• Prevención de enfermedades: Evita problemas futuros antes de que aparezcan\n• Control de peso: Si luchas contra la obesidad o sobre peso, necesitas saber qué pasa con tu glucosa\n• Detección temprana: Identifica problemas antes de convertirte en diabético'
+        content: '• Monitoreo preventivo: La mejor manera de saber si eres diabético o prediabético o estás en vías de serlo.\n• Prevención de enfermedades: Evita problemas futuros antes de que aparezcan\n• Control de peso: Si luchas contra la obesidad o sobrepeso, necesitas saber qué pasa con tu glucosa\n• Detección temprana: Identifica problemas antes de convertirte en diabético'
       },
       {
         title: '✅ Beneficios a Mediano y Largo Plazo:',
@@ -487,7 +487,7 @@ const Services = () => {
                 <li>Determinar tipo de metabolismo, Individualidad Bioquímica</li>
                 <li>Diseño del plan nutricional de acuerdo al metabolismo</li>
                 <li>Entrega material de apoyo en cada sesión</li>
-                <li>Aprender a usar el glucometro, como una valiosa herramienta de prevención de enfermedades</li>
+                <li>Aprender a usar el glucómetro, como una valiosa herramienta de prevención de enfermedades</li>
                 <li>Detección de alimentos agresores</li>
                 <li>Correcto uso medidor de presión arterial</li>
                 <li>Uso de tiras reactivas de pH</li>
@@ -503,7 +503,7 @@ const Services = () => {
                 <li>Diabetes</li>
                 <li>Vitaminas y suplementos</li>
                 <li>Hidratación</li>
-                <li>Tiroide</li>
+                <li>Tiroides</li>
                 <li>Estrés</li>
                 <li>Desintoxicación electromagnética</li>
                 <li>Calidad de sueño</li>
