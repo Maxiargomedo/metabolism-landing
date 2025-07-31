@@ -26,7 +26,7 @@ const SectionTitle = styled.h2`
 
 const SectionSubtitle = styled.p`
   font-size: 1.5rem;
-  color: #2d3748;
+  color: var(--text-secondary);
   text-align: center;
   margin-bottom: 2rem;
   max-width: 600px;

@@ -43,12 +43,12 @@ const GlobalStyle = createGlobalStyle`
     --glass-background: rgba(255, 255, 255, 0.7);
     --border-color: rgba(31, 41, 55, 0.1);
     --shadow-color: rgba(0, 0, 0, 0.1);
-    --gradient-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --gradient-bg: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
     --hero-bg: linear-gradient(135deg, rgba(62, 207, 142, 0.1) 0%, rgba(139, 195, 74, 0.1) 100%);
     
     /* Alternating section backgrounds */
-    --section-bg-white: #FFFFFF;
-    --section-bg-gray: #F1F5F9;
+    --section-bg-white: #E0F7F0;
+    --section-bg-gray: #E5E7EB;
   }
 
   /* Modo Oscuro */
@@ -67,7 +67,7 @@ const GlobalStyle = createGlobalStyle`
     --hero-bg: linear-gradient(135deg, rgba(62, 207, 142, 0.1) 0%, rgba(139, 195, 74, 0.1) 100%);
     
     /* Alternating section backgrounds for dark mode */
-    --section-bg-white: #111827;
+    --section-bg-white: #0D1B17;
     --section-bg-gray: #1F2937;
   }
 

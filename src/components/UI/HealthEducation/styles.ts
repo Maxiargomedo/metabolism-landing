@@ -73,7 +73,7 @@ export const Inner = styled.div`
 export const SectionTitle = styled.h2`
   font-size: 3rem;
   font-weight: 700;
-  color: #1a202c; /* Color sólido en lugar de variable */
+  color: var(--text-color); /* Variable de color para modo oscuro */
   text-align: center;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, #4CAF50, #8BC34A);
@@ -109,7 +109,7 @@ export const SectionTitle = styled.h2`
 
 export const SectionSubtitle = styled.p`
   font-size: 1.2rem;
-  color: #4a5568; /* Color sólido en lugar de variable */
+  color: var(--text-secondary); /* Variable de color para modo oscuro */
   text-align: center;
   margin-bottom: 3rem;
   max-width: 700px;
@@ -255,15 +255,16 @@ export const TabContent = styled(motion.div)`
 `;
 
 export const ContentCard = styled.div`
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--card-background);
   backdrop-filter: blur(15px);
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   border-radius: 1.5rem;
   padding: 2.5rem;
   margin: 0 auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px var(--shadow-color);
   position: relative;
   z-index: 30;
+  transition: all 0.3s ease;
   
   @media (max-width: 968px) {
     padding: 2rem;
@@ -276,8 +277,8 @@ export const ContentCard = styled.div`
     display: block;
     visibility: visible;
     opacity: 1;
-    background: #ffffff !important;
-    border: 1px solid #cbd5e0 !important;
+    background: var(--card-background) !important;
+    border: 1px solid var(--border-color) !important;
   }
   
   @media (max-width: 480px) {
@@ -285,18 +286,18 @@ export const ContentCard = styled.div`
     border-radius: 0.75rem;
     position: relative;
     z-index: 30;
-    background: #ffffff !important;
+    background: var(--card-background) !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    border: 1px solid #cbd5e0 !important;
+    border: 1px solid var(--border-color) !important;
   }
 `;
 
 export const ContentTitle = styled.h3`
   font-size: 2rem;
   font-weight: 600;
-  color: #1a202c;
+  color: var(--text-color);
   margin-bottom: 1.5rem;
   background: linear-gradient(135deg, #4CAF50, #8BC34A);
   -webkit-background-clip: text;
@@ -336,7 +337,7 @@ export const ContentTitle = styled.h3`
 
 export const ContentText = styled.p`
   font-size: 1rem;
-  color: #4a5568;
+  color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 1rem;
   position: relative;
@@ -346,13 +347,13 @@ export const ContentText = styled.p`
     display: block;
     visibility: visible;
     opacity: 1;
-    color: #2d3748 !important;
+    color: var(--text-secondary) !important;
   }
   
   @media (max-width: 480px) {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: #2d3748 !important;
+    color: var(--text-secondary) !important;
     position: relative;
     z-index: 30;
     display: block !important;
@@ -386,7 +387,7 @@ export const InfoList = styled.ul`
 
 export const InfoItem = styled.li`
   font-size: 1rem;
-  color: #4a5568;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 0.75rem;
   padding-left: 0.5rem;
@@ -397,14 +398,14 @@ export const InfoItem = styled.li`
     display: list-item;
     visibility: visible;
     opacity: 1;
-    color: #2d3748 !important;
+    color: var(--text-secondary) !important;
   }
   
   @media (max-width: 480px) {
     font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 0.6rem;
-    color: #2d3748 !important;
+    color: var(--text-secondary) !important;
     position: relative;
     z-index: 30;
     display: list-item !important;
@@ -443,6 +444,7 @@ export const StatCard = styled.div`
   background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.1));
   border: 1px solid rgba(76, 175, 80, 0.2);
   text-align: center;
+  transition: all 0.3s ease;
   
   @media (max-width: 768px) {
     padding: 1.25rem;
@@ -455,24 +457,24 @@ export const StatCard = styled.div`
   h4 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #2d3748;
+    color: var(--text-color);
     margin-bottom: 0.75rem;
     
     @media (max-width: 480px) {
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
-      color: #2d3748 !important;
+      color: var(--text-color) !important;
     }
   }
   
   p {
     font-size: 0.9rem;
-    color: #4a5568;
+    color: var(--text-secondary);
     margin: 0.25rem 0;
     
     @media (max-width: 480px) {
       font-size: 0.85rem;
-      color: #4a5568 !important;
+      color: var(--text-secondary) !important;
     }
     
     strong {

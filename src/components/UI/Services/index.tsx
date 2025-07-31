@@ -20,7 +20,15 @@ import {
   PopupCarouselContainer,
   PopupCarouselControls,
   PopupCarouselSlide,
-  PopupCloseButton
+  PopupCloseButton,
+  ProgramCard,
+  ProgramTitle,
+  ProgramDescription,
+  ProgramPrice,
+  ProgramFeature,
+  ProgramGrid,
+  GiftText,
+  ProgramButton
 } from './styles';
 import { useInView } from 'framer-motion';
 
@@ -262,243 +270,103 @@ const Services = () => {
           marginTop: '2rem'
         }}>
           {/* Grid de programas - 2x2 */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '2rem',
-            width: '100%'
-          }}>
+          <ProgramGrid>
             
             {/* Consulta Inicial */}
-            <motion.div
+            <ProgramCard
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              style={{
-                background: 'rgba(255, 255, 255, 0.8)',
-                borderRadius: '16px',
-                padding: '2rem',
-                border: '1px solid rgba(76, 175, 80, 0.15)',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.06)'
-              }}
             >
-              <div style={{
-                fontSize: '1.3rem',
-                fontWeight: '600',
-                color: 'var(--primary-color)',
-                marginBottom: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}>
+              <ProgramTitle>
                 <span>✨</span>
                 Consulta Inicial
-              </div>
-              <div style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+              </ProgramTitle>
+              <ProgramDescription>
                 • Evaluación personalizada<br />
                 • Orientación e introducción al programa<br />
                 • Entrega de material
-              </div>
-              <div style={{ 
-                background: 'linear-gradient(135deg, var(--primary-color), var(--primary-light))',
-                color: 'white',
-                padding: '0.7rem 1rem',
-                borderRadius: '10px',
-                fontWeight: '600',
-                textAlign: 'center'
-              }}>
+              </ProgramDescription>
+              <ProgramPrice>
                 💰 $25.000 (zoom) | $35.000 (terreno)
-              </div>
-            </motion.div>
+              </ProgramPrice>
+            </ProgramCard>
 
             {/* Programa 101 */}
-            <motion.div
+            <ProgramCard
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              style={{
-                background: 'rgba(255, 255, 255, 0.9)',
-                borderRadius: '16px',
-                padding: '2rem',
-                border: '2px solid rgba(76, 175, 80, 0.2)',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
-              }}
             >
-              <div style={{
-                fontSize: '1.3rem',
-                fontWeight: '600',
-                color: 'var(--primary-color)',
-                marginBottom: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}>
+              <ProgramTitle>
                 <span>🥇</span>
                 Programa Nutricional Integral Personalizado de Hábitos Sanos 101
-              </div>
-              <div style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+              </ProgramTitle>
+              <ProgramDescription>
                 Duración: 8 semanas (1 hora semanal)<br />
-                <span style={{ color: '#e91e63', fontWeight: '600' }}>🎁 Incluye de regalo:</span> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
-              </div>
-              <div style={{ 
-                background: 'linear-gradient(135deg, #4caf50, #66bb6a)',
-                color: 'white',
-                padding: '0.8rem 1.2rem',
-                borderRadius: '10px',
-                fontWeight: '700',
-                fontSize: '1.15rem',
-                textAlign: 'center',
-                marginBottom: '1rem'
-              }}>
+                <GiftText>🎁 Incluye de regalo:</GiftText> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
+              </ProgramDescription>
+              <ProgramPrice>
                 💎 $ 350.000
-              </div>
-              <div style={{ 
-                padding: '0.8rem',
-                background: 'rgba(76, 175, 80, 0.1)',
-                borderRadius: '8px',
-                borderLeft: '4px solid var(--primary-color)',
-                fontSize: '0.9rem'
-              }}>
+              </ProgramPrice>
+              <ProgramFeature>
                 📞 Seguimiento telefónico diario (L-V)
-              </div>
-            </motion.div>
+              </ProgramFeature>
+            </ProgramCard>
 
             {/* Programa 102 */}
-            <motion.div
+            <ProgramCard
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              style={{
-                background: 'rgba(255, 255, 255, 0.9)',
-                borderRadius: '16px',
-                padding: '2rem',
-                border: '2px solid rgba(139, 195, 74, 0.3)',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
-              }}
             >
-              <div style={{
-                fontSize: '1.3rem',
-                fontWeight: '600',
-                color: 'var(--primary-color)',
-                marginBottom: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}>
+              <ProgramTitle>
                 <span>🥈</span>
                 Programa Nutricional Integral Personalizado de Hábitos Sanos 102
-              </div>
-              <div style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+              </ProgramTitle>
+              <ProgramDescription>
                 Duración: 16 semanas (1 hora semanal)<br />
-                <span style={{ color: '#e91e63', fontWeight: '600' }}>🎁 Incluye de regalo:</span> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
-              </div>
-              <div style={{ 
-                background: 'linear-gradient(135deg, #8bc34a, #9ccc65)',
-                color: 'white',
-                padding: '0.8rem 1.2rem',
-                borderRadius: '10px',
-                fontWeight: '700',
-                fontSize: '1.15rem',
-                textAlign: 'center',
-                marginBottom: '1rem'
-              }}>
+                <GiftText>🎁 Incluye de regalo:</GiftText> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
+              </ProgramDescription>
+              <ProgramPrice>
                 💎 $ 650.000
-              </div>
-              <div style={{ 
-                padding: '0.8rem',
-                background: 'rgba(139, 195, 74, 0.1)',
-                borderRadius: '8px',
-                borderLeft: '4px solid #8bc34a',
-                fontSize: '0.9rem'
-              }}>
+              </ProgramPrice>
+              <ProgramFeature>
                 📞 Seguimiento telefónico diario (L-V)
-              </div>
-            </motion.div>
+              </ProgramFeature>
+            </ProgramCard>
 
             {/* Programa 103 */}
-            <motion.div
+            <ProgramCard
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              style={{
-                background: 'rgba(255, 255, 255, 0.9)',
-                borderRadius: '16px',
-                padding: '2rem',
-                border: '2px solid rgba(255, 193, 7, 0.4)',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)'
-              }}
             >
-              <div style={{
-                fontSize: '1.3rem',
-                fontWeight: '600',
-                color: 'var(--primary-color)',
-                marginBottom: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}>
+              <ProgramTitle>
                 <span>🥉</span>
                 Programa Nutricional Integral Personalizado de Hábitos Sanos 103
-              </div>
-              <div style={{ fontSize: '1rem', lineHeight: '1.6', marginBottom: '1rem' }}>
+              </ProgramTitle>
+              <ProgramDescription>
                 Duración: 24 semanas (1 hora semanal)<br />
-                <span style={{ color: '#e91e63', fontWeight: '600' }}>🎁 Incluye de regalo:</span> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
-              </div>
-              <div style={{ 
-                background: 'linear-gradient(135deg, #ff9800, #ffa726)',
-                color: 'white',
-                padding: '0.8rem 1.2rem',
-                borderRadius: '10px',
-                fontWeight: '700',
-                fontSize: '1.15rem',
-                textAlign: 'center',
-                marginBottom: '1rem'
-              }}>
+                <GiftText>🎁 Incluye de regalo:</GiftText> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
+              </ProgramDescription>
+              <ProgramPrice>
                 💎 $ 950.000
-              </div>
-              <div style={{ 
-                padding: '0.8rem',
-                background: 'rgba(255, 152, 0, 0.1)',
-                borderRadius: '8px',
-                borderLeft: '4px solid #ff9800',
-                fontSize: '0.9rem'
-              }}>
+              </ProgramPrice>
+              <ProgramFeature>
                 📞 Seguimiento telefónico diario (L-V)
-              </div>
-            </motion.div>
-          </div>
+              </ProgramFeature>
+            </ProgramCard>
+          </ProgramGrid>
 
           {/* Botón centrado */}
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
-            <button 
-              style={{
-                padding: '1rem 2.5rem',
-                fontSize: '1.1rem',
-                background: 'linear-gradient(135deg, var(--primary-color), var(--primary-light))',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '12px',
-                cursor: 'pointer',
-                boxShadow: '0 6px 20px rgba(76, 175, 80, 0.3)',
-                fontWeight: '600',
-                transition: 'all 0.3s ease',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
+            <ProgramButton 
               onClick={() => setShowProgramPopup(true)}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(76, 175, 80, 0.4)';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(76, 175, 80, 0.3)';
-              }}
             >
               <span>📋</span>
               Ver contenido detallado del programa
-            </button>
+            </ProgramButton>
           </div>
 
           {/* Imagen comentada temporalmente */}
@@ -640,7 +508,6 @@ const Services = () => {
                 <li>Desintoxicación electromagnética</li>
                 <li>Calidad de sueño</li>
                 <li>Respiración</li>
-                <li>Como mejorar la calidad de sueño</li>
                 <li>Mala digestión</li>
                 <li>Hormona femenina y masculina</li>
                 <li>Etc</li>

@@ -95,10 +95,10 @@ const About = () => {
           <MaskText phrases={aboutTitle} tag="h2" />
           <div style={{ marginTop: '1rem' }}> {/* Reducido de 2rem a 1rem */}
             <p style={{ marginBottom: '1rem', fontSize: '1.1rem', lineHeight: '1.6' }}> {/* Reducido de 1.5rem a 1rem */}
-              En tan solo una década se ha duplicado la cantidad de personas que tienen Diabetes. Según el Centro para el control de Enfermedades CDC de Estados Unidos, para el año 2050: 1 de cada 3 personas eran diabéticas, imagínese los gastos hospitalarios, los sufrimientos para la familia tanto emocionales como económicos, simplemente no va a alcanzar para sostenerlas.
+              En tan solo una década se ha duplicado la cantidad de personas que tienen Diabetes. Según el Centro para el control de Enfermedades CDC de Estados Unidos, para el año 2050: 1 de cada 3 personas serán diabéticas, aumentando los gastos hospitalarios, los sufrimientos para la familia tanto emocionales como económicos, simplemente no va a alcanzar para sostenerlas.
             </p>
             <p style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
-              Actualmente en IUSA 1 de cada 3 personas tiene prediabetes y 1 de cada 10 personas no sabe que tiene diabetes. Es muy importante tomar las acciones correctas para no estar entre estas estadísticas.
+              Actualmente en Estados Unidos de Norteamérica 1 de cada 3 personas tiene prediabetes y 1 de cada 10 personas no sabe que tiene diabetes. Es muy importante tomar las acciones correctas para no estar entre estas estadísticas.
             </p>
           </div>
         </motion.div>

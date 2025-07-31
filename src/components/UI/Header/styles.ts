@@ -207,9 +207,9 @@ export const CallToActions = styled.div`
 export const BurgerMenu = styled.div<{ $isOpen: boolean }>`
   display: none;
   position: absolute;
-  right: 2rem; /* Posicionar hacia la derecha como en la imagen */
+  right: 8.5rem; /* Más separación del ThemeToggle */
   cursor: pointer;
-  z-index: 50;
+  z-index: 1001; /* Mayor que el ThemeToggle (1000) */
   width: 30px;
   height: 30px;
   
@@ -221,11 +221,11 @@ export const BurgerMenu = styled.div<{ $isOpen: boolean }>`
   }
   
   @media (max-width: 768px) {
-    right: 1.5rem; /* Ajustar para pantallas más pequeñas */
+    right: 7.5rem; /* Más separación para pantallas pequeñas */
   }
   
   @media (max-width: 480px) {
-    right: 1rem; /* Menos margen en móviles muy pequeños */
+    right: 7rem; /* Más separación en móviles muy pequeños */
   }
 `;
 

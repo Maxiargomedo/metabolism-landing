@@ -926,3 +926,154 @@ export const PopupCarouselControls = styled.div`
     gap: 0.75rem;
   }
 `;
+
+// Nuevos componentes para las cartas de programas
+export const ProgramCard = styled(motion.div)`
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px var(--shadow-color);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px var(--shadow-color);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.25rem;
+  }
+`;
+
+export const ProgramTitle = styled.div`
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+`;
+
+export const ProgramDescription = styled.div`
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+`;
+
+export const ProgramPrice = styled.div`
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    padding: 0.7rem 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+  }
+`;
+
+export const ProgramFeature = styled.div`
+  padding: 0.8rem;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  
+  @media (max-width: 768px) {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+`;
+
+export const ProgramGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
+  }
+`;
+
+export const GiftText = styled.span`
+  color: #e91e63;
+  font-weight: 600;
+`;
+
+export const ProgramButton = styled.button`
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+`;
