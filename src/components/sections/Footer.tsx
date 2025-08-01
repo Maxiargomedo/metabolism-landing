@@ -21,7 +21,7 @@ export default function Footer() {
             </span>
           </h3>
           <p className="text-gray-400 mb-8">
-            Activa tu metabolismo. Transformamos vidas a través de la ciencia de la nutrición y el metabolismo.
+            Activa tu Metabolismo. Transformamos vidas a través de la ciencia de la nutrición y el metabolismo.
           </p>
           
           <button

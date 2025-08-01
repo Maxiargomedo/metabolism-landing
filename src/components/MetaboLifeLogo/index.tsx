@@ -204,7 +204,7 @@ const MetaboLifeLogo: React.FC<LogoProps> = ({
         
         {showTagline && (
           <Tagline $size={size} $variant={variant}>
-            Activa tu metabolismo.
+            Activa tu Metabolismo.
           </Tagline>
         )}
       </TextContainer>

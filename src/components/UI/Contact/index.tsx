@@ -326,7 +326,7 @@ const Contact = () => {
                       <option value="consulta-inicial">Consulta Inicial</option>
                       <option value="programa-101">Programa 101 (8 semanas)</option>
                       <option value="programa-102">Programa 102 (16 semanas)</option>
-                      <option value="programa-103">Programa 103 (24 semanas)</option>
+                      {/* <option value="programa-103">Programa 103 (24 semanas)</option> */}
                     </select>
                     {errors.service && <span className="error">{errors.service}</span>}
                   </FormGroup>

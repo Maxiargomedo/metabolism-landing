@@ -73,7 +73,7 @@ const About = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7 }}
         >
-          <SectionTitle>Metabolismo y nutrición</SectionTitle>
+          <SectionTitle>Metabolismo y Nutrición</SectionTitle>
           <SectionSubtitle>
             Transformamos tu salud a través de un enfoque científico integral que combina 
             nutrición personalizada, análisis metabólico y hábitos de vida saludables.

@@ -3,14 +3,14 @@ import ImageErrorSuppressor from "../src/components/ImageErrorSuppressor";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MetabolLife | Activa tu metabolismo",
-  description: "Activa tu metabolismo. Expertos en nutrición personalizada y metabolismo saludable.",
+  title: "MetabolLife | Activa tu Metabolismo",
+  description: "Activa tu Metabolismo. Expertos en nutrición personalizada y metabolismo saludable.",
   keywords: "metabolismo, nutrición, alimentación consciente, salud natural, bienestar",
   authors: [{ name: "MetabolLife Team" }],
   metadataBase: new URL('https://metabolife.com'),
   openGraph: {
-    title: "MetabolLife | Activa tu metabolismo",
-    description: "Activa tu metabolismo",
+    title: "MetabolLife | Activa tu Metabolismo",
+    description: "Activa tu Metabolismo",
     type: "website",
     locale: "es_ES",
     url: "https://metabolife.com",
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MetabolLife | Activa tu metabolismo",
-    description: "Activa tu metabolismo",
+    title: "MetabolLife | Activa tu Metabolismo",
+    description: "Activa tu Metabolismo",
     images: ['/img/doctora-nutricionista-da-notas_701961-575.png'],
   },
   robots: {

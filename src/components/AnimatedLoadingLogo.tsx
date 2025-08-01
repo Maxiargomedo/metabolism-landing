@@ -276,7 +276,7 @@ const AnimatedLoadingLogo: React.FC<AnimatedLogoProps> = ({ onAnimationComplete,
             ease: "easeOut"
           }}
         >
-          Activa tu metabolismo.
+          Activa tu Metabolismo.
         </Tagline>
       </TextContainer>
     </LogoContainer>

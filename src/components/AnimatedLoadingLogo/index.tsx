@@ -230,7 +230,7 @@ const AnimatedLoadingLogo: React.FC<AnimatedLogoProps> = ({ onAnimationComplete 
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
         >
-          Activa tu metabolismo.
+          Activa tu Metabolismo.
         </Tagline>
       </TextContainer>
     </LogoContainer>

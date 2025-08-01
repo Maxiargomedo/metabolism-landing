@@ -937,6 +937,7 @@ export const ProgramCard = styled(motion.div)`
   border: 1px solid var(--border-color);
   box-shadow: 0 8px 32px var(--shadow-color);
   transition: all 0.3s ease;
+  width: 100%;
   
   &:hover {
     transform: translateY(-4px);
@@ -944,19 +945,19 @@ export const ProgramCard = styled(motion.div)`
   }
   
   @media (min-width: 481px) {
-    padding: 1.5rem;
+    padding: 1.8rem;
   }
   
   @media (min-width: 768px) {
-    padding: var(--card-padding);
+    padding: 2rem;
   }
   
   @media (min-width: 1024px) {
-    padding: 2.25rem;
+    padding: 2.5rem;
   }
   
   @media (min-width: 1441px) {
-    padding: 2.5rem;
+    padding: 3rem;
     border-radius: 1.25rem;
   }
 `;
@@ -1074,18 +1075,29 @@ export const ProgramGrid = styled.div`
   grid-template-columns: 1fr;
   gap: 1.5rem;
   width: 100%;
+  justify-items: center;
   
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
   }
   
   @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+  }
+  
+  @media (min-width: 1200px) {
     gap: 2.5rem;
+    max-width: 1500px;
   }
   
   @media (min-width: 1441px) {
     gap: 3rem;
+    max-width: 1600px;
   }
 `;
 

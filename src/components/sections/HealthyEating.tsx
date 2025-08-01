@@ -306,7 +306,7 @@ export default function HealthyEating() {
                 </div>
                 <h4 className="text-xl font-bold mb-3 text-slate-900">Desayuno</h4>
                 <p className="text-slate-600 leading-relaxed">
-                  Activa tu metabolismo con proteínas de calidad y carbohidratos complejos para energía sostenida
+                  Activa tu Metabolismo con proteínas de calidad y carbohidratos complejos para energía sostenida
                 </p>
               </div>
               

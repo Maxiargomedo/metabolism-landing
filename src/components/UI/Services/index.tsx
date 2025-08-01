@@ -269,7 +269,7 @@ const Services = () => {
           gap: '3rem',
           marginTop: '2rem'
         }}>
-          {/* Grid de programas - 2x2 */}
+          {/* Grid de programas - 3 programas disponibles */}
           <ProgramGrid>
             
             {/* Consulta Inicial */}
@@ -336,7 +336,8 @@ const Services = () => {
               </ProgramFeature>
             </ProgramCard>
 
-            {/* Programa 103 */}
+            {/* Programa 103 - Comentado temporalmente */}
+            {/*
             <ProgramCard
               initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
@@ -357,9 +358,11 @@ const Services = () => {
                 📞 Seguimiento telefónico diario (L-V)
               </ProgramFeature>
             </ProgramCard>
+            */}
           </ProgramGrid>
 
-          {/* Botón centrado */}
+          {/* Botón centrado - Comentado temporalmente */}
+          {/*
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
             <ProgramButton 
               onClick={() => setShowProgramPopup(true)}
@@ -368,6 +371,7 @@ const Services = () => {
               Ver contenido detallado del programa
             </ProgramButton>
           </div>
+          */}
 
           {/* Imagen comentada temporalmente */}
           {/*

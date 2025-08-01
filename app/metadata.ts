@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'MetabolLife - Activa tu metabolismo',
-  description: 'Activa tu metabolismo. Consultas nutricionales, análisis corporal y programas especializados para una vida saludable.',
+  title: 'MetabolLife - Activa tu Metabolismo',
+  description: 'Activa tu Metabolismo. Consultas nutricionales, análisis corporal y programas especializados para una vida saludable.',
   keywords: ['nutrición', 'metabolismo', 'salud', 'dieta personalizada', 'consulta nutricional'],
   authors: [{ name: 'MetabolLife' }],
   creator: 'MetabolLife',
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_ES',
     url: 'https://metabolife.com',
-    title: 'MetabolLife - Activa tu metabolismo',
-    description: 'Activa tu metabolismo. Consultas nutricionales, análisis corporal y programas especializados.',
+    title: 'MetabolLife - Activa tu Metabolismo',
+    description: 'Activa tu Metabolismo. Consultas nutricionales, análisis corporal y programas especializados.',
     siteName: 'MetabolLife',
     images: [{
       url: '/img/doctora-nutricionista-da-notas_701961-575.png',
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MetabolLife - Activa tu metabolismo',
-    description: 'Activa tu metabolismo.',
+    title: 'MetabolLife - Activa tu Metabolismo',
+    description: 'Activa tu Metabolismo.',
     images: ['/img/doctora-nutricionista-da-notas_701961-575.png'],
   },
   robots: {

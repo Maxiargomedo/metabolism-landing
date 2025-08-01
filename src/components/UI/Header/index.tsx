@@ -23,7 +23,7 @@ const links = [
   { linkTo: 'Inicio', target: 'hero' },
   { linkTo: 'Invitación', target: 'video-section' },
   { linkTo: 'Quiénes Somos', target: 'team' },
-  { linkTo: 'Metabolismo y nutrición', target: 'about' },
+  { linkTo: 'Metabolismo y Nutrición', target: 'about' },
   { linkTo: 'Educación Nutricional', target: 'health-education' },
   { linkTo: 'Programas', target: 'services' },
   { linkTo: 'Contacto', target: 'contact' }
