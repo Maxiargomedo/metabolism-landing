@@ -55,8 +55,7 @@ export const CompanyInfo = styled.div`
     
     p {
       color: #bdbdbd;
-      font-size: 0.75rem;
-      text-transform: uppercase;
+      font-size: 0.95rem;
       letter-spacing: 0.1em;
     }
   }

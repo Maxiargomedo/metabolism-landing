@@ -40,7 +40,7 @@ export const Inner = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  font-size: 2rem;
+  font-size: clamp(1.75rem, 5vw, 3rem);
   font-weight: 700;
   color: #fff;
   text-align: center;
@@ -49,50 +49,33 @@ export const SectionTitle = styled.h2`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1.2;
+  padding: 0 1rem;
   
-  @media (min-width: 481px) {
-    font-size: 2.25rem;
-  }
-  
-  @media (min-width: 768px) {
-    font-size: 2.5rem;
-  }
-  
-  @media (min-width: 1024px) {
-    font-size: 2.75rem;
-  }
-  
-  @media (min-width: 1441px) {
-    font-size: 3rem;
+  @media (max-width: 480px) {
+    margin-bottom: 0.75rem;
   }
 `;
 
 export const SectionSubtitle = styled.p`
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 2.8vw, 1.2rem);
   color: var(--text-secondary);
   text-align: center;
-  margin-bottom: 1.5rem;
-  max-width: 600px;
+  margin-bottom: 2rem;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
+  padding: 0 1rem;
   
-  @media (min-width: 481px) {
-    font-size: 1.05rem;
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+    max-width: 100%;
   }
   
-  @media (min-width: 768px) {
-    font-size: 1.1rem;
-  }
-  
-  @media (min-width: 1024px) {
-    font-size: 1.15rem;
-    max-width: 700px;
-  }
-  
-  @media (min-width: 1441px) {
-    font-size: 1.2rem;
-    max-width: 800px;
+  @media (max-width: 480px) {
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
   }
 `;
 
@@ -159,28 +142,59 @@ export const FeatureCard = styled.div`
   }
   
   h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     font-weight: 500;
     color: var(--text-color);
+    margin-bottom: 0.5rem;
   }
   
   p {
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     line-height: 1.5;
   }
   
   .icon {
-    width: 48px;
-    height: 48px;
+    width: clamp(40px, 8vw, 48px);
+    height: clamp(40px, 8vw, 48px);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
     background: rgba(76, 175, 80, 0.1);
     color: #4CAF50;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     margin-bottom: 0.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+`;
+
+export const ResponsiveCardsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.75rem;
   }
 `;
 

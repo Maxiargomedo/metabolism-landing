@@ -105,7 +105,7 @@ export async function POST(request: NextRequest) {
               <p style="margin-bottom: 15px;">Puedes contactarnos directamente por WhatsApp para una atención inmediata:</p>
               
               <div style="text-align: center; margin: 20px 0;">
-                <a href="https://wa.me/34123456789?text=Hola%20MetaboLife,%20vengo%20del%20formulario%20de%20contacto%20y%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios." 
+                <a href="https://wa.me/56945435007?text=Hola%20MetaboLife,%20vengo%20del%20formulario%20de%20contacto%20y%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios." 
                    style="background-color: #25D366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block;">
                   💬 Chatear por WhatsApp
                 </a>

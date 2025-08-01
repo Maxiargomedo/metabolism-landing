@@ -38,11 +38,11 @@ const MainText = styled(motion.h1)`
   font-weight: 300;
   margin: 0;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: var(--text-color);
   font-size: 4.5rem;
   
   .life {
-    color: #ffffff;
+    color: var(--text-color);
     font-weight: 400;
   }
   
@@ -50,7 +50,7 @@ const MainText = styled(motion.h1)`
     font-size: 0.6em;
     font-weight: 400;
     top: -0.5em;
-    color: #ffffff;
+    color: var(--text-color);
   }
 `;
 
@@ -58,10 +58,9 @@ const Tagline = styled(motion.p)`
   font-family: 'Arial', sans-serif;
   font-weight: 400;
   margin: 0;
-  text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.3rem;
+  color: var(--primary-color);
+  font-size: 1.6rem;
 `;
 
 const HealthParticle = styled(motion.div)`
@@ -277,7 +276,7 @@ const AnimatedLoadingLogo: React.FC<AnimatedLogoProps> = ({ onAnimationComplete,
             ease: "easeOut"
           }}
         >
-          Nutrition & Wellness
+          Activa tu metabolismo.
         </Tagline>
       </TextContainer>
     </LogoContainer>

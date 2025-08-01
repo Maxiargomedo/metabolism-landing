@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import Image from 'next/image';
+import { OptimizedImage } from '../../index';
 import { 
   Wrapper, 
   Inner, 
@@ -288,7 +288,7 @@ const Services = () => {
                 • Entrega de material
               </ProgramDescription>
               <ProgramPrice>
-                💰 $25.000 (zoom) | $35.000 (terreno)
+                💰 $25.000 (presencial o vía zoom) | $40.000 (visita a terreno en la región Metropolitana)
               </ProgramPrice>
             </ProgramCard>
 
@@ -382,7 +382,7 @@ const Services = () => {
               marginTop: '2rem'
             }}
           >
-            <Image 
+            <OptimizedImage 
               src="/img/imgProgramas.png" 
               alt="Programas nutricionales personalizados"
               width={600}
@@ -476,41 +476,41 @@ const Services = () => {
               <h2 style={{ fontSize: '2rem', marginBottom: '1.2rem', color: 'var(--primary-color)', paddingRight: '50px', clear: 'both' }}>
                 Contenido detallado del programa
               </h2>
-              <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: '#666' }}>
+              <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: '#000' }}>
                 El programa a desarrollar dependerá de la condición de salud de cada persona, el contenido de los programas es el siguiente:
               </p>
-              <ul style={{ fontSize: '1.1rem', lineHeight: '1.7', paddingLeft: '1.2rem' }}>
-                <li>Completar ficha clínica</li>
-                <li>Análisis de composición corporal (IMC)</li>
-                <li>Medición antropométrica</li>
-                <li>Solicitud de exámenes de laboratorio más importantes</li>
-                <li>Determinar tipo de metabolismo, Individualidad Bioquímica</li>
-                <li>Diseño del plan nutricional de acuerdo al metabolismo</li>
-                <li>Entrega material de apoyo en cada sesión</li>
-                <li>Aprender a usar el glucómetro, como una valiosa herramienta de prevención de enfermedades</li>
-                <li>Detección de alimentos agresores</li>
-                <li>Correcto uso medidor de presión arterial</li>
-                <li>Uso de tiras reactivas de pH</li>
-                <li>Sobrepeso y obesidad</li>
-                <li>Cáncer</li>
-                <li>Masa muscular</li>
-                <li>Artritis</li>
-                <li>Artrosis</li>
-                <li>Triglicéridos altos</li>
-                <li>Desintoxicación Hígado graso</li>
-                <li>Hipertensión</li>
-                <li>Pre-diabetes</li>
-                <li>Diabetes</li>
-                <li>Vitaminas y suplementos</li>
-                <li>Hidratación</li>
-                <li>Tiroides</li>
-                <li>Estrés</li>
-                <li>Desintoxicación electromagnética</li>
-                <li>Calidad de sueño</li>
-                <li>Respiración</li>
-                <li>Mala digestión</li>
-                <li>Hormona femenina y masculina</li>
-                <li>Etc</li>
+              <ul style={{ fontSize: '1.1rem', lineHeight: '1.7', paddingLeft: '1.2rem', color: '#000' }}>
+                <li style={{ color: '#000' }}>Completar ficha clínica</li>
+                <li style={{ color: '#000' }}>Análisis de composición corporal (IMC)</li>
+                <li style={{ color: '#000' }}>Medición antropométrica</li>
+                <li style={{ color: '#000' }}>Solicitud de exámenes de laboratorio más importantes</li>
+                <li style={{ color: '#000' }}>Determinar tipo de metabolismo, Individualidad Bioquímica</li>
+                <li style={{ color: '#000' }}>Diseño del plan nutricional de acuerdo al metabolismo</li>
+                <li style={{ color: '#000' }}>Entrega material de apoyo en cada sesión</li>
+                <li style={{ color: '#000' }}>Aprender a usar el glucómetro, como una valiosa herramienta de prevención de enfermedades</li>
+                <li style={{ color: '#000' }}>Detección de alimentos agresores</li>
+                <li style={{ color: '#000' }}>Correcto uso medidor de presión arterial</li>
+                <li style={{ color: '#000' }}>Uso de tiras reactivas de pH</li>
+                <li style={{ color: '#000' }}>Sobrepeso y obesidad</li>
+                <li style={{ color: '#000' }}>Cáncer</li>
+                <li style={{ color: '#000' }}>Masa muscular</li>
+                <li style={{ color: '#000' }}>Artritis</li>
+                <li style={{ color: '#000' }}>Artrosis</li>
+                <li style={{ color: '#000' }}>Triglicéridos altos</li>
+                <li style={{ color: '#000' }}>Desintoxicación Hígado graso</li>
+                <li style={{ color: '#000' }}>Hipertensión</li>
+                <li style={{ color: '#000' }}>Pre-diabetes</li>
+                <li style={{ color: '#000' }}>Diabetes</li>
+                <li style={{ color: '#000' }}>Vitaminas y suplementos</li>
+                <li style={{ color: '#000' }}>Hidratación</li>
+                <li style={{ color: '#000' }}>Tiroides</li>
+                <li style={{ color: '#000' }}>Estrés</li>
+                <li style={{ color: '#000' }}>Desintoxicación electromagnética</li>
+                <li style={{ color: '#000' }}>Calidad de sueño</li>
+                <li style={{ color: '#000' }}>Respiración</li>
+                <li style={{ color: '#000' }}>Mala digestión</li>
+                <li style={{ color: '#000' }}>Hormona femenina y masculina</li>
+                <li style={{ color: '#000' }}>Etc</li>
               </ul>
             </div>
           </div>,

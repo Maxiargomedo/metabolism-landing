@@ -9,22 +9,22 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline';
 }
 
-const StyledButton = styled.button<{ padding: string; variant: string }>`
+const StyledButton = styled.button<{ $padding: string; $variant: string }>`
   display: flex;
-  padding: ${(props) => props.padding};
+  padding: ${(props) => props.$padding};
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
   border-radius: 3.125rem;
   background: ${(props) => 
-    props.variant === 'primary' 
+    props.$variant === 'primary' 
       ? 'linear-gradient(92deg, #4CAF50 0%, #8BC34A 100%)' 
-      : props.variant === 'secondary'
+      : props.$variant === 'secondary'
       ? 'rgba(255, 255, 255, 0.1)'
       : 'transparent'
   };
-  border: ${(props) => props.variant === 'outline' ? '1px solid #4CAF50' : 'none'};
-  color: ${(props) => props.variant === 'outline' ? '#4CAF50' : '#fff'};
+  border: ${(props) => props.$variant === 'outline' ? '1px solid #4CAF50' : 'none'};
+  color: ${(props) => props.$variant === 'outline' ? '#4CAF50' : '#fff'};
   font-size: 1rem;
   font-weight: 500;
   backdrop-filter: blur(10px);
@@ -35,9 +35,9 @@ const StyledButton = styled.button<{ padding: string; variant: string }>`
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2);
     background: ${(props) => 
-      props.variant === 'primary' 
+      props.$variant === 'primary' 
         ? 'linear-gradient(92deg, #43A047 0%, #7CB342 100%)' 
-        : props.variant === 'secondary'
+        : props.$variant === 'secondary'
         ? 'rgba(255, 255, 255, 0.15)'
         : 'transparent'
     };
@@ -55,7 +55,7 @@ export const Button = ({
   variant = 'primary'
 }: ButtonProps) => {
   return (
-    <StyledButton padding={padding} onClick={onClick} variant={variant}>
+    <StyledButton $padding={padding} onClick={onClick} $variant={variant}>
       {children}
     </StyledButton>
   );

@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
             </div>
             
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://wa.me/34123456789?text=Hola%20MetaboLife,%20soy%20${encodeURIComponent(data.name)}%20y%20prefiero%20comunicarme%20por%20WhatsApp." 
+              <a href="https://wa.me/56945435007?text=Hola%20MetaboLife,%20soy%20${encodeURIComponent(data.name)}%20y%20prefiero%20comunicarme%20por%20WhatsApp." 
                  style="background-color: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; font-size: 16px;">
                 💬 Continuar en WhatsApp
               </a>

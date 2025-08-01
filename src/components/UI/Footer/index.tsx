@@ -13,24 +13,22 @@ import {
 } from './styles';
 
 const socialLinks = [
-  { icon: 'facebook', url: '#' },
+  { icon: 'facebook', url: 'https://www.facebook.com/profile.php?id=61578690164559' },
   { icon: 'twitter', url: '#' },
-  { icon: 'instagram', url: '#' },
+  { icon: 'instagram', url: 'https://www.instagram.com/metabolife.activa.metabolismo/' },
   { icon: 'linkedin', url: '#' }
 ];
 
 const companyLinks = [
-  { name: 'Sobre nosotros', url: '#' },
-  { name: 'Nuestro equipo', url: '#' },
-  { name: 'Blog', url: '#' },
-  { name: 'Testimonios', url: '#' }
+  { name: 'Quiénes Somos', url: '#team' },
+  { name: 'Invitación', url: '#video-section' }
 ];
 
 const serviceLinks = [
-  { name: 'Plan Básico', url: '#' },
-  { name: 'Plan Premium', url: '#' },
-  { name: 'Plan Familiar', url: '#' },
-  { name: 'Consulta Online', url: '#' }
+  { name: 'Consulta Inicial', url: '#services' },
+  { name: 'Programa 101', url: '#services' },
+  { name: 'Programa 102', url: '#services' },
+  { name: 'Programa 103', url: '#services' }
 ];
 
 const legalLinks = [
@@ -57,7 +55,7 @@ const Footer = () => {
             
             <p>
               Expertos en nutrición personalizada para optimizar tu metabolismo. 
-              Transformamos vidas a través de planes nutricionales basados en ciencia.
+              Transformamos vidas a través de planes nutricionales personalizado de acuerdo a cada metabolismo.
             </p>
             
             <div className="social">
@@ -65,6 +63,8 @@ const Footer = () => {
                 <motion.a 
                   key={index}
                   href={link.url}
+                  target={link.url !== '#' ? '_blank' : undefined}
+                  rel={link.url !== '#' ? 'noopener noreferrer' : undefined}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -102,7 +102,7 @@ const Footer = () => {
           </CompanyInfo>
           
           <FooterColumn>
-            <h3>Compañía</h3>
+            <h3>Navegación</h3>
             <ul>
               {companyLinks.map((link, index) => (
                 <motion.li 
@@ -118,7 +118,7 @@ const Footer = () => {
           </FooterColumn>
           
           <FooterColumn>
-            <h3>Servicios</h3>
+            <h3>Programas</h3>
             <ul>
               {serviceLinks.map((link, index) => (
                 <motion.li 

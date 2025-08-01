@@ -54,9 +54,9 @@ const HeroSection = () => {
   return (
     <Wrapper id="hero">
       <BackgroundGradient />
-      <FloatingOrb top="15%" left="10%" size="250px" delay="0s" />
-      <FloatingOrb top="60%" right="15%" size="300px" delay="2s" />
-      <FloatingOrb bottom="10%" left="20%" size="200px" delay="4s" />
+      <FloatingOrb $top="15%" $left="10%" $size="250px" $delay="0s" />
+      <FloatingOrb $top="60%" $right="15%" $size="300px" $delay="2s" />
+      <FloatingOrb $bottom="10%" $left="20%" $size="200px" $delay="4s" />
       
       <Inner>
         {/* Sección con collage dinámico de imágenes */}

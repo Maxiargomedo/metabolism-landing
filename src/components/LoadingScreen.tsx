@@ -134,11 +134,11 @@ export default function LoadingScreen({ minimumLoadingTime = 1500 }: LoadingScre
             animate={shouldExpandLogo ? { 
               opacity: [1, 0.8, 0.5, 0.2, 0],
               background: [
-                "var(--background-color)",
-                "color-mix(in srgb, var(--background-color) 80%, transparent)",
-                "color-mix(in srgb, var(--background-color) 50%, transparent)",
-                "color-mix(in srgb, var(--background-color) 20%, transparent)",
-                "transparent"
+                "rgba(var(--background-color-rgb), 1)",
+                "rgba(var(--background-color-rgb), 0.8)",
+                "rgba(var(--background-color-rgb), 0.5)",
+                "rgba(var(--background-color-rgb), 0.2)",
+                "rgba(var(--background-color-rgb), 0)"
               ]
             } : { opacity: 1 }}
             transition={shouldExpandLogo ? {

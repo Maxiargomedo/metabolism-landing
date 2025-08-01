@@ -64,10 +64,10 @@ export const HeroImageSection = styled.div`
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(var(--background-color-rgb), 0.2) 20%,
-      rgba(var(--background-color-rgb), 0.5) 40%,
-      rgba(var(--background-color-rgb), 0.8) 70%,
-      rgba(var(--background-color-rgb), 0.95) 90%,
+      rgba(var(--background-color-rgb), 0.4) 20%,
+      rgba(var(--background-color-rgb), 0.7) 40%,
+      rgba(var(--background-color-rgb), 0.9) 70%,
+      rgba(var(--background-color-rgb), 0.98) 90%,
       var(--background-color) 100%
     );
     z-index: 3;
@@ -108,10 +108,10 @@ export const HeroImageOverlay = styled.div`
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(62, 207, 142, 0.15) 0%,
-    rgba(139, 195, 74, 0.1) 30%,
-    rgba(0, 0, 0, 0.2) 60%,
-    rgba(0, 0, 0, 0.35) 100%
+    rgba(62, 207, 142, 0.25) 0%,
+    rgba(139, 195, 74, 0.2) 30%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.55) 100%
   );
   z-index: 2;
 `;
@@ -142,7 +142,12 @@ export const HeroImageContent = styled.div`
   p {
     font-size: clamp(1.125rem, 2.5vw, 1.5rem);
     color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 
+      0 2px 10px rgba(0, 0, 0, 0.5),
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
     line-height: 1.6;
     max-width: 600px;
     margin: 0 auto;
@@ -198,20 +203,20 @@ export const BackgroundGradient = styled.div`
   z-index: 0;
 `;
 
-export const FloatingOrb = styled.div<{ top?: string; left?: string; right?: string; bottom?: string; size?: string; delay?: string; }>`
+export const FloatingOrb = styled.div<{ $top?: string; $left?: string; $right?: string; $bottom?: string; $size?: string; $delay?: string; }>`
   position: absolute;
-  width: ${props => props.size || '300px'};
-  height: ${props => props.size || '300px'};
+  width: ${props => props.$size || '300px'};
+  height: ${props => props.$size || '300px'};
   border-radius: 50%;
   background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0) 70%);
   filter: blur(50px);
   opacity: 0.6;
-  top: ${props => props.top || 'auto'};
-  left: ${props => props.left || 'auto'};
-  right: ${props => props.right || 'auto'};
-  bottom: ${props => props.bottom || 'auto'};
+  top: ${props => props.$top || 'auto'};
+  left: ${props => props.$left || 'auto'};
+  right: ${props => props.$right || 'auto'};
+  bottom: ${props => props.$bottom || 'auto'};
   animation: float 15s infinite ease-in-out;
-  animation-delay: ${props => props.delay || '0s'};
+  animation-delay: ${props => props.$delay || '0s'};
 
   @keyframes float {
     0%, 100% {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ImageErrorSuppressor from "../src/components/ImageErrorSuppressor";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -55,7 +56,9 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <body className="font-inter antialiased">
-        {children}
+        <ImageErrorSuppressor>
+          {children}
+        </ImageErrorSuppressor>
       </body>
     </html>
   );

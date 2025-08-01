@@ -128,7 +128,6 @@ const Tagline = styled.p<{ $size: string; $variant: string }>`
   font-family: 'Arial', sans-serif;
   font-weight: 400;
   margin: 0;
-  text-transform: uppercase;
   letter-spacing: 0.15em;
   color: ${props => {
     switch (props.$variant) {
@@ -140,11 +139,11 @@ const Tagline = styled.p<{ $size: string; $variant: string }>`
   
   font-size: ${props => {
     switch (props.$size) {
-      case 'small': return '0.5rem';
-      case 'medium': return '0.7rem';
-      case 'large': return '1rem';
-      case 'xl': return '1.3rem';
-      default: return '0.7rem';
+      case 'small': return '0.65rem';
+      case 'medium': return '0.9rem';
+      case 'large': return '1.3rem';
+      case 'xl': return '1.7rem';
+      default: return '0.9rem';
     }
   }};
   

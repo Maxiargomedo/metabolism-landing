@@ -59,10 +59,10 @@ const HealthEducation = () => {
     ],
 
     statistics: [
-      { country: "Chile", diabetes: "14%", obesity: "74%" },
-      { country: "Canadá", diabetes: "9.4%", obesity: "27.2%" },
-      { country: "USA", diabetes: "11.6%", obesity: "40%" },
-      { country: "México", diabetes: "18.3%", obesity: "75.1%" }
+      { country: "Chile", diabetes: "14%", obesity: "40%" },
+      { country: "Canadá", diabetes: "9.4%", obesity: "30%" },
+      { country: "USA", diabetes: "11.6%", obesity: "42%" },
+      { country: "México", diabetes: "18.3%", obesity: "69%" }
     ]
   };
 

@@ -31,6 +31,7 @@ interface FormData {
 interface FormErrors {
   name?: string;
   email?: string;
+  phone?: string;
   service?: string;
 }
 
@@ -79,6 +80,10 @@ const Contact = () => {
       newErrors.email = 'Email es requerido';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Email no es válido';
+    }
+    
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Teléfono es requerido';
     }
     
     if (!formData.service) {
@@ -152,7 +157,7 @@ const Contact = () => {
       
       // Redirigir a WhatsApp
       const whatsappMessage = encodeURIComponent(`Hola MetaboLife, soy ${formData.name || 'un cliente'} y prefiero comunicarme por WhatsApp. Me interesa conocer más sobre sus servicios de nutrición.`);
-      const whatsappUrl = `https://wa.me/+56941234567?text=${whatsappMessage}`;
+      const whatsappUrl = `https://wa.me/56945435007?text=${whatsappMessage}`;
       window.open(whatsappUrl, '_blank');
       
       setShowWhatsAppOption(false);
@@ -214,7 +219,7 @@ const Contact = () => {
                 <div className="icon">📱</div>
                 <div className="details">
                   <span className="label">WhatsApp</span>
-                  <span className="value">+56 9 1234 5678</span>
+                  <span className="value">+56945435007</span>
                 </div>
               </motion.div>
               
@@ -280,14 +285,16 @@ const Contact = () => {
                 
                 <FormRow>
                   <FormGroup>
-                    <label>Teléfono</label>
+                    <label>Teléfono *</label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+56 9 1234 5678"
+                      style={{ borderColor: errors.phone ? '#f44336' : undefined }}
                     />
+                    {errors.phone && <span className="error">{errors.phone}</span>}
                   </FormGroup>
                   
                   <FormGroup>
@@ -297,10 +304,11 @@ const Contact = () => {
                       value={formData.service}
                       onChange={handleChange}
                       style={{ 
-                        borderColor: errors.service ? '#f44336' : undefined,
+                        borderWidth: '1px',
+                        borderStyle: 'solid',
+                        borderColor: errors.service ? '#f44336' : 'var(--border-color)',
                         background: 'var(--card-background)',
                         backdropFilter: 'blur(10px)',
-                        border: '1px solid var(--border-color)',
                         color: 'var(--text-color)',
                         fontSize: '1rem',
                         fontFamily: 'inherit',
