@@ -64,22 +64,50 @@ export function middleware(request: NextRequest) {
   // Validar origen para requests sensibles (más permisivo en desarrollo)
   if (request.method === 'POST' && request.nextUrl.pathname.startsWith('/api/')) {
     const origin = request.headers.get('origin');
+    const referer = request.headers.get('referer');
     const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:3000'];
     
     // En desarrollo, permitir localhost en cualquier puerto
     const isLocalhost = origin?.includes('localhost') || origin?.includes('127.0.0.1');
     const isDevelopment = process.env.NODE_ENV === 'development';
     
-    if (origin && !allowedOrigins.includes(origin) && !(isDevelopment && isLocalhost)) {
+    // Permitir requests desde dominios de Dokploy y otros proveedores comunes
+    const isDokploy = origin?.includes('.dokploy.') || origin?.includes('dokploy');
+    const isVercel = origin?.includes('.vercel.app');
+    const isNetlify = origin?.includes('.netlify.app');
+    const isCommonHost = isDokploy || isVercel || isNetlify;
+    
+    console.log('🔍 Middleware - Validando origen:', {
+      origin,
+      referer,
+      allowedOrigins,
+      isLocalhost,
+      isDevelopment,
+      isCommonHost,
+      pathname: request.nextUrl.pathname
+    });
+    
+    if (origin && !allowedOrigins.includes(origin) && !(isDevelopment && isLocalhost) && !isCommonHost) {
       console.log('❌ Origen rechazado:', origin, 'Permitidos:', allowedOrigins);
       return new NextResponse(
-        JSON.stringify({ error: 'Origen no permitido' }),
+        JSON.stringify({ 
+          error: 'Origen no permitido',
+          debug: {
+            origin,
+            allowedOrigins,
+            isDevelopment,
+            isLocalhost,
+            isCommonHost
+          }
+        }),
         { 
           status: 403,
           headers: { 'Content-Type': 'application/json' }
         }
       );
     }
+    
+    console.log('✅ Origen permitido:', origin);
   }
   
   return response;
