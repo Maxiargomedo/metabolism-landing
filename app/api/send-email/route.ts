@@ -13,7 +13,8 @@ export async function POST(request: NextRequest) {
       EMAIL_PASS: process.env.EMAIL_PASS ? '[CONFIGURADA]' : '[NO CONFIGURADA]',
       EMAIL_FROM: process.env.EMAIL_FROM,
       EMAIL_TO: process.env.EMAIL_TO,
-      NODE_ENV: process.env.NODE_ENV
+      NODE_ENV: process.env.NODE_ENV,
+      ALLOWED_ORIGINS: process.env.ALLOWED_ORIGINS
     });
 
     // Validar campos requeridos
@@ -28,8 +29,18 @@ export async function POST(request: NextRequest) {
     // Verificar variables de entorno
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       console.error('❌ Variables de entorno EMAIL_USER o EMAIL_PASS no configuradas');
+      console.error('📋 Variables disponibles:', Object.keys(process.env).filter(key => key.includes('EMAIL')));
       return NextResponse.json(
-        { error: 'Configuración de email incompleta' },
+        { 
+          error: 'Configuración de email incompleta',
+          details: 'Variables EMAIL_USER o EMAIL_PASS no configuradas',
+          envVars: {
+            EMAIL_USER: !!process.env.EMAIL_USER,
+            EMAIL_PASS: !!process.env.EMAIL_PASS,
+            EMAIL_FROM: !!process.env.EMAIL_FROM,
+            EMAIL_TO: !!process.env.EMAIL_TO
+          }
+        },
         { status: 500 }
       );
     }
