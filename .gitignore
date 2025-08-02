@@ -32,6 +32,19 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# Archivos de seguridad
+*.key
+*.crt
+*.pem
+*.p12
+*.pfx
+
+# Logs sensibles
+error.log
+access.log
+*.log
 
 # vercel
 .vercel

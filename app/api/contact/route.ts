@@ -10,20 +10,46 @@ interface ContactFormData {
   preferredContact?: 'email' | 'whatsapp';
 }
 
-// Configuración del transportador de email
+// Configuración segura del transportador de email
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'metabolife.informa@gmail.com',
-    pass: 'asiw ghco llza vpiw'
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  },
+  secure: true,
+  tls: {
+    rejectUnauthorized: true
   }
 });
 
+// Función de validación de email
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Función de sanitización
+function sanitizeInput(input: string): string {
+  return input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+              .replace(/[<>]/g, '')
+              .trim();
+}
+
 export async function POST(request: NextRequest) {
   try {
+    // Verificar Content-Type
+    const contentType = request.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      return NextResponse.json(
+        { error: 'Content-Type debe ser application/json' },
+        { status: 400 }
+      );
+    }
+
     const formData: ContactFormData = await request.json();
     
-    // Validación básica
+    // Validación estricta
     if (!formData.name || !formData.email || !formData.service) {
       return NextResponse.json(
         { error: 'Faltan campos requeridos' },
@@ -31,11 +57,39 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Email de notificación para nosotros
+    // Validar email
+    if (!isValidEmail(formData.email)) {
+      return NextResponse.json(
+        { error: 'Email no válido' },
+        { status: 400 }
+      );
+    }
+
+    // Sanitizar inputs
+    const sanitizedData = {
+      name: sanitizeInput(formData.name),
+      email: sanitizeInput(formData.email),
+      phone: formData.phone ? sanitizeInput(formData.phone) : '',
+      service: sanitizeInput(formData.service),
+      message: formData.message ? sanitizeInput(formData.message) : '',
+      preferredContact: formData.preferredContact || 'email'
+    };
+
+    // Validar longitud de campos
+    if (sanitizedData.name.length > 100 || 
+        sanitizedData.email.length > 100 ||
+        (sanitizedData.message && sanitizedData.message.length > 1000)) {
+      return NextResponse.json(
+        { error: 'Uno o más campos exceden la longitud máxima' },
+        { status: 400 }
+      );
+    }
+
+    // Email de notificación para nosotros (usando datos sanitizados)
     const adminEmailOptions = {
-      from: 'informacion@metabolife.cl',
-      to: 'metabolife.informa@gmail.com',
-      subject: `Nueva consulta de ${formData.name} - MetaboLife`,
+      from: process.env.EMAIL_FROM || 'informacion@metabolife.cl',
+      to: process.env.EMAIL_TO || 'metabolife.informa@gmail.com',
+      subject: `Nueva consulta de ${sanitizedData.name} - MetaboLife`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
           <div style="background-color: #4CAF50; color: white; padding: 20px; text-align: center; border-radius: 10px 10px 0 0;">
@@ -47,21 +101,21 @@ export async function POST(request: NextRequest) {
             <h3 style="color: #4CAF50; margin-bottom: 20px;">Información del Cliente:</h3>
             
             <div style="margin-bottom: 15px;">
-              <strong>👤 Nombre:</strong> ${formData.name}
+              <strong>👤 Nombre:</strong> ${sanitizedData.name}
             </div>
             
             <div style="margin-bottom: 15px;">
-              <strong>📧 Email:</strong> ${formData.email}
+              <strong>📧 Email:</strong> ${sanitizedData.email}
             </div>
             
-            ${formData.phone ? `
+            ${sanitizedData.phone ? `
             <div style="margin-bottom: 15px;">
-              <strong>📞 Teléfono:</strong> ${formData.phone}
+              <strong>📞 Teléfono:</strong> ${sanitizedData.phone}
             </div>
             ` : ''}
             
             <div style="margin-bottom: 15px;">
-              <strong>🎯 Servicio de Interés:</strong> ${formData.service}
+              <strong>🎯 Servicio de Interés:</strong> ${sanitizedData.service}
             </div>
             
             ${formData.message ? `

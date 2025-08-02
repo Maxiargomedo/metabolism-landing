@@ -280,15 +280,16 @@ const Services = () => {
             >
               <ProgramTitle>
                 <span>✨</span>
-                Consulta Inicial
+                Primera Consulta
               </ProgramTitle>
               <ProgramDescription>
-                • Evaluación personalizada<br />
-                • Orientación e introducción al programa<br />
-                • Entrega de material
+                • Evaluación Personalizada<br />
+                • Orientación e Introducción al Programa<br />
+                • Entrega Material de Apoyo
               </ProgramDescription>
               <ProgramPrice>
-                💰 $25.000 (presencial o vía zoom) | $40.000 (visita a terreno en la región Metropolitana)
+                💰 $30.000 (pesos chilenos)<br />
+                💰 $30,00 USD (dólares americanos)
               </ProgramPrice>
             </ProgramCard>
 
@@ -303,11 +304,11 @@ const Services = () => {
                 Programa Nutricional Integral Personalizado de Hábitos Sanos 101
               </ProgramTitle>
               <ProgramDescription>
-                Duración: 8 semanas (1 hora semanal)<br />
-                <GiftText>🎁 Incluye de regalo:</GiftText> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
+                Duración: 8 semanas (1 hora semanal)
               </ProgramDescription>
               <ProgramPrice>
-                💎 $ 350.000
+                💎 $280.000 (pesos chilenos)<br />
+                💎 $280,00 USD (dólares americanos)
               </ProgramPrice>
               <ProgramFeature>
                 📞 Seguimiento telefónico diario (L-V)
@@ -325,11 +326,11 @@ const Services = () => {
                 Programa Nutricional Integral Personalizado de Hábitos Sanos 102
               </ProgramTitle>
               <ProgramDescription>
-                Duración: 16 semanas (1 hora semanal)<br />
-                <GiftText>🎁 Incluye de regalo:</GiftText> 1 glucómetro con lancetas y cintas reactivas, tiras reactivas de pH
+                Duración: 16 semanas (1 hora semanal)
               </ProgramDescription>
               <ProgramPrice>
-                💎 $ 650.000
+                💎 $500.000 (pesos chilenos)<br />
+                💎 $500,00 USD (dólares americanos)
               </ProgramPrice>
               <ProgramFeature>
                 📞 Seguimiento telefónico diario (L-V)
