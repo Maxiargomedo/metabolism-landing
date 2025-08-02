@@ -75,7 +75,8 @@ export function middleware(request: NextRequest) {
     const isDokploy = origin?.includes('.dokploy.') || origin?.includes('dokploy');
     const isVercel = origin?.includes('.vercel.app');
     const isNetlify = origin?.includes('.netlify.app');
-    const isCommonHost = isDokploy || isVercel || isNetlify;
+    const isMetabolife = origin?.includes('metabolife.cl') || origin?.includes('metabolife.com');
+    const isCommonHost = isDokploy || isVercel || isNetlify || isMetabolife;
     
     console.log('🔍 Middleware - Validando origen:', {
       origin,
