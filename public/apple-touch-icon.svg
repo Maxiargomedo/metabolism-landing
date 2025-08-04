@@ -1,0 +1,45 @@
+<svg width="180" height="180" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient
+      id="metabolife-apple-gradient"
+      cx="50%"
+      cy="30%"
+      r="70%"
+    >
+      <stop offset="0%" stop-color="#A8E6A3" />
+      <stop offset="30%" stop-color="#81C784" />
+      <stop offset="70%" stop-color="#4CAF50" />
+      <stop offset="100%" stop-color="#2E7D32" />
+    </radialGradient>
+  </defs>
+  <!-- Fondo con esquinas redondeadas para iOS -->
+  <rect
+    x="10"
+    y="10"
+    width="180"
+    height="180"
+    rx="40"
+    ry="40"
+    fill="url(#metabolife-apple-gradient)"
+  />
+  <text
+    x="100"
+    y="130"
+    font-family="Arial, sans-serif"
+    font-size="80"
+    font-weight="bold"
+    text-anchor="middle"
+    fill="white"
+    letter-spacing="-4px"
+  >M</text>
+  <text
+    x="100"
+    y="160"
+    font-family="Arial, sans-serif"
+    font-size="24"
+    font-weight="normal"
+    text-anchor="middle"
+    fill="rgba(255,255,255,0.8)"
+    letter-spacing="1px"
+  >metabolife</text>
+</svg>
