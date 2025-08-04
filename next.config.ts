@@ -42,6 +42,11 @@ const nextConfig: NextConfig = {
       {
         source: '/(.*)',
         headers: [
+          // SEO Headers
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
+          },
           // Seguridad básica
           {
             key: 'X-Content-Type-Options',
@@ -111,6 +116,37 @@ const nextConfig: NextConfig = {
     ];
   },
   
+  // Redirects para SEO (URLs amigables)
+  async redirects() {
+    return [
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/inicio',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/contacto',
+        permanent: true,
+      },
+      {
+        source: '/services',
+        destination: '/servicios',
+        permanent: true,
+      },
+      {
+        source: '/about',
+        destination: '/quienes-somos',
+        permanent: true,
+      },
+    ];
+  },
+
   eslint: {
     ignoreDuringBuilds: true,
   },

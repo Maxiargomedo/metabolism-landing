@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://metabolife.com/sitemap.xml
+
+# Disallow admin areas if they exist
+Disallow: /admin/
+Disallow: /api/
+
+# Allow important pages
+Allow: /blog/
+Allow: /contacto/
+Allow: /servicios/
+Allow: /quienes-somos/
+
+# Crawl delay (optional)
+Crawl-delay: 1
