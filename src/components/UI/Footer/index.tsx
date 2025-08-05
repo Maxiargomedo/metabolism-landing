@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import MetaboLifeLogo from '../../MetaboLifeLogo';
+import { useLegalModal } from '../../../contexts/LegalModalContext';
 import { 
   Wrapper, 
   Inner, 
@@ -32,15 +33,16 @@ const serviceLinks = [
   // { name: 'Programa 103', url: '#services' } // Comentado temporalmente
 ];
 
-const legalLinks = [
-  { name: 'Términos de servicio', url: '#' },
-  { name: 'Política de privacidad', url: '#' },
-  { name: 'Cookies', url: '#' }
-];
-
 const Footer = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const { openTerminos, openPrivacidad, openCookies } = useLegalModal();
+
+  const legalLinks = [
+    { name: 'Términos de servicio', action: openTerminos },
+    { name: 'Política de privacidad', action: openPrivacidad },
+    { name: 'Cookies', action: openCookies }
+  ];
 
   return (
     <Wrapper ref={ref}>
@@ -60,6 +62,38 @@ const Footer = () => {
                 variant="white" 
                 showTagline={true} 
               />
+            </motion.div>
+            
+            <motion.div
+              className="international-link"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              style={{
+                marginTop: '12px',
+                marginBottom: '16px',
+                fontSize: '14px',
+                color: 'white'
+              }}
+            >
+              <span style={{ color: 'white' }}>También nos puedes visitar en </span>
+              <motion.a
+                href="https://metabolifeinternacional.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: '#4CAF50',
+                  textDecoration: 'none',
+                  fontWeight: '500',
+                  transition: 'all 0.3s ease'
+                }}
+                whileHover={{
+                  color: '#66BB6A',
+                  textDecoration: 'underline'
+                }}
+              >
+                metabolifeinternacional.com
+              </motion.a>
             </motion.div>
             
             {/* 
@@ -208,7 +242,30 @@ const Footer = () => {
                     transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
                     whileHover={{ x: 5, transition: { duration: 0.2 } }}
                   >
-                    <a href={link.url}>{link.name}</a>
+                    <button 
+                      onClick={link.action}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: '#bdbdbd',
+                        cursor: 'pointer',
+                        fontSize: '0.875rem',
+                        fontFamily: 'inherit',
+                        textAlign: 'left',
+                        padding: 0,
+                        textDecoration: 'none',
+                        transition: 'all 0.3s ease',
+                        width: '100%'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = '#4CAF50';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = '#bdbdbd';
+                      }}
+                    >
+                      {link.name}
+                    </button>
                   </motion.li>
                 ))}
               </ul>

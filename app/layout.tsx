@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ImageErrorSuppressor from "../src/components/ImageErrorSuppressor";
+import { LegalModalProvider } from "../src/contexts/LegalModalContext";
 import { organizationSchema, serviceSchema, personSchema } from "../src/utils/schemas";
 import "./globals.css";
 
@@ -92,9 +93,11 @@ export default function RootLayout({
         />
       </head>
       <body className="font-inter antialiased">
-        <ImageErrorSuppressor>
-          {children}
-        </ImageErrorSuppressor>
+        <LegalModalProvider>
+          <ImageErrorSuppressor>
+            {children}
+          </ImageErrorSuppressor>
+        </LegalModalProvider>
       </body>
     </html>
   );

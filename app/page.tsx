@@ -20,6 +20,7 @@ const HealthEducation = dynamic(() => import('../src/components/sections/HealthE
 const Services = dynamic(() => import('../src/components/UI/Services'));
 const Contact = dynamic(() => import('../src/components/UI/Contact'));
 const Footer = dynamic(() => import('../src/components/UI/Footer'));
+const LegalModals = dynamic(() => import('../src/components/LegalModals'), { ssr: false });
 const ScrollToTop = dynamic(() => import('../src/components/ScrollToTop'), { ssr: false });
 
 // Define global styles
@@ -319,6 +320,11 @@ const AppContent = () => {
         
         <ClientOnly>
           <Footer />
+        </ClientOnly>
+
+        {/* Legal Modals */}
+        <ClientOnly>
+          <LegalModals />
         </ClientOnly>
       </div>
     </>

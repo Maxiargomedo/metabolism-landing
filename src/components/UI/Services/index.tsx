@@ -287,10 +287,13 @@ const Services = () => {
                 • Orientación e Introducción al Programa<br />
                 • Entrega Material de Apoyo
               </ProgramDescription>
+              {/* Precio comentado temporalmente */}
+              {/*
               <ProgramPrice>
                 💰 $30.000 (pesos chilenos)<br />
                 💰 $30,00 USD (dólares americanos)
               </ProgramPrice>
+              */}
             </ProgramCard>
 
             {/* Programa 101 */}
@@ -306,10 +309,13 @@ const Services = () => {
               <ProgramDescription>
                 Duración: 8 semanas (1 hora semanal)
               </ProgramDescription>
+              {/* Precio comentado temporalmente */}
+              {/*
               <ProgramPrice>
                 💎 $280.000 (pesos chilenos)<br />
                 💎 $280,00 USD (dólares americanos)
               </ProgramPrice>
+              */}
               <ProgramFeature>
                 📞 Seguimiento telefónico diario (L-V)
               </ProgramFeature>
@@ -328,10 +334,13 @@ const Services = () => {
               <ProgramDescription>
                 Duración: 16 semanas (1 hora semanal)
               </ProgramDescription>
+              {/* Precio comentado temporalmente */}
+              {/*
               <ProgramPrice>
                 💎 $500.000 (pesos chilenos)<br />
                 💎 $500,00 USD (dólares americanos)
               </ProgramPrice>
+              */}
               <ProgramFeature>
                 📞 Seguimiento telefónico diario (L-V)
               </ProgramFeature>

@@ -79,7 +79,7 @@ const VideoSection = () => (
     <VideoContainer>
       <Suspense fallback={<LoadingSpinner>Cargando video...</LoadingSpinner>}>
         <LazyVideoFrame 
-          src="https://www.youtube.com/embed/krDWc30PAGg?rel=0&loading=lazy"
+          src="https://www.youtube.com/embed/ODa1g8sNV8Q?rel=0&loading=lazy"
           title="YouTube video player"
         />
       </Suspense>

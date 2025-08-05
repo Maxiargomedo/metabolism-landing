@@ -573,7 +573,7 @@ const Contact = () => {
                       cursor: 'pointer',
                       textDecoration: 'underline' 
                     }}
-                    onClick={() => window.open('https://maps.google.com/?q=M-816+Cauquenes+Maule+Chile', '_blank')}
+                    onClick={() => window.open('https://maps.app.goo.gl/fY75r4WwshUcP2NHA', '_blank')}
                   >
                     M-816 Cauquenes, Maule
                   </span>
@@ -632,13 +632,17 @@ const Contact = () => {
                             placeholder="+56"
                             style={{
                               width: '100%',
-                              padding: '12px 25px 12px 8px',
-                              border: `1px solid ${errors.countryCode ? '#f44336' : '#e0e0e0'}`,
-                              borderRadius: '8px',
-                              background: 'white',
-                              fontSize: '14px',
+                              padding: '1rem 25px 1rem 8px',
+                              border: `1px solid ${errors.countryCode ? '#f44336' : 'var(--border-color)'}`,
+                              borderRadius: '0.75rem',
+                              background: 'var(--card-background)',
+                              backdropFilter: 'blur(10px)',
+                              color: 'var(--text-color)',
+                              fontSize: '1rem',
+                              fontFamily: 'inherit',
                               textAlign: 'center',
-                              transition: 'all 0.2s ease'
+                              transition: 'all 0.3s ease',
+                              boxSizing: 'border-box'
                             }}
                           />
                           <div
@@ -650,7 +654,7 @@ const Contact = () => {
                               transform: 'translateY(-50%)',
                               cursor: 'pointer',
                               fontSize: '12px',
-                              color: '#666'
+                              color: 'var(--text-muted)'
                             }}
                           >
                             ▼
@@ -663,9 +667,10 @@ const Contact = () => {
                             top: '100%',
                             left: '0',
                             right: '0',
-                            background: 'white',
-                            border: '1px solid #e0e0e0',
-                            borderRadius: '8px',
+                            background: 'var(--card-background)',
+                            backdropFilter: 'blur(10px)',
+                            border: '1px solid var(--border-color)',
+                            borderRadius: '0.75rem',
                             maxHeight: '200px',
                             overflowY: 'auto',
                             zIndex: 1000,
@@ -680,9 +685,12 @@ const Contact = () => {
                                 width: '100%',
                                 padding: '8px',
                                 border: 'none',
-                                borderBottom: '1px solid #e0e0e0',
+                                borderBottom: '1px solid var(--border-color)',
                                 outline: 'none',
-                                fontSize: '12px'
+                                fontSize: '12px',
+                                background: 'transparent',
+                                color: 'var(--text-color)',
+                                borderRadius: '0.75rem 0.75rem 0 0'
                               }}
                             />
                             {filteredCountries.slice(0, 10).map((country, index) => (
@@ -693,10 +701,12 @@ const Contact = () => {
                                   padding: '8px',
                                   cursor: 'pointer',
                                   fontSize: '12px',
-                                  borderBottom: index < Math.min(filteredCountries.length, 10) - 1 ? '1px solid #f0f0f0' : 'none'
+                                  borderBottom: index < Math.min(filteredCountries.length, 10) - 1 ? '1px solid var(--border-color)' : 'none',
+                                  color: 'var(--text-color)',
+                                  transition: 'background 0.2s ease'
                                 }}
-                                onMouseOver={(e) => e.currentTarget.style.background = '#f5f5f5'}
-                                onMouseOut={(e) => e.currentTarget.style.background = 'white'}
+                                onMouseOver={(e) => e.currentTarget.style.background = 'rgba(76, 175, 80, 0.1)'}
+                                onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
                               >
                                 <div style={{ fontWeight: 'bold' }}>{country.code}</div>
                                 <div style={{ color: '#666', fontSize: '10px' }}>{country.country}</div>
@@ -715,10 +725,16 @@ const Contact = () => {
                         placeholder="9 1234 5678"
                         style={{ 
                           flex: 1,
-                          padding: '12px',
-                          border: `1px solid ${errors.phone ? '#f44336' : '#e0e0e0'}`,
-                          borderRadius: '8px',
-                          fontSize: '14px'
+                          padding: '1rem',
+                          border: `1px solid ${errors.phone ? '#f44336' : 'var(--border-color)'}`,
+                          borderRadius: '0.75rem',
+                          background: 'var(--card-background)',
+                          backdropFilter: 'blur(10px)',
+                          color: 'var(--text-color)',
+                          fontSize: '1rem',
+                          fontFamily: 'inherit',
+                          transition: 'all 0.3s ease',
+                          boxSizing: 'border-box'
                         }}
                       />
                     </div>

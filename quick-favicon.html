@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quick Favicon Generator</title>
+</head>
+<body>
+    <canvas id="faviconCanvas" width="32" height="32" style="border: 1px solid #ccc;"></canvas>
+    <br>
+    <button onclick="downloadFavicon()" style="padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; margin-top: 10px;">
+        Descargar Favicon PNG
+    </button>
+    <br><br>
+    <a id="downloadICO" href="#" style="display: none;">Descargar ICO</a>
+    
+    <script>
+        const canvas = document.getElementById('faviconCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function generateFavicon() {
+            // Limpiar canvas
+            ctx.clearRect(0, 0, 32, 32);
+            
+            // Crear gradiente radial verde
+            const gradient = ctx.createRadialGradient(16, 11, 0, 16, 16, 15);
+            gradient.addColorStop(0, '#A8E6A3');
+            gradient.addColorStop(0.3, '#81C784');
+            gradient.addColorStop(0.7, '#4CAF50');
+            gradient.addColorStop(1, '#2E7D32');
+            
+            // Dibujar círculo
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(16, 16, 15, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Agregar letra M en blanco
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 19px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.shadowColor = 'rgba(0,0,0,0.3)';
+            ctx.shadowBlur = 1;
+            ctx.fillText('M', 16, 16);
+            ctx.shadowBlur = 0;
+        }
+        
+        function downloadFavicon() {
+            const dataURL = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = 'favicon.png';
+            link.href = dataURL;
+            link.click();
+            
+            // Mostrar instrucciones
+            alert('¡PNG descargado!\\n\\nPróximo paso:\\n1. Ve a https://favicon.io/favicon-converter/\\n2. Sube el PNG descargado\\n3. Descarga el favicon.ico\\n4. Reemplaza app/favicon.ico con el nuevo archivo');
+        }
+        
+        // Generar favicon al cargar
+        generateFavicon();
+        
+        console.log('🔥 Favicon listo para descargar');
+        console.log('Este es el favicon oficial de MetaboliFe con el círculo verde');
+    </script>
+</body>
+</html>

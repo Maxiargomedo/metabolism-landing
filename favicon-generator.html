@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MetaboliFe Favicon Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        canvas { border: 2px solid #4CAF50; margin: 10px; }
+        .preview { display: inline-block; margin: 20px; text-align: center; }
+        .download { margin: 10px; padding: 10px 20px; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🔥 MetaboliFe Favicon Generator</h1>
+    <p>Genera favicons personalizados para MetaboliFe con el círculo verde característico</p>
+    
+    <div class="preview">
+        <h3>Favicon 32x32 (Navegadores)</h3>
+        <canvas id="favicon32" width="32" height="32"></canvas>
+        <br>
+        <a href="#" id="download32" class="download">Descargar PNG</a>
+    </div>
+    
+    <div class="preview">
+        <h3>Apple Touch Icon 180x180 (iOS)</h3>
+        <canvas id="apple180" width="180" height="180"></canvas>
+        <br>
+        <a href="#" id="download180" class="download">Descargar PNG</a>
+    </div>
+    
+    <div class="preview">
+        <h3>Favicon 16x16 (Pequeño)</h3>
+        <canvas id="favicon16" width="16" height="16"></canvas>
+        <br>
+        <a href="#" id="download16" class="download">Descargar PNG</a>
+    </div>
+    
+    <script>
+        function createFavicon(canvasId, size, showText = true) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Limpiar canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Crear gradiente radial verde
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const radius = (size / 2) - 1;
+            
+            const gradient = ctx.createRadialGradient(
+                centerX, centerY * 0.7, 0,
+                centerX, centerY, radius
+            );
+            gradient.addColorStop(0, '#A8E6A3');
+            gradient.addColorStop(0.3, '#81C784');
+            gradient.addColorStop(0.7, '#4CAF50');
+            gradient.addColorStop(1, '#2E7D32');
+            
+            // Dibujar círculo
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Agregar texto si es suficientemente grande
+            if (showText && size >= 16) {
+                ctx.fillStyle = 'white';
+                ctx.font = `bold ${Math.floor(size * 0.6)}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.shadowColor = 'rgba(0,0,0,0.3)';
+                ctx.shadowBlur = 2;
+                ctx.fillText('M', centerX, centerY);
+                ctx.shadowBlur = 0;
+            }
+            
+            return canvas;
+        }
+        
+        function setupDownload(canvasId, downloadId) {
+            const canvas = document.getElementById(canvasId);
+            const downloadLink = document.getElementById(downloadId);
+            
+            downloadLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const dataURL = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.download = `metabolife-favicon-${canvas.width}x${canvas.height}.png`;
+                link.href = dataURL;
+                link.click();
+            });
+        }
+        
+        // Generar favicons
+        createFavicon('favicon32', 32, true);
+        createFavicon('apple180', 180, true);
+        createFavicon('favicon16', 16, false); // Sin texto para 16x16
+        
+        // Configurar descargas
+        setupDownload('favicon32', 'download32');
+        setupDownload('apple180', 'download180');
+        setupDownload('favicon16', 'download16');
+        
+        // Mostrar instrucciones
+        setTimeout(() => {
+            console.log('✅ Favicons generados correctamente');
+            console.log('📝 Instrucciones:');
+            console.log('1. Descarga los PNG generados');
+            console.log('2. Convierte el de 32x32 a .ico usando https://favicon.io/favicon-converter/');
+            console.log('3. Reemplaza app/favicon.ico con el nuevo archivo');
+            console.log('4. Guarda el de 180x180 como public/apple-touch-icon.png');
+        }, 1000);
+    </script>
+</body>
+</html>
