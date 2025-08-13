@@ -109,6 +109,20 @@ const About = () => {
             }}>
               Actualmente en Estados Unidos de Norteamérica 1 de cada 3 personas tiene prediabetes y 1 de cada 10 personas no sabe que tiene diabetes. Es muy importante tomar las acciones correctas para no estar entre estas estadísticas.
             </p>
+            <p style={{ 
+              fontSize: 'clamp(1rem, 2.5vw, 1.1rem)', // Responsivo
+              lineHeight: '1.6',
+              marginTop: '1.5rem'
+            }}>
+              La última estadística que se hizo en Estados Unidos de Norteamérica para saber las principales causas de muerte, indicaron que la mala alimentación causa más muertes que cualquier otro factor de riesgo, la segunda es la hipertensión y luego está el tabaco. Quiere decir que el tabaco mata por año 8.000.000 de personas en el mundo y la alimentación mata más de 10.000.000 de personas.
+            </p>
+            <p style={{ 
+              fontSize: 'clamp(1rem, 2.5vw, 1.1rem)', // Responsivo
+              lineHeight: '1.6',
+              marginTop: '1.5rem'
+            }}>
+              Solamente tratan la enfermedad y controlan los síntomas, el negocio es no encontrar la causa de la enfermedad, mantenerlo vivo con pastillas y obligarlo a consumir medicamentos de por vida. No es que esté en contra de los medicamentos, pero antes de recetarlos tan apresuradamente, en una consulta que a veces dura menos de 5 minutos, se está incumpliendo con los protocolos médicos y la evidencia científica, que dice: primero se le debe tratar al paciente con un cambio en su nutrición, ejercicio y cambios de hábito, si eso no hace que la persona mejore, se debe recurrir a la medicación, no al revés.
+            </p>
           </div>
         </motion.div>
 

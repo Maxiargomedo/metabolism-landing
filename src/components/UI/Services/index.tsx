@@ -22,6 +22,7 @@ import {
   PopupCarouselSlide,
   PopupCloseButton,
   ProgramCard,
+  CenteredProgramCard,
   ProgramTitle,
   ProgramDescription,
   ProgramPrice,
@@ -345,6 +346,34 @@ const Services = () => {
                 📞 Seguimiento telefónico diario (L-V)
               </ProgramFeature>
             </ProgramCard>
+
+            {/* Retiro Nutricional - Nueva carta centrada */}
+            <CenteredProgramCard
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
+              <ProgramTitle>
+                <span>🏔️</span>
+                Retiro Nutricional y Cambios de Hábitos
+              </ProgramTitle>
+              <ProgramDescription>
+                Cada 2 semanas - Comienzan el 26 septiembre 2025<br />
+                📅 Inicio: Viernes desde las 6 pm<br />
+                📅 Término: Domingo hasta las 6 pm
+              </ProgramDescription>
+              <ProgramFeature>
+                🏨 Incluye: Alojamiento completo<br />
+                🎓 4 charlas diarias especializadas<br />
+                🍳 Desayuno y almuerzo saludables<br />
+                🚣 Uso libre de Kayak<br />
+                🎾 Acceso a cancha de tenis<br />
+                ♨️ Tinaja de agua caliente medicinal<br />
+                🥾 Caminata campestre<br />
+                🍎 Degustación de frutas de la zona<br />
+                ✨ Y mucho más...
+              </ProgramFeature>
+            </CenteredProgramCard>
 
             {/* Programa 103 - Comentado temporalmente */}
             {/*

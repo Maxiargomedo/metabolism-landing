@@ -1101,6 +1101,21 @@ export const ProgramGrid = styled.div`
   }
 `;
 
+export const CenteredProgramCard = styled(ProgramCard)`
+  grid-column: 1 / -1;
+  max-width: 400px;
+  margin: 0 auto;
+  
+  @media (min-width: 768px) {
+    grid-column: 1 / -1;
+  }
+  
+  @media (min-width: 1024px) {
+    grid-column: 2 / 3;
+    margin: 0;
+  }
+`;
+
 export const GiftText = styled.span`
   color: #e91e63;
   font-weight: 600;

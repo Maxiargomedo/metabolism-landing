@@ -22,7 +22,7 @@ const LinkWrapper = styled.a<{ $isActive: boolean; $isHeaderScrolled: boolean }>
   font-size: 1rem;
   font-weight: ${props => props.$isActive ? '500' : '400'};
   cursor: pointer;
-  overflow: hidden;
+  overflow: visible;
   text-decoration: none;
   transition: all 0.3s ease;
   padding: 0.75rem 1.25rem;
@@ -36,20 +36,21 @@ const LinkWrapper = styled.a<{ $isActive: boolean; $isHeaderScrolled: boolean }>
 
 const LinkIndicator = styled(motion.div)<{ $isHeaderScrolled: boolean }>`
   position: absolute;
-  bottom: -2px;
+  bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
-  height: 1px;
+  width: 60%;
+  height: 2px;
+  border-radius: 1px;
   background-color: ${props => props.$isHeaderScrolled ? 'rgba(255, 255, 255, 0.8)' : 'var(--primary-color)'};
 `;
 
 const ActiveBackground = styled(motion.div)<{ $isHeaderScrolled: boolean }>`
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
   background: ${props => {
     if (props.$isHeaderScrolled) {
       return `linear-gradient(
@@ -70,7 +71,7 @@ const ActiveBackground = styled(motion.div)<{ $isHeaderScrolled: boolean }>`
       rgba(62, 207, 142, 0.35) 100%
     )`;
   }};
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid ${props => props.$isHeaderScrolled ? 'rgba(255, 255, 255, 0.2)' : 'rgba(62, 207, 142, 0.4)'};
   box-shadow: ${props => {
     if (props.$isHeaderScrolled) {
@@ -135,9 +136,10 @@ export const AnimatedLink = ({ title, onClick, isActive = false, isHeaderScrolle
       {!isActive && (
         <LinkIndicator
           $isHeaderScrolled={isHeaderScrolled}
-          initial={{ scaleX: 0, originX: 0.5 }}
-          whileHover={{ scaleX: 1, originX: 0.5 }}
-          transition={{ duration: 0.3 }}
+          initial={{ scaleX: 0 }}
+          whileHover={{ scaleX: 1 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          style={{ transformOrigin: "center" }}
         />
       )}
     </LinkWrapper>
