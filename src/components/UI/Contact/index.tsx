@@ -565,18 +565,47 @@ const Contact = () => {
               >
                 <div className="icon">📍</div>
                 <div className="details">
-                  <span className="label">Dirección</span>
-                  <span 
-                    className="value" 
-                    style={{ 
-                      color: '#4CAF50', 
-                      cursor: 'pointer',
-                      textDecoration: 'underline' 
-                    }}
-                    onClick={() => window.open('https://maps.app.goo.gl/fY75r4WwshUcP2NHA', '_blank')}
-                  >
-                    M-816 Cauquenes, Maule
-                  </span>
+                  <span className="label">Direcciones</span>
+                  <div>
+                    <span 
+                      className="value" 
+                      style={{ 
+                        color: '#4CAF50', 
+                        cursor: 'pointer',
+                        textDecoration: 'underline',
+                        display: 'block',
+                        marginBottom: '0.5rem'
+                      }}
+                      onClick={() => window.open('https://maps.app.goo.gl/Q4C86egRG1f65xqdA', '_blank')}
+                    >
+                      Padre Hurtado 187, Santiago
+                    </span>
+                    <div style={{ 
+                      fontSize: '1rem', 
+                      color: 'var(--text-secondary)',
+                      marginTop: '0.5rem',
+                      lineHeight: '1.6',
+                      fontFamily: 'inherit'
+                    }}>
+                      <div style={{ marginBottom: '0.5rem' }}>
+                        Retiro Nutricional y Cambios de Hábitos (cada 2 semanas)
+                      </div>
+                      <div style={{ marginBottom: '0.5rem' }}>
+                        A orillas de Embalse Tutuven
+                      </div>
+                      <span 
+                        style={{ 
+                          color: '#4CAF50', 
+                          cursor: 'pointer',
+                          textDecoration: 'underline',
+                          display: 'block'
+                        }}
+                        onClick={() => window.open('https://maps.app.goo.gl/BDKxp4111dvuvRK17', '_blank')}
+                      >
+                        - M-816 Cauquenes, Maule
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </ContactInfo>
@@ -772,6 +801,7 @@ const Contact = () => {
                       <option value="consulta-inicial">Consulta Inicial</option>
                       <option value="programa-101">Programa 101 (8 semanas)</option>
                       <option value="programa-102">Programa 102 (16 semanas)</option>
+                      <option value="retiro-nutricional">Retiro Nutricional y Cambios de Hábitos</option>
                       {/* <option value="programa-103">Programa 103 (24 semanas)</option> */}
                     </select>
                     {errors.service && <span className="error">{errors.service}</span>}
